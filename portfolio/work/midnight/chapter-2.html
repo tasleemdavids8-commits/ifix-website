@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Chapter III · The Constellation</title>
+<meta name="theme-color" content="#060608" />
+<meta name="view-transition" content="same-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="prefetch" href="chapter-3.html" as="document">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
+<style>
+  .sky{
+    position:relative; width:min(660px,92vw); aspect-ratio:16/10;
+    max-height:38vh;
+    margin:0 auto; border-radius:22px; overflow:hidden;
+    background:
+      radial-gradient(600px 300px at 50% 110%, rgba(120,96,180,.12), transparent 70%),
+      linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.008));
+    border:1px solid var(--panel-brd);
+    box-shadow:0 30px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05);
+    touch-action:manipulation;
+  }
+  .sky svg{ position:absolute; inset:0; width:100%; height:100% }
+  .link{ stroke:url(#lg); stroke-width:1.2; fill:none; stroke-dasharray:1; stroke-dashoffset:1;
+         transition:stroke-dashoffset 1s var(--ease-out) }
+  .link.on{ stroke-dashoffset:0 }
+  .node{ cursor:pointer; outline:none }
+  .node:focus-visible .dot{ fill:#fff6dd }
+  .node .halo{ fill:rgba(220,184,98,.10); transform-box:fill-box; transform-origin:center;
+               animation:pulse 3.4s var(--ease-io) infinite }
+  @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.5 } 50%{ transform:scale(1.5); opacity:.12 } }
+  .node .dot{ fill:#8e8574; transition:fill .55s var(--ease-out), r .55s var(--ease-out) }
+  .node.lit .dot{ fill:#fff6dd; r:6.5 }
+  .node.lit .halo{ fill:rgba(246,231,189,.20) }
+  .node .lbl{
+    fill:var(--faint); font-family:var(--sans); font-size:9.5px; letter-spacing:.22em;
+    text-transform:uppercase; text-anchor:middle; transition:fill .55s var(--ease-out);
+    pointer-events:none; user-select:none;
+  }
+  .node.lit .lbl{ fill:var(--gold-1) }
+  .node:hover .dot{ fill:#e8cf94 }
+
+  .sky-note{
+    position:absolute; left:0; right:0; bottom:14px; text-align:center;
+    font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--faint);
+    transition:opacity .5s; pointer-events:none;
+  }
+  .said{
+    min-height:clamp(46px,7vh,72px); display:flex; align-items:center; justify-content:center;
+    max-width:30ch; margin:0 auto;
+  }
+  .said p{ margin:0; opacity:0; transform:translateY(10px);
+           transition:opacity .6s var(--ease-out), transform .6s var(--ease-out) }
+  .said p.show{ opacity:1; transform:none }
+  @media (max-height:900px){ .chapter-no{ display:none } }
+</style>
+</head>
+<body data-step="3" data-total="5" data-compact>
+
+<div class="aura"></div>
+<canvas id="dust"></canvas>
+
+<div id="loader">
+  <div class="loader-in">
+    <div class="loader-mark"><span></span><span></span><span></span></div>
+    <div class="loader-bar"><i></i></div>
+    <div class="loader-txt">Hanging the stars</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="mark"><i></i><span>Chapter III</span></div>
+    <div class="rail" aria-hidden="true"></div>
+  </header>
+
+  <main class="page-main">
+
+    <p class="chapter-no" data-anim="fade" data-delay="120">03</p>
+    <p class="eyebrow" data-anim="down" data-delay="240">The constellation</p>
+
+    <h2 class="title" data-anim="fade" data-delay="360" data-words>Six stars, one shape</h2>
+
+    <p class="lede" data-anim="up" data-delay="700">
+      Touch each star to light it. They're the things worth carrying into the year ahead —
+      and together they draw something only <strong class="gold" data-name="you">you</strong> could make.
+    </p>
+
+    <div class="sky panel" data-anim="scale" data-delay="860" id="sky">
+      <svg viewBox="0 0 760 475" id="skySvg" aria-label="Interactive constellation">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="rgba(246,231,189,.75)"/>
+            <stop offset="100%" stop-color="rgba(163,128,58,.35)"/>
+          </linearGradient>
+        </defs>
+        <g id="links"></g>
+        <g id="nodes"></g>
+      </svg>
+      <div class="sky-note" id="skyNote">Tap the stars</div>
+    </div>
+
+    <div class="said" data-anim="fade" data-delay="1000">
+      <p class="serif-quote" id="said">Every one of them already belongs to you.</p>
+    </div>
+
+    <div class="btn-row" data-anim="up" data-delay="1120">
+      <a class="btn ghost" href="chapter-1.html" data-nav>Back</a>
+      <a class="btn" id="nextBtn" href="chapter-3.html" data-nav data-primary>
+        Continue
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9.5 1.5 13 5l-3.5 3.5" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="footnote">
+    <span>Made by hand</span>
+    <span>Chapter 03 — The Constellation</span>
+  </footer>
+
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  "use strict";
+  var STARS = [
+    { x:118, y:118, label:"Joy",     line:"Joy — the loud kind and the quiet kind both count." },
+    { x:300, y:70,  label:"Health",  line:"Health — may your body keep saying yes to you." },
+    { x:512, y:132, label:"Love",    line:"Love — given freely, and returned without asking." },
+    { x:648, y:290, label:"Courage", line:"Courage — for the doors you haven't opened yet." },
+    { x:412, y:352, label:"Rest",    line:"Rest — you are allowed to simply stop sometimes." },
+    { x:176, y:318, label:"Wonder",  line:"Wonder — never lose the habit of being amazed." }
+  ];
+  var ORDER = [0,1,2,3,4,5,0];
+
+  var svg = document.getElementById("skySvg");
+  var gLinks = document.getElementById("links");
+  var gNodes = document.getElementById("nodes");
+  var said = document.getElementById("said");
+  var note = document.getElementById("skyNote");
+  var nextBtn = document.getElementById("nextBtn");
+  var lit = 0, done = false;
+
+  // draw links
+  var lines = [];
+  for (var i=0;i<ORDER.length-1;i++){
+    var a = STARS[ORDER[i]], b = STARS[ORDER[i+1]];
+    var ln = document.createElementNS("http://www.w3.org/2000/svg","line");
+    ln.setAttribute("x1",a.x); ln.setAttribute("y1",a.y);
+    ln.setAttribute("x2",b.x); ln.setAttribute("y2",b.y);
+    ln.setAttribute("class","link");
+    var len = Math.hypot(b.x-a.x, b.y-a.y);
+    ln.style.strokeDasharray = len; ln.style.strokeDashoffset = len;
+    gLinks.appendChild(ln); lines.push(ln);
+    ln._len = len;
+  }
+
+  // draw nodes
+  STARS.forEach(function(s, idx){
+    var g = document.createElementNS("http://www.w3.org/2000/svg","g");
+    g.setAttribute("class","node");
+    g.setAttribute("tabindex","0");
+    g.setAttribute("role","button");
+    g.setAttribute("aria-label",s.label);
+
+    var halo = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    halo.setAttribute("cx",s.x); halo.setAttribute("cy",s.y); halo.setAttribute("r",17);
+    halo.setAttribute("class","halo");
+    halo.style.animationDelay = (idx*.42)+"s";
+
+    var hit = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    hit.setAttribute("cx",s.x); hit.setAttribute("cy",s.y); hit.setAttribute("r",26);
+    hit.setAttribute("fill","transparent");
+
+    var dot = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    dot.setAttribute("cx",s.x); dot.setAttribute("cy",s.y); dot.setAttribute("r",4.2);
+    dot.setAttribute("class","dot");
+
+    var lbl = document.createElementNS("http://www.w3.org/2000/svg","text");
+    lbl.setAttribute("x",s.x); lbl.setAttribute("y",s.y+30);
+    lbl.setAttribute("class","lbl"); lbl.textContent = s.label;
+
+    g.appendChild(halo); g.appendChild(dot); g.appendChild(lbl); g.appendChild(hit);
+    gNodes.appendChild(g);
+
+    function light(){
+      if (g.classList.contains("lit")) return;
+      g.classList.add("lit");
+      lit++;
+      // reveal its line
+      said.classList.remove("show");
+      setTimeout(function(){ said.textContent = s.line; said.classList.add("show"); }, 180);
+      // sparkle at the star's screen position
+      var r = svg.getBoundingClientRect();
+      var sx = r.left + (s.x/760)*r.width;
+      var sy = r.top  + (s.y/475)*r.height;
+      MG.FX.spark(sx, sy);
+      try{ MG.Audio.chime(); }catch(e){}
+      // connect lines progressively
+      var frac = lit / STARS.length;
+      var upto = Math.round(frac * lines.length);
+      lines.forEach(function(ln,k){
+        if (k < upto){ ln.classList.add("on"); ln.style.strokeDashoffset = 0; }
+      });
+      if (lit === STARS.length && !done){
+        done = true;
+        MG.State.set("constellation", true);
+        note.style.opacity = "0";
+        setTimeout(function(){
+          lines.forEach(function(ln){ ln.classList.add("on"); ln.style.strokeDashoffset = 0; });
+          said.classList.remove("show");
+          setTimeout(function(){
+            said.textContent = "Complete. That shape is the year ahead.";
+            said.classList.add("show");
+            var rr = svg.getBoundingClientRect();
+            MG.FX.burst(90, rr.left+rr.width/2, rr.top+rr.height/2, 9);
+          }, 200);
+        }, 420);
+      }
+    }
+
+    g.addEventListener("click", light);
+    g.addEventListener("keydown", function(e){
+      if (e.key==="Enter"||e.key===" "){ e.preventDefault(); light(); }
+    });
+  });
+
+  document.addEventListener("mg:ready", function(){
+    said.classList.add("show");
+  });
+})();
+</script>
+</body>
+</html>

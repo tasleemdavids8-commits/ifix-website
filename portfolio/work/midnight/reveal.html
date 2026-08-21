@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Happy Birthday</title>
+<meta name="theme-color" content="#060608" />
+<meta name="view-transition" content="same-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<style>
+  /* ---------- the gate ---------- */
+  #gate{
+    position:fixed; inset:0; z-index:70; display:grid; place-items:center;
+    background:radial-gradient(900px 600px at 50% 50%, #0a0a12, #050506 70%);
+    transition:opacity 1.1s var(--ease-soft), visibility 1.1s;
+  }
+  #gate.gone{ opacity:0; visibility:hidden; pointer-events:none }
+  .gate-in{ text-align:center; display:flex; flex-direction:column; align-items:center; gap:30px; padding:24px }
+
+  .seal{
+    position:relative; width:132px; height:132px; border-radius:50%; cursor:pointer;
+    display:grid; place-items:center; background:transparent; border:0;
+    transition:transform .6s var(--ease-out);
+  }
+  .seal:hover{ transform:scale(1.05) }
+  .seal:active{ transform:scale(.97) }
+  .seal svg{ position:absolute; inset:0; width:100%; height:100% }
+  .seal .ring{ fill:none; stroke:rgba(220,184,98,.30); stroke-width:1 }
+  .seal .ring2{
+    fill:none; stroke:url(#sealG); stroke-width:1.6; stroke-linecap:round;
+    stroke-dasharray:340; stroke-dashoffset:340;
+    animation:draw 2.6s var(--ease-out) .3s forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0 } }
+  .seal .pulse{
+    fill:none; stroke:rgba(246,231,189,.5); stroke-width:1;
+    transform-origin:center; animation:ripple 2.8s var(--ease-io) infinite;
+  }
+  @keyframes ripple{
+    0%  { transform:scale(.8); opacity:.6 }
+    100%{ transform:scale(1.5); opacity:0 }
+  }
+  .seal em{
+    font-family:var(--serif); font-style:normal; font-size:2.1rem;
+    background:linear-gradient(150deg,#fffaf0,var(--gold-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  /* ---------- the reveal ---------- */
+  #show{ opacity:0; transition:opacity 1.4s var(--ease-out) }
+  #show.on{ opacity:1 }
+
+  /* Static gradient — see note in style.css. Animating background-position
+     here re-rasterised every glyph each frame and cost ~38fps by itself.
+     The drop-shadow is also removed: a 44px blur on live text is expensive
+     and a plain text-shadow gives the same soft halo far more cheaply. */
+  .hb{
+    font-family:var(--serif); font-weight:300; margin:0;
+    font-size:clamp(2.9rem,11.5vw,9rem); line-height:.98; letter-spacing:-.03em;
+    background:linear-gradient(100deg,var(--gold-3) 0%,var(--gold-1) 20%,#fffdf6 38%,var(--gold-2) 58%,var(--gold-1) 78%,var(--gold-3) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .the-name{
+    display:block; font-size:clamp(3.2rem,13vw,10.5rem); line-height:1;
+    margin-top:.06em;
+  }
+
+  .letter{ display:inline-block; opacity:0; transform:translateY(60%) rotateX(-70deg); transform-origin:50% 100% }
+  .letter.up{
+    opacity:1; transform:none;
+    transition:opacity .9s var(--ease-out), transform 1.1s var(--ease-out);
+  }
+
+  .msg{
+    max-width:52ch; margin:0 auto; color:#cfc6b4;
+    font-size:clamp(1rem,2.3vw,1.2rem); line-height:1.85;
+  }
+  .sig{
+    font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--gold-2);
+  }
+
+  .card-note{
+    width:min(640px,92vw); margin:0 auto; padding:30px 30px 26px; border-radius:22px;
+    position:relative; overflow:hidden;
+  }
+  /* Sheen across the card. Animating background-position repaints the whole
+     panel each frame; translating a narrow gradient strip on the GPU does
+     not. Same effect, no paint cost. */
+  .card-note::before{
+    content:""; position:absolute; top:0; bottom:0; left:0; width:55%;
+    background:linear-gradient(100deg,transparent,rgba(246,231,189,.07) 50%,transparent);
+    transform:translate3d(-120%,0,0);
+    animation:sweep 11s ease-in-out infinite;
+  }
+  @keyframes sweep{
+    0%,100%{ transform:translate3d(-120%,0,0) }
+    50%    { transform:translate3d(240%,0,0) }
+  }
+  .card-note p{ position:relative; margin:0 }
+
+  .ticker{
+    display:flex; gap:26px; justify-content:center; flex-wrap:wrap;
+    font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--faint);
+  }
+  .ticker b{ color:var(--gold-2); font-weight:500; font-variant-numeric:tabular-nums }
+
+  #fireworks{ position:fixed; inset:0; z-index:3; pointer-events:none;
+              contain:strict; transform:translateZ(0) }
+</style>
+</head>
+<body data-step="5" data-total="5">
+
+<div class="aura"></div>
+<canvas id="dust"></canvas>
+<canvas id="fireworks"></canvas>
+
+<div id="loader">
+  <div class="loader-in">
+    <div class="loader-mark"><span></span><span></span><span></span></div>
+    <div class="loader-bar"><i></i></div>
+    <div class="loader-txt">Almost there</div>
+  </div>
+</div>
+
+<!-- ============ THE GATE ============ -->
+<div id="gate">
+  <div class="gate-in">
+    <p class="eyebrow" data-anim="down" data-delay="200">Chapter V</p>
+    <p class="serif-quote" data-anim="fade" data-delay="360" style="max-width:20ch">
+      One last thing, <span data-name="friend"></span>.
+    </p>
+    <button class="seal" id="seal" aria-label="Open">
+      <svg viewBox="0 0 132 132" aria-hidden="true">
+        <defs>
+          <linearGradient id="sealG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f6e7bd"/><stop offset="100%" stop-color="#a3803a"/>
+          </linearGradient>
+        </defs>
+        <circle class="ring"  cx="66" cy="66" r="64"/>
+        <circle class="pulse" cx="66" cy="66" r="54"/>
+        <circle class="ring2" cx="66" cy="66" r="54"/>
+      </svg>
+      <em>✦</em>
+    </button>
+    <p class="hint" data-anim="fade" data-delay="800"><i></i>Press to open</p>
+  </div>
+</div>
+
+<!-- ============ THE REVEAL ============ -->
+<div class="page">
+
+  <header class="topbar">
+    <div class="mark"><i></i><span>Chapter V</span></div>
+    <div class="rail" aria-hidden="true"></div>
+  </header>
+
+  <main class="page-main" id="show">
+
+    <p class="eyebrow" id="dateLine">28 July</p>
+
+    <h1 class="hb">
+      <span id="l1"></span>
+      <span class="the-name" id="l2"></span>
+    </h1>
+
+    <hr class="rule" />
+
+    <div class="card-note panel">
+      <p class="msg" id="msg"></p>
+      <p class="msg sig" style="margin-top:18px">— with love, on your day</p>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" id="songBtn">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M6 2.5v8.2a2.3 2.3 0 1 0 1.4 2.1V5.6l5.1-1.2v5a2.3 2.3 0 1 0 1.4 2.1V1.2L6 2.5z"/>
+        </svg>
+        Play the song
+      </button>
+      <button class="btn ghost" id="moreBtn">More confetti</button>
+      <button class="btn ghost" id="againBtn">Read it again</button>
+    </div>
+
+    <div class="ticker">
+      <span>Chapters <b>5 / 5</b></span>
+      <span>Stars lit <b id="tStars">—</b></span>
+      <span>Wish <b id="tWish">—</b></span>
+    </div>
+
+  </main>
+
+  <footer class="footnote">
+    <span>Made by hand</span>
+    <span>Chapter 05 — Happy Birthday</span>
+  </footer>
+
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var name = MG.State.name();
+  var gate = document.getElementById("gate");
+  var show = document.getElementById("show");
+  var opened = false;
+
+  // ---------- personalise ----------
+  var MESSAGES = [
+    "However this year finds you — mid-climb, catching your breath, or right at the top — it is genuinely better for having you in it. May the next twelve months be kind in the ordinary ways that matter most: good sleep, good people, and the quiet confidence that you're exactly where you need to be.",
+    "Here's to a year that's gentler than the last and smaller than the next. May your plans work out, and may the ones that don't turn into far better stories.",
+    "You've been around the sun again, and the sun is lucky to have had the company. Wishing you 365 days of luck that arrives quietly and decides to stay."
+  ];
+  var mi = 0;
+  document.getElementById("msg").textContent = MESSAGES[0];
+
+  var d = new Date();
+  document.getElementById("dateLine").textContent =
+    "28 July " + d.getFullYear();
+
+  document.getElementById("tStars").textContent = MG.State.get("constellation", false) ? "6 / 6" : "—";
+  document.getElementById("tWish").textContent  = MG.State.get("wished", false) ? "Made" : "—";
+
+  document.title = name ? ("Happy Birthday, " + name) : "Happy Birthday";
+
+  // ---------- letter-by-letter builder ----------
+  function letters(el, text, startDelay, step){
+    el.innerHTML = "";
+    var chars = text.split("");
+    chars.forEach(function(ch, i){
+      var s = document.createElement("span");
+      s.className = "letter";
+      s.textContent = (ch === " ") ? "\u00A0" : ch;
+      el.appendChild(s);
+      setTimeout(function(){ s.classList.add("up"); },
+                 MG.reduced ? 0 : startDelay + i*step);
+    });
+    return startDelay + chars.length*step;
+  }
+
+  // ---------- fireworks ----------
+  var fw = (function(){
+    var c = document.getElementById("fireworks");
+    var ctx = c.getContext("2d",{alpha:true,desynchronized:true});
+    var DPR = Math.min(window.devicePixelRatio||1, 1.5), P = [], on = false, raf = 0, last = 0;
+    var COL = ["#f6e7bd","#dcb862","#fff6dd","#e8cf94","#ffffff","#ffd9a0"];
+
+    var LOW = MG.Perf.low;
+    var CAP = Math.round(520 * MG.Perf.scale());   // hard particle ceiling
+    var BURST = Math.round(48 * MG.Perf.scale());  // sparks per shell
+    var GAP = LOW ? 2400 : 1500;                   // ms between shells
+
+    // baked glow sprites — no per-particle shadowBlur
+    var SP = {};
+    function sprite(col){
+      if (SP[col]) return SP[col];
+      var s=28, cv=document.createElement("canvas"); cv.width=cv.height=s;
+      var g=cv.getContext("2d");
+      var rg=g.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);
+      rg.addColorStop(0,col); rg.addColorStop(.35,col); rg.addColorStop(1,"rgba(0,0,0,0)");
+      g.fillStyle=rg; g.beginPath(); g.arc(s/2,s/2,s/2,0,6.283); g.fill();
+      SP[col]=cv; return cv;
+    }
+
+    function size(){
+      c.width=(innerWidth*DPR)|0; c.height=(innerHeight*DPR)|0;
+      c.style.width=innerWidth+"px"; c.style.height=innerHeight+"px";
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+    size(); addEventListener("resize", size, {passive:true});
+
+    function shell(x,y){
+      var col = COL[(Math.random()*COL.length)|0], n = BURST;
+      if (P.length + n > CAP) n = Math.max(0, CAP - P.length);
+      for (var i=0;i<n;i++){
+        var a=(6.283/n)*i+Math.random()*.06, s=2.3+Math.random()*4.4;
+        var cc = Math.random()<.28?"#fff":col;
+        P.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,g:.045,d:.973,
+                r:1.3+Math.random()*1.9,sp:sprite(cc),
+                life:60+Math.random()*50,age:0});
+      }
+      run();
+    }
+
+    function loop(t){
+      ctx.clearRect(0,0,innerWidth,innerHeight);
+      if (on && t-last > GAP && P.length < CAP*.7){
+        last = t;
+        shell(innerWidth*(.16+Math.random()*.68), innerHeight*(.12+Math.random()*.34));
+      }
+      // idle with nothing to draw and no auto-shells pending: stop the loop
+      if (!P.length && !on){ raf = 0; return; }
+      raf = requestAnimationFrame(loop);
+      for (var i=P.length-1;i>=0;i--){
+        var p=P[i];
+        p.vx*=p.d; p.vy=p.vy*p.d+p.g; p.x+=p.vx; p.y+=p.vy; p.age++;
+        var f=1-p.age/p.life;
+        if (f<=0){ P.splice(i,1); continue; }
+        ctx.globalAlpha=f;
+        var d=p.r*6;
+        ctx.drawImage(p.sp, p.x-d/2, p.y-d/2, d, d);
+      }
+      ctx.globalAlpha=1;
+    }
+    function run(){ if (!raf && !MG.reduced) raf = requestAnimationFrame(loop); }
+
+    document.addEventListener("visibilitychange", function(){
+      if (document.hidden){ if(raf){ cancelAnimationFrame(raf); raf=0; } }
+      else { last = performance.now(); run(); }
+    });
+
+    return { start:function(){ on = true; last = performance.now(); run(); }, shell:shell };
+  })();
+
+  // ---------- open ----------
+  function open(){
+    if (opened) return;
+    opened = true;
+    gate.classList.add("gone");
+
+    setTimeout(function(){
+      show.classList.add("on");
+
+      var end1 = letters(document.getElementById("l1"),
+                         name ? "Happy Birthday," : "Happy Birthday", 120, 52);
+      if (name){
+        letters(document.getElementById("l2"), name, end1 + 180, 62);
+      } else {
+        document.getElementById("l2").remove();
+      }
+
+      // Celebration sequence — deliberately staggered. Firing confetti,
+      // rain, four shells and the letter animation on the same frame is what
+      // made the opening stutter. Spreading them keeps every frame cheap.
+      MG.FX.burst(130, innerWidth/2, innerHeight*0.34, 12);
+      setTimeout(function(){ fw.start(); }, 900);
+      setTimeout(function(){ MG.FX.rain(3600); }, 1500);
+      setTimeout(function(){
+        fw.shell(innerWidth*(.25+Math.random()*.5), innerHeight*(.16+Math.random()*.26));
+      }, 1100);
+      setTimeout(function(){ try{ MG.Audio.song(); }catch(e){} }, 700);
+
+    }, 520);
+  }
+
+  document.getElementById("seal").addEventListener("click", open);
+  document.addEventListener("keydown", function(e){
+    if (!opened && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); open(); }
+  });
+
+  // ---------- controls ----------
+  document.getElementById("songBtn").addEventListener("click", function(){
+    var b = this;
+    if (MG.Audio.busy) return;
+    b.disabled = true;
+    var old = b.innerHTML;
+    b.textContent = "Playing…";
+    MG.Audio.song(function(){ b.disabled = false; b.innerHTML = old; MG.FX.burst(120); });
+    [0,.2,.42,.66,.88].forEach(function(f){
+      setTimeout(function(){ MG.FX.burst(26, MG.rand(innerWidth*.2,innerWidth*.8), innerHeight*.36, 8); }, 10500*f);
+    });
+  });
+
+  document.getElementById("moreBtn").addEventListener("click", function(){
+    MG.FX.burst(200);
+    fw.shell(innerWidth*MG.rand(.25,.75), innerHeight*MG.rand(.18,.4));
+  });
+
+  document.getElementById("againBtn").addEventListener("click", function(){
+    mi = (mi+1) % MESSAGES.length;
+    var m = document.getElementById("msg");
+    m.style.transition = "opacity .35s"; m.style.opacity = 0;
+    setTimeout(function(){ m.textContent = MESSAGES[mi]; m.style.opacity = 1; }, 350);
+  });
+
+  // tap anywhere for sparkle once open
+  addEventListener("pointerdown", function(e){
+    if (!opened) return;
+    if (e.target.closest("button, a")) return;
+    MG.FX.spark(e.clientX, e.clientY);
+  });
+
+  // auto-open if they linger
+  document.addEventListener("mg:ready", function(){
+    var t = setTimeout(function(){ if(!opened) open(); }, 9000);
+    document.getElementById("seal").addEventListener("click", function(){ clearTimeout(t); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Golden Hour — a birthday wish</title>
+<meta name="description" content="A single-page birthday wish that unfolds as you scroll." />
+<meta name="theme-color" content="#1a1030" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+</head>
+<body>
+
+<!-- ============ SKY LAYERS (fixed, cross-fade on scroll) ============ -->
+<div class="sky" aria-hidden="true">
+  <div class="layer l-dawn"  data-sky="0"></div>
+  <div class="layer l-morn"  data-sky="1"></div>
+  <div class="layer l-gold"  data-sky="2"></div>
+  <div class="layer l-dusk"  data-sky="3"></div>
+  <div class="layer l-night" data-sky="4"></div>
+  <div class="sun" id="sun"></div>
+  <div class="stars" id="stars"></div>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- ============ PROGRESS ============ -->
+<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+
+<main>
+
+  <!-- ---------- 1. OPENING ---------- -->
+  <section class="panel first" data-sky-trigger="0">
+    <div class="inner">
+      <p class="eyebrow" data-fade>Today, of all days</p>
+      <h1 class="name" data-fade data-d="1">
+        <span>Happy</span> <span>Birthday</span>
+      </h1>
+      <p class="lede" data-fade data-d="2">
+        Scroll gently. This one takes a minute — and it's all for you.
+      </p>
+      <div class="scrollcue" data-fade data-d="3">
+        <span></span>
+        <em>scroll</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 2. THE YEAR ---------- -->
+  <section class="panel" data-sky-trigger="1">
+    <div class="inner">
+      <p class="kicker" data-fade>One whole year</p>
+      <h2 class="big" data-fade data-d="1">
+        You went all the way<br>around the sun.
+      </h2>
+      <p class="body" data-fade data-d="2">
+        Nine hundred and forty million kilometres, give or take.
+        You didn't feel a thing — you just kept going, the way you always do.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- 3. COUNTERS ---------- -->
+  <section class="panel" data-sky-trigger="2">
+    <div class="inner wide">
+      <p class="kicker" data-fade>What a year holds</p>
+      <div class="figs">
+        <div class="fig" data-fade data-d="1">
+          <b data-count="365">0</b><span>sunrises</span>
+        </div>
+        <div class="fig" data-fade data-d="2">
+          <b data-count="8760">0</b><span>hours</span>
+        </div>
+        <div class="fig" data-fade data-d="3">
+          <b data-count="1">0</b><span>of you</span>
+        </div>
+      </div>
+      <p class="body center" data-fade data-d="4">
+        Every single one of them spent being someone worth celebrating.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- 4. THE WISH (sticky candle) ---------- -->
+  <section class="panel tall" data-sky-trigger="3">
+    <div class="sticky">
+      <div class="candle-wrap" id="candleWrap">
+        <div class="halo"></div>
+        <svg class="candle" viewBox="0 0 120 220" aria-hidden="true">
+          <defs>
+            <linearGradient id="wax" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#f7e6c8"/>
+              <stop offset="50%" stop-color="#fffaf0"/>
+              <stop offset="100%" stop-color="#e2cba4"/>
+            </linearGradient>
+            <radialGradient id="fl">
+              <stop offset="0%"   stop-color="#fffdf4"/>
+              <stop offset="30%"  stop-color="#ffe9a8"/>
+              <stop offset="64%"  stop-color="#ffab3d"/>
+              <stop offset="100%" stop-color="rgba(255,120,20,.03)"/>
+            </radialGradient>
+          </defs>
+          <rect x="46" y="72" width="28" height="132" rx="10" fill="url(#wax)"/>
+          <ellipse cx="60" cy="72" rx="14" ry="5" fill="#fffaf0" opacity=".9"/>
+          <rect x="58.6" y="58" width="2.8" height="16" rx="1.4" fill="#6b5136"/>
+          <g class="flame-g" id="flameG">
+            <ellipse class="flame" cx="60" cy="40" rx="13" ry="23" fill="url(#fl)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="wishtext">
+        <p class="kicker" data-fade>Make a wish</p>
+        <h2 class="big" data-fade data-d="1">Go on.<br>Nobody's looking.</h2>
+        <p class="body" data-fade data-d="2">
+          Close your eyes for a second. Think of the thing you actually want —
+          not the polite version. Then keep scrolling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 5. THE WISHES ---------- -->
+  <section class="panel" data-sky-trigger="4">
+    <div class="inner">
+      <p class="kicker" data-fade>For the year ahead</p>
+      <ul class="wishes">
+        <li data-fade data-d="1"><em>Slow mornings</em> and no reason to rush them.</li>
+        <li data-fade data-d="2"><em>Good news</em> arriving at exactly the right moment.</li>
+        <li data-fade data-d="3"><em>People</em> who make you feel like home.</li>
+        <li data-fade data-d="4"><em>Room to breathe</em> when you need it most.</li>
+        <li data-fade data-d="5"><em>One thing</em> you didn't dare hope for.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---------- 6. FINALE ---------- -->
+  <section class="panel finale" data-sky-trigger="4">
+    <div class="inner">
+      <p class="eyebrow" data-fade>And so —</p>
+      <h2 class="huge" data-fade data-d="1">
+        Happy<br><span class="grad">Birthday</span>
+      </h2>
+      <p class="body center" data-fade data-d="2">
+        However you spend today, I hope it's exactly the shape you wanted it to be.
+      </p>
+      <div class="btnrow" data-fade data-d="3">
+        <button class="btn" id="celebrate">Celebrate 🎉</button>
+      </div>
+      <p class="sig" data-fade data-d="4">— with love</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

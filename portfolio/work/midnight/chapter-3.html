@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Chapter IV · The Wish</title>
+<meta name="theme-color" content="#060608" />
+<meta name="view-transition" content="same-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="prefetch" href="reveal.html" as="document">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
+<style>
+  .cake-stage{
+    position:relative; width:min(310px,72vw,35vh); margin:0 auto;
+    padding:10px 0 0; cursor:pointer; user-select:none;
+    transition:transform .6s var(--ease-out);
+  }
+  .cake-stage:hover{ transform:translateY(-5px) }
+  .glow{
+    position:absolute; left:50%; top:2px; width:300px; height:300px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(255,190,90,.22), transparent 62%);
+    filter:blur(14px); pointer-events:none;
+    transition:opacity 1.1s var(--ease-out); opacity:1;
+  }
+  .out .glow{ opacity:0 }
+
+  .cake{ position:relative; width:100%; aspect-ratio:1/.86; margin:0 auto }
+  .cake svg{ width:100%; height:100%; overflow:visible;
+             filter:drop-shadow(0 26px 34px rgba(0,0,0,.55)) }
+
+  .flame{ transform-origin:center bottom; animation:flick .26s var(--ease-io) infinite alternate }
+  @keyframes flick{
+    from{ transform:scale(1) rotate(-3.5deg); opacity:.92 }
+    to  { transform:scale(1.12,1.2) rotate(3.5deg); opacity:1 }
+  }
+  .flame-g{ transition:opacity .5s var(--ease-out), transform .5s var(--ease-out) }
+  .out .flame-g{ opacity:0; transform:translateY(6px) scale(.3) }
+  .out .flame{ animation:none }
+
+  .smoke{ opacity:0 }
+  .out .smoke{ animation:puff 2.6s var(--ease-out) forwards }
+  @keyframes puff{
+    0%  { opacity:.55; transform:translateY(0) scale(.5) }
+    100%{ opacity:0;   transform:translateY(-90px) scale(3.2) }
+  }
+
+  .wish-box{
+    width:min(560px,92vw); margin:0 auto;
+    padding:clamp(14px,2.2vh,22px) 24px; border-radius:18px;
+    min-height:clamp(72px,11vh,104px); display:flex; align-items:center; justify-content:center;
+  }
+  .wish-box p{
+    margin:0; font-family:var(--serif); font-style:italic; font-weight:300;
+    font-size:clamp(1rem,2.5vh,1.5rem); line-height:1.5; color:#ece2ca;
+    opacity:0; transform:translateY(12px);
+    transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  }
+  .wish-box p.show{ opacity:1; transform:none }
+
+  .cta-note{ font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--faint);
+             transition:color .5s }
+  .cta-note.lit{ color:var(--gold-2) }
+  @media (max-height:900px){ .chapter-no{ display:none } }
+</style>
+</head>
+<body data-step="4" data-total="5" data-compact>
+
+<div class="aura"></div>
+<canvas id="dust"></canvas>
+
+<div id="loader">
+  <div class="loader-in">
+    <div class="loader-mark"><span></span><span></span><span></span></div>
+    <div class="loader-bar"><i></i></div>
+    <div class="loader-txt">Lighting the candles</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="mark"><i></i><span>Chapter IV</span></div>
+    <div class="rail" aria-hidden="true"></div>
+  </header>
+
+  <main class="page-main">
+
+    <p class="chapter-no" data-anim="fade" data-delay="120">04</p>
+    <p class="eyebrow" data-anim="down" data-delay="240">The wish</p>
+
+    <h2 class="title" data-anim="fade" data-delay="360" data-words>Close your eyes for this part</h2>
+
+    <p class="lede" data-anim="up" data-delay="680">
+      Three candles, one wish. Take a breath, think of the thing you actually want —
+      not the polite version — and blow them out.
+    </p>
+
+    <div class="cake-stage" id="stage" role="button" tabindex="0"
+         aria-label="Blow out the candles" data-anim="scale" data-delay="820">
+      <div class="glow"></div>
+      <div class="cake">
+        <svg viewBox="0 0 400 344" aria-hidden="true">
+          <defs>
+            <linearGradient id="t1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a2f4d"/><stop offset="100%" stop-color="#241c33"/>
+            </linearGradient>
+            <linearGradient id="t2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#463859"/><stop offset="100%" stop-color="#2c2340"/>
+            </linearGradient>
+            <linearGradient id="t3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#52436a"/><stop offset="100%" stop-color="#342a4c"/>
+            </linearGradient>
+            <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f6e7bd"/><stop offset="50%" stop-color="#dcb862"/>
+              <stop offset="100%" stop-color="#a3803a"/>
+            </linearGradient>
+            <radialGradient id="fl">
+              <stop offset="0%"   stop-color="#fffdf2"/>
+              <stop offset="30%"  stop-color="#ffe9a8"/>
+              <stop offset="62%"  stop-color="#ffb340"/>
+              <stop offset="100%" stop-color="rgba(255,120,20,.05)"/>
+            </radialGradient>
+          </defs>
+
+          <!-- plate -->
+          <ellipse cx="200" cy="322" rx="164" ry="15" fill="#15121d"/>
+          <ellipse cx="200" cy="318" rx="164" ry="15" fill="url(#gold)" opacity=".55"/>
+
+          <!-- tier 1 -->
+          <rect x="58"  y="238" width="284" height="78" rx="12" fill="url(#t1)"/>
+          <path d="M58 250 q20 16 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 v-14 H58 Z" fill="url(#gold)" opacity=".85"/>
+          <!-- tier 2 -->
+          <rect x="88"  y="176" width="224" height="66" rx="11" fill="url(#t2)"/>
+          <path d="M88 188 q19 15 38 0 t38 0 t38 0 t38 0 t38 0 t38 0 v-13 H88 Z" fill="url(#gold)" opacity=".8"/>
+          <!-- tier 3 -->
+          <rect x="122" y="122" width="156" height="58" rx="10" fill="url(#t3)"/>
+          <path d="M122 133 q19.5 14 39 0 t39 0 t39 0 t39 0 v-12 H122 Z" fill="url(#gold)" opacity=".75"/>
+
+          <!-- candles -->
+          <g id="candles">
+            <g>
+              <rect x="152" y="76" width="9" height="48" rx="4" fill="url(#gold)"/>
+              <rect x="155.5" y="70" width="2" height="8" fill="#2a2118"/>
+              <g class="flame-g">
+                <ellipse class="flame" cx="156.5" cy="58" rx="10" ry="17" fill="url(#fl)"/>
+              </g>
+              <circle class="smoke" cx="156.5" cy="62" r="5" fill="rgba(220,220,235,.5)"/>
+            </g>
+            <g>
+              <rect x="195" y="64" width="9" height="60" rx="4" fill="url(#gold)"/>
+              <rect x="198.5" y="58" width="2" height="8" fill="#2a2118"/>
+              <g class="flame-g">
+                <ellipse class="flame" cx="199.5" cy="45" rx="11" ry="19" fill="url(#fl)"
+                         style="animation-delay:.09s"/>
+              </g>
+              <circle class="smoke" cx="199.5" cy="50" r="5" fill="rgba(220,220,235,.5)"
+                      style="animation-delay:.12s"/>
+            </g>
+            <g>
+              <rect x="238" y="76" width="9" height="48" rx="4" fill="url(#gold)"/>
+              <rect x="241.5" y="70" width="2" height="8" fill="#2a2118"/>
+              <g class="flame-g">
+                <ellipse class="flame" cx="242.5" cy="58" rx="10" ry="17" fill="url(#fl)"
+                         style="animation-delay:.18s"/>
+              </g>
+              <circle class="smoke" cx="242.5" cy="62" r="5" fill="rgba(220,220,235,.5)"
+                      style="animation-delay:.24s"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <p class="cta-note" id="note" data-anim="fade" data-delay="1000">
+      Tap the cake — or blow into your mic
+    </p>
+
+    <div class="wish-box panel" data-anim="up" data-delay="1120">
+      <p id="wish">Your wish is safe here. Nobody's reading over your shoulder.</p>
+    </div>
+
+    <div class="btn-row" data-anim="up" data-delay="1240">
+      <a class="btn ghost" href="chapter-2.html" data-nav>Back</a>
+      <a class="btn" id="nextBtn" href="reveal.html" data-nav data-primary>
+        The reveal
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9.5 1.5 13 5l-3.5 3.5" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="footnote">
+    <span>Made by hand</span>
+    <span>Chapter 04 — The Wish</span>
+  </footer>
+
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  "use strict";
+  var stage = document.getElementById("stage");
+  var wish  = document.getElementById("wish");
+  var note  = document.getElementById("note");
+  var blown = false, stream = null;
+
+  function say(txt){
+    wish.classList.remove("show");
+    setTimeout(function(){ wish.textContent = txt; wish.classList.add("show"); }, 200);
+  }
+
+  function blow(){
+    if (blown) return;
+    blown = true;
+    MG.State.set("wished", true);
+    stage.classList.add("out");
+    note.textContent = "Wish received";
+    note.classList.add("lit");
+
+    var r = stage.getBoundingClientRect();
+    MG.FX.burst(150, r.left + r.width/2, r.top + r.height*0.24, 11);
+    setTimeout(function(){ MG.FX.burst(90); }, 300);
+    try{ MG.Audio.chime(); }catch(e){}
+
+    say("Done. It's out of your hands now — which is exactly where wishes work best.");
+
+    setTimeout(function(){
+      var b = document.getElementById("nextBtn");
+      b.style.transition = "box-shadow .8s var(--ease-out)";
+      b.style.boxShadow = "0 0 0 3px rgba(220,184,98,.28), 0 20px 46px rgba(190,150,70,.4)";
+    }, 900);
+
+    if (stream){ stream.getTracks().forEach(function(t){ t.stop(); }); stream = null; }
+  }
+
+  stage.addEventListener("click", blow);
+  stage.addEventListener("keydown", function(e){
+    if (e.key==="Enter"||e.key===" "){ e.preventDefault(); blow(); }
+  });
+
+  // optional: real breath detection
+  function mic(){
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+      stream = s;
+      var ac = new (window.AudioContext||window.webkitAudioContext)();
+      var an = ac.createAnalyser(); an.fftSize = 512;
+      ac.createMediaStreamSource(s).connect(an);
+      var data = new Uint8Array(an.frequencyBinCount);
+      note.textContent = "Blow into your mic — or just tap";
+      (function check(){
+        if (blown) return;
+        an.getByteFrequencyData(data);
+        var sum = 0; for (var i=0;i<data.length;i++) sum += data[i];
+        if (sum/data.length > 62){ blow(); return; }
+        requestAnimationFrame(check);
+      })();
+    }).catch(function(){});
+  }
+
+  document.addEventListener("mg:ready", function(){
+    setTimeout(function(){ wish.classList.add("show"); }, 300);
+    setTimeout(mic, 1400);
+  });
+})();
+</script>
+</body>
+</html>

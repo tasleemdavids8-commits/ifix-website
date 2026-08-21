@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Block private & admin routes (present or future)
+Disallow: /admin/
+Disallow: /account
+Disallow: /dashboard
+Disallow: /login
+
+# Block non-existent paths (prevents soft 404s from crawler guessing)
+Disallow: /search
+Disallow: /*?s=
+Disallow: /*.json$
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://ifix-itservices.co.za/sitemap.xml

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Chapter II · The Distance Travelled</title>
+<meta name="theme-color" content="#060608" />
+<meta name="view-transition" content="same-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="prefetch" href="chapter-2.html" as="document">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
+<style>
+  .stats{
+    display:grid; gap:clamp(8px,1.2vh,13px); width:100%;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    max-width:940px; margin:0 auto;
+  }
+  @media (max-width:760px){ .stats{ grid-template-columns:repeat(2,minmax(0,1fr)) } }
+  .stat{ padding:clamp(13px,2vh,22px) 14px clamp(11px,1.7vh,18px);
+         border-radius:16px; text-align:center; position:relative; overflow:hidden }
+  .stat::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(420px 160px at 50% -30%, rgba(220,184,98,.14), transparent 70%);
+    opacity:0; transition:opacity .6s var(--ease-out);
+  }
+  .stat:hover::before{ opacity:1 }
+  .stat .n{
+    display:block; font-family:var(--serif); font-weight:300;
+    font-size:clamp(1.6rem,4.4vh,2.7rem); line-height:1;
+    font-variant-numeric:tabular-nums;
+    background:linear-gradient(180deg,#fffaf0,var(--gold-2) 70%,var(--gold-3));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat .u{ display:block; margin-top:2px; font-family:var(--serif); font-size:.9rem; color:var(--gold-2); opacity:.8 }
+  .stat .l{
+    display:block; margin-top:8px; font-size:9.5px; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--faint);
+  }
+  .orbit-wrap{ position:relative; width:min(190px,42vw,24vh); aspect-ratio:1; margin:0 auto }
+  .orbit-wrap svg{ width:100%; height:100%; overflow:visible }
+  .orb-path{ fill:none; stroke:rgba(220,184,98,.20); stroke-width:1; stroke-dasharray:3 6 }
+  .sun{ filter:drop-shadow(0 0 22px rgba(246,231,189,.75)) }
+  .earth-g{ transform-origin:150px 150px; animation:orbit 14s linear infinite }
+  @keyframes orbit{ to{ transform:rotate(360deg) } }
+  .earth{ filter:drop-shadow(0 0 12px rgba(110,190,255,.8)) }
+  @media (prefers-reduced-motion:reduce){ .earth-g{ animation:none } }
+  @media (max-height:820px){ .chapter-no{ display:none } }
+  @media (max-width:760px){
+    .stats{ gap:8px }
+    .stat{ padding:12px 10px 11px }
+    .stat .l{ letter-spacing:.2em; font-size:8.5px }
+  }
+</style>
+</head>
+<body data-step="2" data-total="5" data-compact>
+
+<div class="aura"></div>
+<canvas id="dust"></canvas>
+
+<div id="loader">
+  <div class="loader-in">
+    <div class="loader-mark"><span></span><span></span><span></span></div>
+    <div class="loader-bar"><i></i></div>
+    <div class="loader-txt">Measuring the distance</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="mark"><i></i><span>Chapter II</span></div>
+    <div class="rail" aria-hidden="true"></div>
+  </header>
+
+  <main class="page-main">
+
+    <p class="chapter-no" data-anim="fade" data-delay="120">02</p>
+    <p class="eyebrow" data-anim="down" data-delay="240">The distance travelled</p>
+
+    <h2 class="title" data-anim="fade" data-delay="360" data-words>Look how far you've come</h2>
+
+    <p class="lede" data-anim="up" data-delay="700">
+      Since your last birthday you've been quietly hurtling through space at
+      107,000 kilometres an hour<span data-name-only>, <strong class="gold" data-name="friend"></strong></span>.
+      Here's the receipt.
+    </p>
+
+    <div class="orbit-wrap" data-anim="scale" data-delay="820">
+      <svg viewBox="0 0 300 300" aria-hidden="true">
+        <circle class="orb-path" cx="150" cy="150" r="112"/>
+        <circle class="sun" cx="150" cy="150" r="17" fill="url(#sunG)"/>
+        <g class="earth-g"><circle class="earth" cx="262" cy="150" r="7.5" fill="#8ec9ff"/></g>
+        <defs>
+          <radialGradient id="sunG">
+            <stop offset="0%"  stop-color="#fffaf0"/>
+            <stop offset="55%" stop-color="#f6e7bd"/>
+            <stop offset="100%" stop-color="#dcb862"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="stats">
+      <div class="stat panel" data-anim="up" data-delay="960">
+        <span class="n" data-count="940" data-dur="1700">0</span><span class="u">million km</span>
+        <span class="l">Travelled this year</span>
+      </div>
+      <div class="stat panel" data-anim="up" data-delay="1060">
+        <span class="n" data-count="365" data-dur="1500">0</span><span class="u">sunrises</span>
+        <span class="l">Every one of them yours</span>
+      </div>
+      <div class="stat panel" data-anim="up" data-delay="1160">
+        <span class="n" data-count="8760" data-dur="1900">0</span><span class="u">hours</span>
+        <span class="l">Lived, spent, survived</span>
+      </div>
+      <div class="stat panel" data-anim="up" data-delay="1260">
+        <span class="n" data-count="1" data-dur="900">0</span><span class="u">of you</span>
+        <span class="l">Ever, in all of it</span>
+      </div>
+    </div>
+
+    <div class="btn-row" data-anim="up" data-delay="1420" style="margin-top:10px">
+      <a class="btn ghost" href="index.html" data-nav>Back</a>
+      <a class="btn" href="chapter-2.html" data-nav data-primary>
+        Continue
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9.5 1.5 13 5l-3.5 3.5" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="footnote">
+    <span>Made by hand</span>
+    <span>Chapter 02 — The Distance Travelled</span>
+  </footer>
+
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+document.addEventListener("mg:ready", function(){
+  // count-up numbers with easing
+  MG.$$("[data-count]").forEach(function(el){
+    var target = parseFloat(el.getAttribute("data-count"));
+    var dur = parseInt(el.getAttribute("data-dur")||"1600",10);
+    if (MG.reduced){ el.textContent = target.toLocaleString(); return; }
+    var started = false;
+    function run(){
+      if (started) return; started = true;
+      var t0 = performance.now(), fin = false;
+      function draw(now){
+        var p = Math.min(1, (now - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 4);        // easeOutQuart
+        el.textContent = Math.round(target * e).toLocaleString();
+        if (p >= 1) fin = true;
+        return fin;
+      }
+      // rAF drives the smooth animation; a low-rate interval guarantees the
+      // number always lands on its final value even if rAF is throttled
+      // (background tab, reduced power mode, some embedded webviews).
+      var iv = setInterval(function(){
+        if (draw(performance.now())) clearInterval(iv);
+      }, 100);
+      (function step(now){
+        if (fin) return;
+        if (draw(now)) { clearInterval(iv); return; }
+        requestAnimationFrame(step);
+      })(t0);
+    }
+    // Run as soon as the card finishes its entrance. If it happens to sit
+    // below the fold we still start on scroll — whichever comes first.
+    var delay = parseInt(el.closest(".stat").getAttribute("data-delay")||"1000",10);
+    setTimeout(run, delay + 260);
+    if ("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ run(); io.disconnect(); } });
+      },{threshold:.35});
+      io.observe(el);
+    }
+  });
+});
+</script>
+</body>
+</html>

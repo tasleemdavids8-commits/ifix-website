@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>The Emerald Years — an anniversary</title>
+<meta name="description" content="A bespoke occasion site: anniversaries, weddings, milestones." />
+<meta name="theme-color" content="#05201c" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥂</text></svg>">
+</head>
+<body>
+
+<div class="atmos" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+
+<main>
+
+  <!-- ---------- I. THE CREST ---------- -->
+  <section class="act">
+    <div class="hold narrow center">
+      <div class="crest" id="crest" data-fade>
+        <svg viewBox="0 0 130 130" aria-hidden="true">
+          <defs>
+            <linearGradient id="brassG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"  stop-color="#f0d79a"/>
+              <stop offset="55%" stop-color="#d8b163"/>
+              <stop offset="100%" stop-color="#a07c33"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring" cx="65" cy="65" r="62"/>
+          <circle class="ring-draw" id="ringDraw" cx="65" cy="65" r="54"/>
+          <text class="mono" x="65" y="67">A &amp; M</text>
+        </svg>
+      </div>
+
+      <p class="eyebrow" data-fade data-d="1">Twenty-five years</p>
+
+      <h1 class="display split" id="title" data-fade data-d="2">
+        <span class="ln"><i>The Emerald</i></span>
+        <span class="ln"><i class="it">Years</i></span>
+      </h1>
+
+      <hr class="rule center" data-fade data-d="3" />
+
+      <p class="lede center" data-fade data-d="4">
+        A quarter of a century of ordinary Tuesdays, difficult winters
+        and small, unremarkable kindnesses. Which is to say: a life.
+      </p>
+
+      <div class="cue center" style="justify-content:center" data-fade data-d="5">
+        <i></i> Scroll to begin
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- II. THE NUMBERS ---------- -->
+  <section class="act">
+    <div class="hold">
+      <p class="eyebrow" data-fade>By the numbers</p>
+      <h2 class="hd" data-fade data-d="1">What twenty-five years holds.</h2>
+      <div class="figs">
+        <div class="fig" data-fade data-d="2"><b data-count="9131">0</b><span>days together</span></div>
+        <div class="fig" data-fade data-d="3"><b data-count="300">0</b><span>full moons</span></div>
+        <div class="fig" data-fade data-d="4"><b data-count="1">0</b><span>answer, still yes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- III. THE TIMELINE ---------- -->
+  <section class="act auto">
+    <div class="hold narrow">
+      <p class="eyebrow" data-fade>The long way here</p>
+      <h2 class="hd" data-fade data-d="1">A few of the turns.</h2>
+      <div class="timeline" id="timeline">
+        <div class="year" data-year data-fade>
+          <b>2001</b>
+          <p>A wedding with too few chairs and far too much cake. Nobody minded.</p>
+        </div>
+        <div class="year" data-year data-fade>
+          <b>2006</b>
+          <p>The first house. The one with the door that never quite closed.</p>
+        </div>
+        <div class="year" data-year data-fade>
+          <b>2011</b>
+          <p>Three of you now, then four. The quiet years that turned out to be the best ones.</p>
+        </div>
+        <div class="year" data-year data-fade>
+          <b>2019</b>
+          <p>The hard stretch. You got through it the way you get through everything — together.</p>
+        </div>
+        <div class="year" data-year data-fade>
+          <b>Today</b>
+          <p>Still choosing each other. Still arguing about the thermostat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- IV. THE TOAST (sticky) ---------- -->
+  <section class="toastwrap">
+    <div class="sticky">
+      <div id="glassWrap">
+        <svg class="glasses" viewBox="0 0 320 210" aria-hidden="true">
+          <defs>
+            <linearGradient id="glassG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"   stop-color="rgba(240,215,154,.20)"/>
+              <stop offset="38%"  stop-color="rgba(255,246,220,.55)"/>
+              <stop offset="62%"  stop-color="rgba(240,215,154,.32)"/>
+              <stop offset="100%" stop-color="rgba(160,124,51,.22)"/>
+            </linearGradient>
+            <linearGradient id="fizzG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#f7e3ae"/>
+              <stop offset="100%" stop-color="#d8b163"/>
+            </linearGradient>
+          </defs>
+
+          <!-- left flute -->
+          <g class="gl-l">
+            <path d="M86 30 L134 30 L126 104 Q112 128 110 128 Q108 128 94 104 Z"
+                  fill="url(#glassG)" stroke="rgba(247,227,174,.75)" stroke-width="1.4"/>
+            <path d="M92 62 L128 62 L124 96 Q112 118 110 118 Q108 118 96 96 Z"
+                  fill="url(#fizzG)" opacity=".75"/>
+            <circle cx="106" cy="72" r="2.2" fill="#fffaf0" opacity=".8"/>
+            <circle cx="115" cy="82" r="1.7" fill="#fffaf0" opacity=".7"/>
+            <circle cx="109" cy="92" r="1.4" fill="#fffaf0" opacity=".6"/>
+            <rect x="107.5" y="128" width="5" height="48" rx="2.5" fill="rgba(247,227,174,.55)"/>
+            <ellipse cx="110" cy="178" rx="26" ry="6" fill="rgba(247,227,174,.42)"/>
+          </g>
+
+          <!-- right flute -->
+          <g class="gl-r">
+            <path d="M186 30 L234 30 L226 104 Q212 128 210 128 Q208 128 194 104 Z"
+                  fill="url(#glassG)" stroke="rgba(247,227,174,.75)" stroke-width="1.4"/>
+            <path d="M192 62 L228 62 L224 96 Q212 118 210 118 Q208 118 196 96 Z"
+                  fill="url(#fizzG)" opacity=".75"/>
+            <circle cx="206" cy="70" r="2.2" fill="#fffaf0" opacity=".8"/>
+            <circle cx="216" cy="84" r="1.7" fill="#fffaf0" opacity=".7"/>
+            <circle cx="209" cy="94" r="1.4" fill="#fffaf0" opacity=".6"/>
+            <rect x="207.5" y="128" width="5" height="48" rx="2.5" fill="rgba(247,227,174,.55)"/>
+            <ellipse cx="210" cy="178" rx="26" ry="6" fill="rgba(247,227,174,.42)"/>
+          </g>
+
+          <!-- clink sparks -->
+          <g class="spark" stroke="#f7e3ae" stroke-width="2.4" stroke-linecap="round">
+            <line x1="160" y1="26" x2="160" y2="6"/>
+            <line x1="140" y1="34" x2="124" y2="20"/>
+            <line x1="180" y1="34" x2="196" y2="20"/>
+            <line x1="132" y1="52" x2="116" y2="48"/>
+            <line x1="188" y1="52" x2="204" y2="48"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <p class="eyebrow" data-fade>Raise a glass</p>
+        <p class="quote" data-fade data-d="1">
+          “To the ones who stayed, and kept choosing to.”
+        </p>
+        <p class="attrib" data-fade data-d="2">— everyone who loves you</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- V. MOMENTS ---------- -->
+  <section class="act auto">
+    <div class="hold">
+      <p class="eyebrow" data-fade>A few moments</p>
+      <h2 class="hd" data-fade data-d="1">The ones worth framing.</h2>
+      <div class="moments">
+        <figure class="moment m1" data-fade data-d="1"><span>The first dance</span></figure>
+        <figure class="moment m2" data-fade data-d="2"><span>That summer</span></figure>
+        <figure class="moment m3" data-fade data-d="3"><span>The kitchen table</span></figure>
+        <figure class="moment m4" data-fade data-d="4"><span>Every Sunday</span></figure>
+        <figure class="moment m5" data-fade data-d="5"><span>The road trip</span></figure>
+        <figure class="moment m6" data-fade data-d="6"><span>Right now</span></figure>
+      </div>
+      <p class="lede center" style="margin-top:28px" data-fade data-d="7">
+        Your own photographs sit here — this is where the real ones go.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- VI. THE PROGRAMME ---------- -->
+  <section class="act auto">
+    <div class="hold narrow">
+      <p class="eyebrow" data-fade>This evening</p>
+      <h2 class="hd" data-fade data-d="1">How the night runs.</h2>
+      <ul class="prog-list">
+        <li data-fade data-d="1"><time>18:00</time><span><strong>Arrival &amp; drinks</strong><em>The terrace, weather permitting</em></span></li>
+        <li data-fade data-d="2"><time>19:00</time><span><strong>Dinner is served</strong><em>Long table, no seating plan</em></span></li>
+        <li data-fade data-d="3"><time>20:30</time><span><strong>Speeches</strong><em>Kept mercifully short</em></span></li>
+        <li data-fade data-d="4"><time>21:00</time><span><strong>The first dance, again</strong><em>Same song as 2001</em></span></li>
+        <li data-fade data-d="5"><time>Late</time><span><strong>Dancing</strong><em>Until somebody sensible calls it</em></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---------- VII. FINALE ---------- -->
+  <section class="act finale">
+    <div class="hold narrow center">
+      <p class="eyebrow" data-fade>And here's to</p>
+      <h2 class="display" data-fade data-d="1">
+        <span class="grad">Twenty-five<br>more.</span>
+      </h2>
+      <hr class="rule center" data-fade data-d="2" />
+      <p class="lede center" data-fade data-d="3">
+        Thank you for showing the rest of us what it looks like when
+        two people simply keep going.
+      </p>
+      <div class="btnrow" data-fade data-d="4">
+        <button class="btn" id="celebrate">Raise a glass</button>
+      </div>
+      <p class="sig" data-fade data-d="5">— with all our love</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

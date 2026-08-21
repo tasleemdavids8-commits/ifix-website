@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>A Year Around the Sun</title>
+<meta name="description" content="A small celebration, made by hand." />
+<meta name="theme-color" content="#060608" />
+<meta name="view-transition" content="same-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="prefetch" href="chapter-1.html" as="document">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
+</head>
+<body data-step="1" data-total="5">
+
+<div class="aura"></div>
+<canvas id="dust"></canvas>
+
+<!-- ============ PRELOADER ============ -->
+<div id="loader">
+  <div class="loader-in">
+    <div class="loader-mark"><span></span><span></span><span></span></div>
+    <div class="loader-bar"><i></i></div>
+    <div class="loader-txt">Preparing something</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <header class="topbar">
+    <div class="mark"><i></i><span>Twenty&nbsp;Eight · July</span></div>
+    <div class="rail" aria-hidden="true"></div>
+  </header>
+
+  <main class="page-main">
+
+    <p class="eyebrow" data-anim="down" data-delay="180">An invitation</p>
+
+    <h1 class="display" data-anim="fade" data-delay="300" data-words>A Year Around the Sun</h1>
+
+    <hr class="rule" data-anim="scale" data-delay="900" />
+
+    <p class="lede" data-anim="up" data-delay="1000">
+      Ninety-three million miles, one full loop, and somehow you made it all
+      the way back to today. Before the confetti — tell me who I'm celebrating.
+    </p>
+
+    <div class="field" data-anim="up" data-delay="1180">
+      <input id="nameField" type="text" placeholder="Your name" maxlength="28"
+             autocomplete="given-name" spellcheck="false" aria-label="Your name" />
+    </div>
+
+    <div class="btn-row" data-anim="up" data-delay="1320">
+      <a class="btn" id="beginBtn" href="chapter-1.html" data-nav data-primary>
+        Begin the journey
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9.5 1.5 13 5l-3.5 3.5" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="hint" data-anim="fade" data-delay="1600" style="margin-top:14px">
+      <i></i>
+      Five chapters · about two minutes
+    </p>
+
+  </main>
+
+  <footer class="footnote">
+    <span>Made by hand</span>
+    <span>Chapter 01 — The Invitation</span>
+  </footer>
+
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  "use strict";
+  var f = document.getElementById("nameField");
+  var btn = document.getElementById("beginBtn");
+
+  // restore a previously typed name
+  f.value = MG.State.name();
+
+  function save(){ MG.State.set("name", f.value.trim().slice(0,28)); }
+  f.addEventListener("input", save);
+  f.addEventListener("change", save);
+
+  // Enter submits
+  f.addEventListener("keydown", function(e){
+    if (e.key === "Enter"){ e.preventDefault(); save(); btn.click(); }
+  });
+
+  // gentle sparkle when they finish typing a real name
+  var t;
+  f.addEventListener("input", function(){
+    clearTimeout(t);
+    t = setTimeout(function(){
+      if (f.value.trim().length >= 2){
+        var r = f.getBoundingClientRect();
+        MG.FX.spark(r.left + r.width/2, r.top + r.height/2);
+        try{ MG.Audio.chime(); }catch(e){}
+      }
+    }, 520);
+  });
+
+  btn.addEventListener("click", save);
+
+  // welcome shimmer once everything has landed
+  document.addEventListener("mg:ready", function(){
+    setTimeout(function(){ MG.FX.burst(46, window.innerWidth/2, window.innerHeight*0.30, 7); }, 1500);
+  });
+})();
+</script>
+</body>
+</html>
