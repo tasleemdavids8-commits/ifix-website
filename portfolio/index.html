@@ -252,6 +252,34 @@ h2{
 .tlink:hover{ color:var(--accent) }
 
 /* emerald thumbnail */
+.occasions{ margin-top:34px; padding:28px 26px 26px; border:1px solid var(--line,#23262d);
+  border-radius:16px; background:rgba(255,255,255,.02) }
+.occasions h3{ margin:0 0 6px; font-size:1.1rem; font-weight:650 }
+.occasions > p{ margin:0 0 20px; color:var(--muted); font-size:14.5px; max-width:62ch }
+.occ-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
+@media (max-width:900px){ .occ-grid{ grid-template-columns:1fr 1fr } }
+@media (max-width:620px){ .occ-grid{ grid-template-columns:1fr } }
+.occ{ padding:14px 16px; border:1px solid var(--line,#23262d); border-radius:12px;
+  background:rgba(255,255,255,.015); transition:border-color .25s ease, transform .25s ease }
+.occ:hover{ border-color:#c9a227; transform:translateY(-2px) }
+.occ b{ display:block; font-size:14.5px; font-weight:600; margin-bottom:4px }
+.occ span{ display:block; color:var(--muted); font-size:13.4px; line-height:1.5 }
+.occ-note{ margin:20px 0 0; font-size:14px; color:var(--muted) }
+
+.t-journey{
+  background:linear-gradient(165deg,#0a1620 0%,#123044 40%,#2c6b7a 68%,#e8d9a8 100%);
+  color:#eaf4f2;
+}
+.t-tribute{
+  background:radial-gradient(120% 100% at 30% 0%,#2b2f45,#0a0b10 74%);
+  color:#dfe4f0;
+}
+
+.t-nikah{
+  background:linear-gradient(165deg,#0d1f1a 0%,#123a2e 38%,#1f5c46 62%,#c9a227 100%);
+  color:#f7ecd2;
+}
+
 .t-emerald{
   background:radial-gradient(120% 100% at 30% 0%,#14584a,#05201c 72%);
   color:#f0d79a;
@@ -459,7 +487,7 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
 
     <div class="filters" role="tablist" aria-label="Portfolio category">
       <button class="ftab active" data-target="web" type="button">Web &amp; Booking Systems &#183; from R6,500</button>
-      <button class="ftab" data-target="birthday" type="button">Celebration Sites &#183; R450&#8211;R1,800</button>
+      <button class="ftab" data-target="birthday" type="button">Celebration Sites &#183; R450&#8211;R2,400</button>
     </div>
 
     <div class="workgroup active" id="work-web">
@@ -690,7 +718,109 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
         </div>
       </article>
 
+      <article class="card" data-r>
+        <div class="thumb t-nikah">
+          <div>
+            <div class="tt">The Nikah Suite</div>
+            <div class="ts">Concept &#183; Invitation &amp; keepsake</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Nikah &amp; Walima</h3>
+            <span class="cprice">From R2,400</span>
+          </div>
+          <p>A private invitation that becomes a keepsake. Guests open a link,
+             read the couple&#39;s story chapter by chapter, RSVP straight through
+             WhatsApp &#8212; and after the day, the same page turns into the
+             photo album everyone was sent.</p>
+          <ul class="cinc">
+            <li>Bespoke calligraphy title &amp; monogram</li>
+            <li>Chapter journey: the story, the families, the day</li>
+            <li>WhatsApp RSVP with live guest count</li>
+            <li>Venue map, programme &amp; dress code</li>
+            <li>Converts to a photo keepsake after the event</li>
+            <li>Custom domain for the couple</li>
+          </ul>
+          <div class="cfoot">
+            <a class="tlink" href="#contact">Enquire &#8594;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-journey">
+          <div>
+            <div class="tt">The Journey</div>
+            <div class="ts">Concept &#183; Send-off &amp; return</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Umrah &amp; Hajj</h3>
+            <span class="cprice">From R1,200</span>
+          </div>
+          <p>Two pages, one link. Before they leave, family and friends add their
+             duas and well-wishes to a page that fills up as the date approaches.
+             When they return, the same link becomes the album of the journey.</p>
+          <ul class="cinc">
+            <li>Duas &amp; messages wall, added via WhatsApp</li>
+            <li>Countdown to departure</li>
+            <li>Return chapter for photos &amp; reflections</li>
+            <li>Stays online as a permanent keepsake</li>
+          </ul>
+          <div class="cfoot">
+            <a class="tlink" href="#contact">Enquire &#8594;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-tribute">
+          <div>
+            <div class="tt">In Memory</div>
+            <div class="ts">Concept &#183; Tribute page</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Memorial &amp; Tribute</h3>
+            <span class="cprice">From R1,500</span>
+          </div>
+          <p>A quiet, permanent page for someone who has passed. No animation,
+             no confetti &#8212; just their life told properly, and space for the
+             people who loved them to add a memory whenever they want to.</p>
+          <ul class="cinc">
+            <li>A life in chapters, written with the family</li>
+            <li>Photo gallery &amp; favourite passages</li>
+            <li>Open memory wall for family and friends</li>
+            <li>Private link or public, your choice</li>
+            <li>Hosted permanently, never taken down</li>
+          </ul>
+          <div class="cfoot">
+            <a class="tlink" href="#contact">Enquire &#8594;</a>
+          </div>
+        </div>
+      </article>
+
     </div>
+    </div>
+
+    <div class="occasions" data-r>
+      <h3>Also built to order</h3>
+      <p>Every one is designed from scratch around the person and the occasion.
+         Same three tiers &#8212; The Card, The Experience, Occasions &#8212; unless noted.</p>
+      <div class="occ-grid">
+        <div class="occ"><b>Baby announcement &amp; Aqiqah</b><span>The name held back until the final chapter.</span></div>
+        <div class="occ"><b>Matric farewell &amp; graduation</b><span>The year in chapters, ending on the night itself.</span></div>
+        <div class="occ"><b>Engagement &amp; proposals</b><span>Built to be opened in the moment, on one phone.</span></div>
+        <div class="occ"><b>Eid &amp; Ramadan greetings</b><span>One page sent to everyone, personalised for each name.</span></div>
+        <div class="occ"><b>Retirement &amp; farewell</b><span>Colleagues contribute messages; we compile the journey.</span></div>
+        <div class="occ"><b>Business milestones</b><span>Ten years, twenty-five years &#8212; the story of the company.</span></div>
+        <div class="occ"><b>Corporate client gifting</b><span>Personalised pages sent at scale to a client list. Quoted per volume.</span></div>
+      </div>
+      <p class="occ-note">Something not listed? If it has a story, it can be built.
+         <a class="tlink" href="#contact">Tell us the occasion &#8594;</a></p>
     </div>
 
   </div>
@@ -739,7 +869,7 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
 
       <div data-r>
         <p class="kicker">Start a project</p>
-        <h2 style="font-size:clamp(1.7rem,4vw,2.6rem)">Let's build the thing.</h2>
+        <h2 style="font-size:clamp(1.7rem,4vw,2.6rem)">Let&#39;s build it.</h2>
         <p style="color:var(--muted);margin:0">
           Tell us a little about what you need — a system for your business,
           or a celebration site for someone. We'll reply with a plan and a
@@ -782,17 +912,41 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
           <div class="row2">
             <label>What do you need?
               <select name="occasion">
-                <option>A booking / ordering system</option>
-                <option>A digital birthday wish</option>
+                <option selected disabled value="">Select what you need&#8230;</option>
+                <optgroup label="For a business">
+                  <option>Website</option>
+                  <option>Booking / appointment system</option>
+                  <option>Ordering / e-commerce system</option>
+                  <option>Custom web app</option>
+                  <option>Corporate client gifting</option>
+                  <option>Business milestone page</option>
+                </optgroup>
+                <optgroup label="Celebration site">
+                  <option>Birthday</option>
+                  <option>Nikah &amp; Walima</option>
+                  <option>Wedding / anniversary</option>
+                  <option>Engagement / proposal</option>
+                  <option>Umrah &amp; Hajj</option>
+                  <option>Baby announcement / Aqiqah</option>
+                  <option>Matric farewell / graduation</option>
+                  <option>Eid &amp; Ramadan greeting</option>
+                  <option>Memorial &amp; tribute</option>
+                  <option>Retirement &amp; farewell</option>
+                  <option>Other occasion</option>
+                </optgroup>
                 <option>Not sure yet</option>
               </select>
             </label>
             <label>Package
               <select name="package">
-                <option>Web / booking system — from R6,500</option>
-                <option selected>The Card — R450</option>
-                <option>The Experience — R950</option>
-                <option>Occasions — R1,800</option>
+                <option selected disabled value="">Select a package&#8230;</option>
+                <option>Web / booking system &#8212; from R6,500</option>
+                <option>The Card &#8212; R450</option>
+                <option>The Experience &#8212; R950</option>
+                <option>Occasions &#8212; R1,800</option>
+                <option>Nikah &amp; Walima &#8212; from R2,400</option>
+                <option>Umrah &amp; Hajj &#8212; from R1,200</option>
+                <option>Memorial &amp; Tribute &#8212; from R1,500</option>
                 <option>Not sure yet</option>
               </select>
             </label>
