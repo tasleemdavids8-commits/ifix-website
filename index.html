@@ -48,7 +48,7 @@
   html { scroll-behavior: smooth; }
   
   body {
-    background: var(--bg) url('images/site-bg.jpg') center top / cover no-repeat fixed;
+    background: var(--bg);
     color: var(--text);
     font-family: var(--font-body); line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -68,9 +68,17 @@
   /* the sticky intro keeps its video, but feathered at both ends */
 
 
+  /* Background image on its own compositor layer.
+     A fixed pseudo-element instead of background-attachment:fixed means the
+     browser paints it once and composites thereafter - no repaint per frame. */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background: url('images/site-bg.jpg') center top / cover no-repeat;
+    transform: translateZ(0);
+  }
   /* dark wash so text stays readable over the image */
   body::after{
-    content:""; position:fixed; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none;
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
     background: linear-gradient(180deg, rgba(10,10,12,.42), rgba(10,10,12,.55));
   }
 
@@ -426,9 +434,13 @@
   /* section backdrop fades out at both ends so it melts into the site background */
   /* never fully opaque, so the site background stays continuous through it */
   .webservices-intro-section { position: relative; height: 400vh; background: transparent; }
-  .sticky-frame { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; display: flex; justify-content: center; align-items: center;
- }
-  .sticky-frame video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 1; }
+  .sticky-frame { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+  .sticky-frame::before, .sticky-frame::after{
+    content:""; position:absolute; left:0; right:0; height:16vh; z-index:4; pointer-events:none;
+  }
+  .sticky-frame::before{ top:0; background:linear-gradient(to bottom, #0A0A0C, rgba(10,10,12,0)); }
+  .sticky-frame::after{ bottom:0; background:linear-gradient(to top, #0A0A0C, rgba(10,10,12,0)); }
+  .sticky-frame video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 1; transform: translateZ(0); }
   .sticky-overlay { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(10,10,12,0) 0%, rgba(10,10,12,.35) 100%); z-index: 2; }
   .scroll-phrase { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%); width: 90%; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 4.5rem); text-transform: uppercase; letter-spacing: 0.05em; color: #fff; opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.5s ease-out, transform 0.6s ease-out; }
   .scroll-phrase span { color: var(--accent); }
@@ -1361,5 +1373,5 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
   "publisher": { "@id": "https://ifix-itservices.co.za/#business" }
 }
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fb26bfaa751b23',t:'MTc4NzQ5ODk1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fbec72cff558d3',t:'MTc4NzUwNzA0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
