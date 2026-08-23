@@ -41,7 +41,7 @@ canvas{ display:block }
 
 /* ---------- fixed sky ---------- */
 .sky{
-  position:fixed; inset:0; z-index:0; pointer-events:none;
+  position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;
   contain:layout paint;
 }
 .layer{
@@ -111,7 +111,7 @@ canvas{ display:block }
 
 /* confetti canvas */
 #fx{
-  position:fixed; inset:0; z-index:2; pointer-events:none;
+  position:fixed; inset:0; width:100%; height:100%; z-index:2; pointer-events:none;
   contain:layout paint; will-change:transform; transform:translateZ(0);
 }
 

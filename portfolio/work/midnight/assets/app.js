@@ -389,7 +389,7 @@
     function ensure() {
       if (c) return;
       c = D.createElement("canvas");
-      c.style.cssText = "position:fixed;inset:0;z-index:60;pointer-events:none";
+      c.style.cssText = "position:fixed;inset:0; width:100%; height:100%;z-index:60;pointer-events:none";
       D.body.appendChild(c);
       // alpha:true is required (it overlays the page) but desynchronized lets
       // the compositor skip a sync point on supporting browsers.
