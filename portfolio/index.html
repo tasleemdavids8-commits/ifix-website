@@ -78,11 +78,11 @@ button,input,textarea,select{ font:inherit; color:inherit }
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
 }
 /* Looping celebration canvas.
-   `contain:strict` + its own compositor layer means it can never trigger
+   `contain:layout paint` + its own compositor layer means it can never trigger
    layout or paint on the page itself — scrolling stays perfectly smooth. */
 #bgfx{
   position:fixed; inset:0; z-index:0; pointer-events:none;
-  contain:strict; will-change:transform; transform:translateZ(0);
+  contain:layout paint; will-change:transform; transform:translateZ(0);
 }
 
 /* ---------- layout ---------- */
@@ -1223,7 +1223,7 @@ var CONTACT = {
    silhouettes and the occasional soft firework bloom.
 
    Built so it can never hurt scrolling:
-     · fixed + pointer-events:none + contain:strict  (own layer,
+     · fixed + pointer-events:none + contain:layout paint  (own layer,
        never triggers page layout or paint)
      · NO scroll listeners driving animation
      · work is throttled while the user is actively scrolling

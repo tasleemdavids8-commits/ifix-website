@@ -287,6 +287,10 @@
 
   /* Portal Fade out classes */
   body.portal-dismissed .portal-element { opacity: 0 !important; pointer-events: none !important; }
+  /* keep the page locked while the portal fades out, so you cannot scroll
+     the real site into view underneath a half-transparent overlay */
+  body.portal-dismissed:not(.portal-gone) { overflow: hidden !important; }
+  body.portal-gone .portal-element { display: none !important; visibility: hidden !important; }
   body.portal-dismissed #cursor-follower { display: none !important; }
 
   /* Portal Mobile Optimizations */
@@ -1145,6 +1149,7 @@
             document.querySelectorAll('.portal-element').forEach(el => {
                 el.style.display = 'none'; 
             });
+            document.body.classList.add('portal-gone');
         }, 1500); 
     }
 
@@ -1356,5 +1361,5 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
   "publisher": { "@id": "https://ifix-itservices.co.za/#business" }
 }
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fb26bfaa751b23',t:'MTc4NzQ5ODk1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

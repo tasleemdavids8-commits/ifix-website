@@ -45,7 +45,7 @@ img,svg,canvas{ display:block; max-width:100% }
 
 /* ---------- fixed atmosphere ---------- */
 .atmos{
-  position:fixed; inset:0; z-index:0; pointer-events:none; contain:strict;
+  position:fixed; inset:0; z-index:0; pointer-events:none; contain:layout paint;
   background:
     radial-gradient(920px 620px at 14% -6%,  rgba(20,88,74,.55), transparent 62%),
     radial-gradient(760px 560px at 88% 6%,   rgba(216,177,99,.13), transparent 58%),
@@ -59,7 +59,7 @@ img,svg,canvas{ display:block; max-width:100% }
 }
 #fx{
   position:fixed; inset:0; z-index:2; pointer-events:none;
-  contain:strict; will-change:transform; transform:translateZ(0);
+  contain:layout paint; will-change:transform; transform:translateZ(0);
 }
 
 /* ---------- progress ---------- */

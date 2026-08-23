@@ -42,7 +42,7 @@ canvas{ display:block }
 /* ---------- fixed sky ---------- */
 .sky{
   position:fixed; inset:0; z-index:0; pointer-events:none;
-  contain:strict;
+  contain:layout paint;
 }
 .layer{
   position:absolute; inset:0;
@@ -112,7 +112,7 @@ canvas{ display:block }
 /* confetti canvas */
 #fx{
   position:fixed; inset:0; z-index:2; pointer-events:none;
-  contain:strict; will-change:transform; transform:translateZ(0);
+  contain:layout paint; will-change:transform; transform:translateZ(0);
 }
 
 /* ---------- scroll progress ---------- */
