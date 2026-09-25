@@ -1,1406 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Websites &amp; Booking Systems | IFIX &#8212; I.T Services</title>
-<meta name="description" content="We build custom websites, booking and ordering systems, and web apps for South African businesses. Get your business out of its DMs. Remote nationwide, based in Cape Town." />
-<link rel="canonical" href="https://ifix-itservices.co.za/" />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-<meta name="author" content="IFIX - I.T Services" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ifix-itservices.co.za/" />
-<meta property="og:site_name" content="IFIX - I.T Services" />
-<meta property="og:locale" content="en_ZA" />
-<meta property="og:title" content="Custom Websites &amp; Booking Systems | IFIX - I.T Services" />
-<meta property="og:description" content="We build custom websites, booking and ordering systems, and web apps for South African businesses. Get your business out of its DMs." />
-<meta property="og:image" content="https://ifix-itservices.co.za/images/og-cover.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+  <title>iFix IT Services | Professional Web & IT Solutions</title>
+  <meta content="iFix IT Services provides custom web development, app development, and IT support solutions." name="description">
+  <meta content="web development, IT services, custom software, booking systems" name="keywords">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Custom Websites &amp; Booking Systems | IFIX - I.T Services" />
-<meta name="twitter:description" content="Custom websites, booking and ordering systems, and web apps for South African businesses." />
-<meta name="twitter:image" content="https://ifix-itservices.co.za/images/og-cover.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.png" type="image/png">
-<style>
-  /* =========================================================
-     GLOBAL VARIABLES
-     ========================================================= */
-  :root {
-    --primary-navy: #0a192f; --interior-charcoal: #121212; --accent-cyan: #00ffff; 
-    --accent-purple: #bf00ff; --accent-orange: #ff7f00; --text-pure: #ffffff;
-    --bg: #0A0A0C; --bg-elevated: #121214; --bg-elevated-2: #16161A;
-    --text: #FFFFFF; --text-muted: #8E8E93; --text-faint: #5A5A60;
-    --border: rgba(255,255,255,0.05); --border-strong: rgba(255,255,255,0.10);
-    --accent: #3DDC84; --accent-dim: rgba(61,220,132,0.18);
-    --font-display: 'Space Grotesk', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-    --easing: cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body); line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow: hidden;
-  }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  /* ---- SITE BACKGROUND ----
-     Applied site-wide. Excluded: intro portal, the "Crafted for the Few"
-     scroll-transition section, and the Terms & Conditions overlay,
-     which all keep their own backdrops. */
-  .section{ background: transparent !important; }
-  /* hide every per-section backdrop image/video so the single site
-     background shows through unbroken (descendant, not just child) */
-  .section .media-fallback,
-  .section video.media-bg,
-  .section img.media-bg{ display: none !important; }
-  /* the sticky intro keeps its video, but feathered at both ends */
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-
-  /* Background image on its own compositor layer.
-     A fixed pseudo-element instead of background-attachment:fixed means the
-     browser paints it once and composites thereafter - no repaint per frame. */
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
-    background: url('images/site-bg.jpg') center top / cover no-repeat;
-    transform: translateZ(0);
-  }
-  /* dark wash so text stays readable over the image */
-  body::after{
-    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background: linear-gradient(180deg, rgba(10,10,12,.42), rgba(10,10,12,.55));
-  }
-
-  /* --- exclusions: these keep their own backgrounds --- */
-  /* intro section keeps its own video, but its backdrop must stay
-     semi-transparent and feathered so it blends into the site background */
-  #webservices-intro{ background: transparent !important; }
-  #webservices-intro .sticky-frame video{ display: block !important; }
-  /* feather the video's top and bottom edges so no seam forms */
-  .sticky-frame{
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
-  }
-  #terms-panel{ background:#0A0A0C; }
-  #terms-panel .t-video-bg{ display:block !important; }
-
-
-  body.portal-dismissed { overflow-y: auto; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-
-  /* =========================================================
-     PORTAL SPECIFIC STYLES
-     ========================================================= */
-  .portal-element, .portal-element * { font-family: 'Montserrat', sans-serif; }
-  
-  #portal-bg { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
-    background-color: var(--primary-navy); z-index: 99990; 
-    transition: background 2s ease, opacity 1.5s cubic-bezier(0.77, 0, 0.175, 1); 
-  }
-  body.unlocked #portal-bg { background-color: #121212; }
-  body.final-unlock #portal-bg {
-    background-color: #060b14;
-    position: relative;
-    overflow: hidden;
-  }
-  body.final-unlock #portal-bg::before,
-  body.final-unlock #portal-bg::after {
-    content: ""; position: absolute; inset: -15%; pointer-events: none; will-change: transform, opacity;
-  }
-  body.final-unlock #portal-bg::before {
-    background: radial-gradient(ellipse 60% 55% at 25% 25%, rgba(0, 255, 255, 0.16), transparent 60%);
-    animation: portal-glow-a 16s ease-in-out infinite;
-  }
-  body.final-unlock #portal-bg::after {
-    background: radial-gradient(ellipse 55% 50% at 78% 78%, rgba(191, 0, 255, 0.14), transparent 60%);
-    animation: portal-glow-b 18s ease-in-out infinite;
-  }
-  @keyframes portal-glow-a { 0%, 100% { transform: translate3d(0,0,0); opacity: 0.85; } 50% { transform: translate3d(4%, 3%, 0); opacity: 1; } }
-  @keyframes portal-glow-b { 0%, 100% { transform: translate3d(0,0,0); opacity: 0.7; } 50% { transform: translate3d(-4%, -3%, 0); opacity: 1; } }
-  body.dashboard-unlocked #portal-bg {
-    background-color: #030710;
-    background-image:
-      radial-gradient(ellipse 60% 50% at 15% 15%, rgba(0, 255, 255, 0.07), transparent 60%),
-      radial-gradient(ellipse 55% 50% at 85% 85%, rgba(191, 0, 255, 0.06), transparent 60%);
-  }
-
-  #cursor-follower { position: fixed; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 20px var(--accent-cyan); pointer-events: none; z-index: 99999; display: none; will-change: transform; }
-  body.unlocked:not(.portal-dismissed) #cursor-follower { display: block; }
-
-  #hero-section { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 99992; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(2.25rem, 5vh, 3.5rem); transition: 1.5s cubic-bezier(0.77, 0, 0.175, 1); color: var(--text-pure); }
-  body.unlocked #hero-section { transform: scale(4); opacity: 0; pointer-events: none; }
-  .hero-canvas-bg {
-    position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover;
-    background: var(--primary-navy);
-  }
-  .hero-canvas-bg--video { opacity: 0; transition: opacity 1s ease; }
-  .hero-canvas-bg--video.is-playing { opacity: 1; }
-  #hero-section::before {
-    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    background: linear-gradient(180deg, rgba(10,25,47,0.60) 0%, rgba(10,25,47,0.20) 32%, rgba(10,25,47,0.30) 60%, rgba(10,25,47,0.82) 100%);
-  }
-
-  .hero-portal-sign { text-align: center; padding: 0 1.5rem; }
-  .hero-portal-sign__eyebrow { display: block; font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--accent-cyan); opacity: 0.9; margin-bottom: 1rem; text-shadow: 0 0 14px rgba(0,255,255,0.55); }
-  .hero-portal-sign__title { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.7rem, 5.2vw, 3.1rem); letter-spacing: 0.03em; text-transform: uppercase; color: #f5fbff; text-shadow: 0 2px 26px rgba(0,0,0,0.7); }
-  .hero-portal-sign__title span { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-  .cta-button {
-    position: relative; padding: 22px 58px; border: none; border-radius: 100px;
-    color: var(--text-pure); cursor: pointer; background: rgba(10,25,47,0.4); backdrop-filter: blur(8px);
-    font-family: 'Share Tech Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.9rem;
-    z-index: 10; transition: box-shadow 0.4s ease, background 0.4s ease, transform 0.3s ease;
-  }
-  .cta-button::before {
-    content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: 100px; padding: 2px;
-    background: linear-gradient(120deg, var(--accent-cyan), var(--accent-purple), var(--accent-cyan));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude;
-    background-size: 200% 200%; animation: cta-shimmer 4s ease infinite;
-  }
-  body.unlocked .cta-button::before { animation: none; }
-  .cta-button:hover { background: rgba(10,25,47,0.6); box-shadow: 0 0 44px rgba(0,255,255,0.28); transform: translateY(-2px); }
-  @keyframes cta-shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-
-  #main-interior { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; opacity: 0; padding: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.5s; z-index: 99993; pointer-events: none; color: var(--text-pure); }
-  body.unlocked #main-interior { opacity: 1; pointer-events: auto; }
-  body.dashboard-unlocked #main-interior { transform: scale(3); opacity: 0; pointer-events: none; }
-
-  .back-arrow { position: absolute; top: 30px; left: 30px; color: var(--accent-cyan); font-size: 3rem; cursor: pointer; text-decoration: none; z-index: 99998;}
-
-  
-  .puzzle-zone { display: flex; gap: 40px; margin-top: 20px; }
-  .drop-zone { width: 220px; height: 320px; border: 2px dashed #555; position: relative; border-radius: 15px; transition: border-color 0.4s ease; }
-  .drop-zone.solved { border-color: transparent; }
-  .loading-border { position: absolute; top:0; left:0; width: 100%; height: 100%; border: 5px solid transparent; border-radius: 15px; clip-path: inset(0 100% 0 0); transition: clip-path 3s linear; }
-  
-  .draggable { width: 220px; height: 320px; background: rgba(255,255,255,0.03); border: 1px solid #777; border-radius: 15px; display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; position: relative; overflow: hidden; }
-  
-  .box-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; transition: opacity 1.5s ease; }
-  .box-label { position: relative; z-index: 2; text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.9); background: rgba(0,0,0,0.4); padding: 10px; width: 100%; letter-spacing: 1px; color: var(--text-pure); }
-
-  #mission-draft { max-width: 800px; margin-top: 40px; text-align: center; opacity: 0; transition: 2s; line-height: 1.8; color: #cbd5e0; }
-  body.final-unlock #mission-draft { opacity: 1; }
-  .mission-draft__pillars { margin-top: 1.15rem; font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--accent-cyan); text-shadow: 0 0 12px rgba(0,255,255,0.35); }
-
-  #final-door { position: absolute; right: 50px; bottom: 50px; opacity: 0; transition: 1s; z-index: 99995; text-align: center; pointer-events: none; }
-  body.final-unlock #final-door { opacity: 1; pointer-events: auto; }
-  body.dashboard-unlocked #final-door { opacity: 0; pointer-events: none; }
-  .door-btn { padding: 20px; border-radius: 50%; border: 2px solid var(--accent-cyan); color: var(--accent-cyan); text-decoration: none; display: block; margin-bottom: 10px; transition: 0.3s; }
-  .door-btn:hover { background: var(--accent-cyan); color: var(--primary-navy); }
-
-  #dashboard-interior { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; opacity: 0; transform: scale(0.8); transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.5s; z-index: 99994; display: flex; align-items: center; justify-content: center; pointer-events: none; color: var(--text-pure); }
-  body.dashboard-unlocked #dashboard-interior { opacity: 1; transform: scale(1); pointer-events: auto; }
-
-  .grid-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; background-size: 50px 50px; background-image: linear-gradient(to right, rgba(0, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 255, 0.03) 1px, transparent 1px); opacity: 0; transition: opacity 2s; }
-  body.dashboard-unlocked .grid-bg { opacity: 1; }
-  
-  .grid-spotlight {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;
-    background-size: 50px 50px;
-    background-image: linear-gradient(to right, rgba(0, 255, 255, 0.16) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 255, 0.16) 1px, transparent 1px);
-    -webkit-mask-image: radial-gradient(circle 260px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
-    mask-image: radial-gradient(circle 260px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
-    opacity: 0; transition: opacity 1.5s ease;
-  }
-  body.dashboard-unlocked .grid-spotlight { opacity: 1; }
-
-  #ambient-orb { position: fixed; top: 0; left: 0; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,255,255,0.16) 0%, rgba(0,255,255,0.09) 18%, rgba(191,0,255,0.07) 38%, rgba(191,0,255,0.03) 55%, transparent 72%); pointer-events: none; transform: translate3d(-9999px,-9999px,0); will-change: transform; z-index: -1; opacity: 0; transition: opacity 2s ease; }
-  body.dashboard-unlocked #ambient-orb { opacity: 1; }
-
-  .hud { position: absolute; padding: 15px 25px; background: rgba(10, 25, 47, 0.4); backdrop-filter: blur(15px); border: 1px solid rgba(0,255,255,0.1); border-radius: 8px; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; color: var(--accent-cyan); letter-spacing: 1px; z-index: 10;}
-  .hud-top-left { top: 30px; left: 30px; }
-  .hud-top-right { top: 30px; right: 30px; display: flex; align-items: center; gap: 10px; }
-  .status-dot { position: relative; width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 6px #00ff00; }
-  .status-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid #00ff00; animation: pulseRing 1.6s ease-out infinite; }
-
-  .terminal-container { width: 1000px; min-height: 600px; background: rgba(10, 25, 47, 0.82); backdrop-filter: blur(10px); border: 1px solid rgba(0, 255, 255, 0.35); border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 255, 255, 0.05), 0 0 30px rgba(0,255,255,0.08); padding: 0; position: relative; z-index: 10; overflow: hidden; transform-style: preserve-3d; will-change: transform; transition: transform 0.1s ease-out, border-color 0.3s; }
-  body.dashboard-unlocked .terminal-container { animation: terminal-glow 6s ease-in-out infinite; }
-  .terminal-container:hover { border-color: rgba(0, 255, 255, 0.6); animation-play-state: paused; }
-  @keyframes terminal-glow {
-    0%, 100% { border-color: rgba(0,255,255,0.35); box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,255,255,0.05), 0 0 30px rgba(0,255,255,0.08); }
-    50% { border-color: rgba(191,0,255,0.35); box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(191,0,255,0.05), 0 0 32px rgba(191,0,255,0.10); }
-  }
-
-  .term-chrome { display: flex; align-items: center; gap: 14px; padding: 14px 22px; background: rgba(0,0,0,0.35); border-bottom: 1px solid rgba(0,255,255,0.15); transform: translateZ(20px); }
-  .term-dots { display: flex; gap: 7px; flex-shrink: 0; }
-  .term-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
-  .term-dots span:nth-child(1) { background: #ff9f5a; }
-  .term-dots span:nth-child(2) { background: var(--accent-purple); }
-  .term-dots span:nth-child(3) { background: #3ddc84; }
-  .term-path { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.03em; }
-  .term-rec { margin-left: auto; display: flex; align-items: center; gap: 7px; font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: rgba(255,120,120,0.75); letter-spacing: 0.1em; }
-  .term-rec-dot { position: relative; width: 7px; height: 7px; border-radius: 50%; background: #ff5a5a; box-shadow: 0 0 5px #ff5a5a; }
-  .term-rec-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid #ff5a5a; animation: pulseRing 1.6s ease-out infinite; }
-  @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.4); opacity: 0; } }
-  .term-body { padding: 50px; }
-
-  .terminal-header { text-align: center; margin-bottom: 40px; transform: translateZ(30px); }
-  .terminal-header h2 { font-weight: 900; letter-spacing: 2px; font-size: 1.8rem; text-transform: uppercase; text-shadow: 0 0 10px rgba(0,255,255,0.3); }
-  .terminal-header span { color: var(--accent-cyan); font-family: 'Share Tech Mono', monospace; }
-
-  .options-grid { display: flex; flex-direction: column; gap: 16px; transform: translateZ(20px); }
-  .btn-option { background: linear-gradient(90deg, rgba(0,255,255,0.04), rgba(191,0,255,0.03)); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 18px 20px; font-size: 1.05rem; font-weight: 700; text-align: left; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 16px; }
-  .btn-option:hover { border-color: var(--accent-cyan); background: rgba(0, 255, 255, 0.1); transform: translateX(10px) scale(1.01); box-shadow: 0 0 20px rgba(0,255,255,0.22); }
-  .opt-index { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: var(--accent-cyan); border: 1px solid rgba(0,255,255,0.3); border-radius: 6px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; }
-  .btn-option:hover .opt-index { background: var(--accent-cyan); color: var(--primary-navy); }
-  .opt-label { flex: 1; }
-  .opt-label em { display: block; font-style: normal; font-weight: 500; font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
-  .opt-run { color: var(--accent-cyan); font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; flex-shrink: 0; }
-  @media (max-width: 768px) { .opt-run { display: none; } }
-
-  #simulation-screen { display: none; flex-direction: column; align-items: center; width: 100%; transform: translateZ(20px); }
-  .visualizer-stage { display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 40px 0; position: relative; }
-
-  .pipeline-track { position: absolute; top: 50%; left: 4%; right: 4%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,255,255,0.15) 15%, rgba(191,0,255,0.15) 50%, rgba(61,220,132,0.15) 85%, transparent); z-index: 0; }
-
-  .sim-node { width: 30%; background: rgba(5, 11, 20, 0.75); backdrop-filter: blur(8px); border: 1px solid #333; border-radius: 10px; padding: 24px 20px 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease; position: relative; z-index: 2; }
-  .sim-node h3 { font-size: 1rem; color: var(--accent-cyan); margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; }
-  .sim-node p { font-size: 0.9rem; line-height: 1.5; color: #cbd5e0; }
-
-  .sim-node.active { opacity: 1; transform: translateY(0); border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(0, 255, 255, 0.15); }
-  .sim-node.engine { border-color: var(--accent-purple); box-shadow: 0 0 20px rgba(191, 0, 255, 0.25); }
-  body.dashboard-unlocked .sim-node.engine { animation: engine-pulse 2.4s ease-in-out infinite; }
-  @keyframes engine-pulse {
-    0%, 100% { box-shadow: 0 0 18px rgba(191, 0, 255, 0.22); }
-    50% { box-shadow: 0 0 30px rgba(191, 0, 255, 0.4); }
-  }
-
-  .node-badge { position: absolute; top: -14px; left: 20px; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-navy); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; display: flex; align-items: center; justify-content: center; z-index: 3; }
-  .node-badge--engine { border-color: var(--accent-purple); color: var(--accent-purple); }
-  .node-badge--done { border-color: #3ddc84; color: #3ddc84; }
-
-  .flow-arrow { position: absolute; top: 50%; height: 2px; background: rgba(255,255,255,0.1); z-index: 1; }
-  .arrow-1 { left: 30%; width: 5%; }
-  .arrow-2 { left: 65%; width: 5%; }
-  .flow-dot { width: 10px; height: 10px; background: var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 15px var(--accent-cyan); position: absolute; top: -4px; left: 0; opacity: 0; }
-  
-  @keyframes sendData { 0% { left: 0; opacity: 1; } 100% { left: 100%; opacity: 1; } }
-
-  .btn-portal-action { padding: 15px 40px; margin-top: 20px; font-size: 1.1rem; font-weight: 900; color: var(--primary-navy); background: var(--accent-cyan); border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); opacity: 0; transition: 0.5s; pointer-events: none; }
-  .btn-portal-action.active { opacity: 1; pointer-events: auto; }
-  .btn-portal-action:hover { background: #fff; box-shadow: 0 0 30px #fff; }
-
-  /* Portal Fade out classes */
-  body.portal-dismissed .portal-element { opacity: 0 !important; pointer-events: none !important; }
-  /* keep the page locked while the portal fades out, so you cannot scroll
-     the real site into view underneath a half-transparent overlay */
-  body.portal-dismissed:not(.portal-gone) { overflow: hidden !important; }
-  body.portal-gone .portal-element { display: none !important; visibility: hidden !important; }
-  body.portal-dismissed #cursor-follower { display: none !important; }
-
-  /* Portal Mobile Optimizations */
-  @media (max-width: 768px) {
-      #cursor-follower { display: none !important; }
-      body.unlocked { cursor: auto; }
-      #hero-section { justify-content: center; gap: 1.75rem; padding: 0 1rem; }
-      .cta-button { margin-top: 0 !important; padding: 18px 44px; letter-spacing: 0.2em; font-size: 0.78rem; }
-      .cta-button::before { animation: none; }
-      .terminal-container, .btn-option, .sim-node { backdrop-filter: none; -webkit-backdrop-filter: none; }
-      .terminal-container { animation: none; border-color: rgba(0, 255, 255, 0.35); }
-      .sim-node.engine { animation: none; }
-      body.final-unlock #portal-bg::before, body.final-unlock #portal-bg::after { animation: none; opacity: 0.7; }
-
-      #main-interior, #dashboard-interior { 
-          overflow-y: auto; overflow-x: hidden; align-items: center; 
-          justify-content: flex-start; padding: 70px 10px 40px 10px; 
-      }
-      .back-arrow { top: 15px; left: 15px; font-size: 2rem; }
-
-      .puzzle-zone, #drag-container { 
-          flex-direction: row; justify-content: center; align-items: center;
-          gap: 10px !important; width: 100%; margin-top: 10px;
-      }
-      .drop-zone, .draggable { 
-          width: 30vw; max-width: 110px; height: 150px; border-radius: 8px; 
-      }
-      .box-label { font-size: 0.65rem; padding: 5px; letter-spacing: 0px; }
-      #mission-draft { padding: 0 10px; font-size: 0.85rem; margin-top: 25px; }
-      #final-door { position: relative; right: auto; bottom: auto; margin-top: 30px; margin-bottom: 50px; }
-      
-      .hud { font-size: 0.75rem; padding: 10px; }
-      .hud-top-right { top: 70px; left: 30px; right: auto; } 
-
-      .terminal-container { 
-          width: 95%; min-height: auto; 
-          margin-top: 110px; margin-bottom: 40px;
-          backdrop-filter: none; -webkit-backdrop-filter: none;
-          background: rgba(10, 25, 47, 0.96);
-          transform-style: flat;
-      }
-      .term-body { padding: 20px; }
-      .term-chrome { padding: 12px 16px; }
-      .term-path { display: none; }
-      .terminal-header h2 { font-size: 1.2rem; }
-      .btn-option { text-align: left; gap: 12px; font-size: 0.9rem; }
-      .opt-label em { font-size: 0.72rem; }
-      .pipeline-track { display: none; }
-
-      .visualizer-stage { flex-direction: column; margin-top: 20px; }
-      .sim-node { width: 100%; margin-bottom: 15px; transform: translateY(0); transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
-      .flow-arrow { display: none; } 
-      #ambient-orb { display: none; }
-      .grid-spotlight { display: none; }
-      .hud { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 25, 47, 0.85); }
-      #hero-section, #main-interior, #dashboard-interior { height: 100dvh; }
-  }
-  @media (hover: none) and (pointer: coarse) {
-      #cursor-follower { display: none !important; }
-      body.unlocked { cursor: auto; }
-  }
-
-
-  /* =========================================================
-     MAIN SITE STYLES
-     ========================================================= */
-  .scanlines{ display:none; }
-  
-  .nav{ position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.4rem clamp(1.5rem, 5vw, 4rem); backdrop-filter:blur(16px); background:rgba(10,10,12,0.55); border-bottom:1px solid var(--border); }
-  .nav__logo{ font-family:var(--font-display); font-weight:700; font-size:clamp(0.85rem, 2vw, 1.25rem); letter-spacing:clamp(0.04em, 0.6vw, 0.18em); white-space:nowrap; }
-  .nav__links{ display:flex; gap:clamp(1.25rem, 3vw, 2.5rem); font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); }
-  .nav__links a{ transition:color 0.2s ease; }
-  .nav__links a:hover{ color:var(--text); }
-  .nav__status{ display:flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.06em; color:var(--text-muted); }
-  
-  .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 var(--accent-dim); animation:pulse 2.6s ease-in-out infinite; flex-shrink:0; }
-  .dot--closed{ background:var(--text-faint); animation:none; }
-  @keyframes pulse{ 0%,100%{box-shadow:0 0 0 0 rgba(61,220,132,0.35);} 50%{box-shadow:0 0 0 6px rgba(61,220,132,0);} }
-  @media (max-width: 760px){ .nav__links{display:none;} }
-
-  .section{ position:relative; width:100%; }
-  .media-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-  .media-fallback{ position:absolute; inset:0; z-index:-1; }
-
-  /* Hero */
-  .hero{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(6rem,12vh,9rem) clamp(1.5rem,6vw,5rem) clamp(3rem,6vh,5rem); overflow:hidden; }
-  .hero .media-fallback{ background: radial-gradient(ellipse at 20% 15%, rgba(61,220,132,0.07), transparent 45%), radial-gradient(ellipse at 85% 80%, rgba(90,170,255,0.05), transparent 50%), linear-gradient(160deg, #0A0A0C 0%, #121214 55%, #0A0A0C 100%); }
-  /* fades to fully transparent at the bottom so there is no step where the section ends */
-  .hero::after{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,10,12,0.30) 0%, rgba(10,10,12,0.26) 45%, rgba(10,10,12,0.14) 80%, rgba(10,10,12,0) 100%); }
-  .hero__content{ position:relative; z-index:2; max-width:1100px; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); border:1px solid var(--border-strong); border-radius:999px; padding:0.5rem 1.1rem; margin-bottom:2.25rem; }
-  .hero__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(2.6rem, 9.5vw, 6.4rem); line-height:1.05; letter-spacing:0.04em; text-transform:uppercase; }
-  .hero__title span{ display:block; }
-  .hero__title span:nth-child(2){ color:var(--text-muted); }
-  .hero__copy{ margin-top:2.25rem; max-width:620px; color:var(--text-muted); font-size:clamp(1rem, 1.6vw, 1.15rem); line-height:1.75; }
-  .hero__actions{ margin-top:2.75rem; display:flex; flex-wrap:wrap; gap:1rem; }
-  
-  .btn{ display:inline-flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.95rem 1.9rem; border-radius:999px; transition:all 0.25s ease; border:1px solid var(--border-strong); cursor:pointer; }
-  .btn--primary{ background:var(--text); color:var(--bg); border-color:var(--text); }
-  .btn--primary:hover{ background:var(--accent); border-color:var(--accent); box-shadow:0 0 32px rgba(61,220,132,0.35); transform:translateY(-2px); }
-  .btn--ghost{ color:var(--text); background:transparent; }
-  .btn--ghost:hover{ border-color:var(--text); transform:translateY(-2px); }
-  
-  .scroll-cue{ position:absolute; bottom:2.25rem; left:clamp(1.5rem,6vw,5rem); z-index:2; display:flex; align-items:center; gap:0.75rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-faint); }
-  .scroll-cue__line{ width:1px; height:40px; background:linear-gradient(to bottom, var(--text-faint), transparent); animation:scrollline 2.4s ease-in-out infinite; }
-  @keyframes scrollline{ 0%{transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1); transform-origin:top;} 50.01%{transform-origin:bottom;} 100%{transform:scaleY(0); transform-origin:bottom;} }
-  @media (max-width:760px){ .scroll-cue{display:none;} }
-
-  /* About */
-  .about{ background:transparent; padding:clamp(5rem,10vh,8rem) clamp(1.5rem,6vw,5rem); }
-  .about__grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(2.5rem,6vw,5rem); align-items:center; max-width:1300px; margin:0 auto; }
-  @media (max-width:900px){ .about__grid{grid-template-columns:1fr; gap:3rem;} .about__media{order:-1;} }
-  .section-label{ font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:1.25rem; display:flex; align-items: center; gap: 0.5rem; }
-  .about__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.9rem, 4vw, 3rem); letter-spacing:0.02em; line-height:1.25; margin-bottom:1.5rem; }
-  .founder-tag{ font-family:var(--font-mono); font-size:0.55em; letter-spacing:0.2em; color:var(--text-muted); display:inline-block; border:1px solid var(--border-strong); border-radius:6px; padding:0.15em 0.5em; vertical-align:middle; margin-left:0.5em; text-transform:uppercase; font-weight:400; }
-  .about p{ color:var(--text-muted); font-size:1.02rem; max-width:560px; }
-  .about p + p{ margin-top:1.25rem; }
-  .about__media{ position:relative; aspect-ratio:4/5; border-radius:18px; overflow:hidden; border:1px solid var(--border-strong); background: radial-gradient(ellipse at 70% 20%, rgba(61,220,132,0.06), transparent 55%), linear-gradient(150deg, #16161A 0%, #0A0A0C 100%); }
-  .about__media-frame{ position:absolute; inset:1.25rem; border:1px solid var(--border-strong); border-radius:10px; z-index:3; pointer-events:none; }
-  .about__media-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:inherit; z-index:0; opacity:.92; }
-  .about__media::after{ content:""; position:absolute; inset:0; border-radius:inherit; z-index:1; pointer-events:none;
-    background:linear-gradient(to top, rgba(10,10,12,.85) 0%, rgba(10,10,12,.35) 22%, rgba(10,10,12,0) 45%); }
-  .about__media-label{ position:absolute; bottom:1.75rem; left:1.75rem; z-index:3; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#e8ecf4; text-shadow:0 1px 6px rgba(0,0,0,.9); display:flex; align-items:center; gap:0.5rem; }
-
-  /* Stats */
-  .stats{ margin-top:clamp(3rem,6vh,4.5rem); display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; max-width:1300px; margin-left:auto; margin-right:auto; }
-  .stats__item{ background:var(--bg-elevated); padding:1.75rem clamp(1rem,3vw,2rem); }
-  .stats__value{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.02em; }
-  .stats__label{ margin-top:0.5rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); }
-  @media (max-width:700px){
-    .stats{ grid-template-columns:repeat(3,1fr); }
-    .stats__item{ padding:1.1rem 0.5rem; text-align:center; }
-    .stats__value{ font-size:1.15rem; }
-    .stats__label{ font-size:0.55rem; letter-spacing:0.08em; margin-top:0.35rem; }
-  }
-
-  /* Web Services Intro */
-  /* section backdrop fades out at both ends so it melts into the site background */
-  /* never fully opaque, so the site background stays continuous through it */
-  .webservices-intro-section { position: relative; height: 400vh; background: transparent; }
-  .sticky-frame { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-  .sticky-frame::before, .sticky-frame::after{
-    content:""; position:absolute; left:0; right:0; height:16vh; z-index:4; pointer-events:none;
-  }
-  .sticky-frame::before{ top:0; background:linear-gradient(to bottom, #0A0A0C, rgba(10,10,12,0)); }
-  .sticky-frame::after{ bottom:0; background:linear-gradient(to top, #0A0A0C, rgba(10,10,12,0)); }
-  .sticky-frame video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 1; transform: translateZ(0); }
-  .sticky-overlay { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(10,10,12,0) 0%, rgba(10,10,12,.35) 100%); z-index: 2; }
-  .scroll-phrase { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%); width: 90%; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 4.5rem); text-transform: uppercase; letter-spacing: 0.05em; color: #fff; opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.5s ease-out, transform 0.6s ease-out; }
-  .scroll-phrase span { color: var(--accent); }
-
-  /* Web Services Tools */
-  .webservices-tools-section { position: relative; z-index: 10; background: transparent; padding: clamp(6rem, 10vh, 9rem) clamp(1.5rem, 6vw, 5rem); }
-  .web-main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; max-width: 1300px; margin: 0 auto; }
-  @media (max-width: 968px) { .web-main-grid { grid-template-columns: 1fr; } }
-  .glass-panel { background: rgba(22, 22, 26, 0.7); border: 1px solid var(--border-strong); border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
-  .calculator-card { height: 100%; display: flex; flex-direction: column; }
-  
-  .base-price { display: flex; flex-direction: column; gap: 8px; padding-bottom: 20px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
-  .base-price-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; color: var(--text); }
-  .calc-form { display: flex; flex-direction: column; gap: 15px; }
-  .calc-option { display: flex; justify-content: space-between; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
-  .calc-info { display: flex; flex-direction: column; gap: 4px; width: 75%; }
-  .calc-label { color: var(--text); font-size: 0.95rem; font-weight: 500; }
-  .calc-price { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.75rem; }
-  .calc-desc { font-size: 0.8rem; color: var(--text-faint); margin-top: 4px; line-height: 1.4; font-weight: 400; max-width: 95%; }
-  
-  .custom-select { background: rgba(0,0,0,0.3); color: var(--text); border: 1px solid var(--border-strong); padding: 8px 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; outline: none; cursor: pointer; transition: border-color 0.3s ease; }
-  .calc-checkbox { display: none; }
-  .toggle-switch { position: relative; width: 44px; height: 24px; background: rgba(255, 255, 255, 0.1); border-radius: 12px; transition: background-color 0.3s ease; flex-shrink: 0; margin-top: 5px; }
-  .toggle-switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: var(--text-muted); border-radius: 50%; transition: transform 0.3s ease, background-color 0.3s ease; }
-  .calc-checkbox:checked + .toggle-switch { background: var(--accent); }
-  .calc-checkbox:checked + .toggle-switch::after { transform: translateX(20px); background: var(--bg-elevated); }
-
-  .client-details { margin-top: 15px; display: flex; flex-direction: column; gap: 15px; padding-top: 20px; border-top: 1px solid var(--border); }
-  .client-details-title { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.15em; color: var(--text-faint); text-transform: uppercase; }
-  .form-group { display: flex; flex-direction: column; gap: 5px; }
-  .form-group input, .form-group textarea, .form-group select { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-strong); padding: 12px 15px; border-radius: 8px; color: var(--text); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: all 0.3s ease; width: 100%; appearance: none; }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(61,220,132,0.1); }
-  .select-wrapper { position: relative; }
-  .select-wrapper::after { content: "▼"; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; font-size: 0.8rem; }
-  .form-group textarea { resize: vertical; min-height: 80px; }
-
-  .submit-block { margin-top: auto; padding-top: 25px; border-top: 2px solid var(--border-strong); display: flex; flex-direction: column; gap: 20px; }
-  .total-price-row { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--text); }
-  .total-price-value { color: var(--accent); }
-  .deposit-note { text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: -10px; }
-  .deposit-note span { color: #ef4444; font-weight: 700; }
-  
-  .terms-indicator { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-left: 10px; border: 1px solid var(--accent); border-radius: 50%; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); cursor: help; animation: subtle-pulse 2s infinite; }
-  @keyframes subtle-pulse { 0% { box-shadow: 0 0 0 0 rgba(61,220,132,0.4); } 70% { box-shadow: 0 0 0 6px rgba(61,220,132,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,132,0); } }
-  .terms-indicator::after { content: "Review T&Cs below before submitting ↓"; position: absolute; bottom: 130%; right: -50px; background: #1a1a1c; border: 1px solid var(--border-strong); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; color: #fff; pointer-events: none; }
-  .terms-indicator:hover::after { opacity: 1; visibility: visible; }
-  .terms-arrow { margin-bottom: 2px; }
-
-  .desktop-instruction { background: rgba(61,220,132,0.05); border-left: 3px solid var(--accent); padding: 15px; border-radius: 4px; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-  .desktop-instruction strong { color: var(--text); }
-  @media (max-width: 768px) { .desktop-instruction { display: none; } }
-  .btn-submit { width: 100%; justify-content: center; padding: 1rem; font-size: 0.85rem; }
-
-  .showcase-panel { display: flex; flex-direction: column; gap: 30px; }
-
-  .web-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .lab-video-wrapper { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-strong); height: 180px; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-  .lab-video-wrapper video, .lab-video-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; display: block; }
-  .video-overlay-tag { position: absolute; top: 12px; left: 12px; background: rgba(10, 10, 12, 0.9); color: var(--text); padding: 4px 10px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; border: 1px solid var(--border); }
-
-  /* Reviews */
-  .portfolio-teaser { background: transparent; padding: clamp(4rem,8vh,6rem) clamp(1.5rem,6vw,5rem); }
-  .teaser-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:2.25rem 0 2rem; text-align:left; }
-  @media (max-width:760px){
-    .teaser-grid{ grid-template-columns:1fr 1fr; gap:12px; }
-    .teaser-card__body{ padding:0.85rem 0.9rem 1rem; }
-    .teaser-card__body h3{ font-size:0.92rem; }
-    .teaser-card__tag{ font-size:0.58rem; letter-spacing:0.06em; margin-bottom:0.45rem; }
-    .teaser-card__body p{ font-size:0.8rem; line-height:1.45; }
-  }
-  /* keep both cards side by side even on small phones */
-  @media (max-width:560px){
-    /* claw back horizontal space so the two cards are not squeezed */
-    .portfolio-teaser{ padding-left:0.9rem; padding-right:0.9rem; }
-    .portfolio-teaser .glass-panel{ padding-left:0.9rem; padding-right:0.9rem; }
-    .teaser-grid{ grid-template-columns:1fr 1fr; gap:10px; }
-    .teaser-card__img{ aspect-ratio:4/3; }
-    .teaser-card__body{ padding:0.75rem 0.7rem 0.9rem; }
-    .teaser-card__body h3{ font-size:0.86rem; line-height:1.25; }
-    .teaser-card__tag{ font-size:0.5rem; letter-spacing:0.03em; margin-bottom:0.4rem; line-height:1.4; }
-    /* the description is the least important part at this width */
-    .teaser-card__body p{ display:none; }
-  }
-  .teaser-card{ display:block; border:1px solid var(--border-strong); border-radius:16px; overflow:hidden;
-    background:rgba(255,255,255,.02); transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
-  .teaser-card:hover{ transform:translateY(-4px); border-color:var(--accent); box-shadow:0 14px 34px rgba(0,0,0,.45); }
-  .teaser-card__img{ position:relative; aspect-ratio:16/10; overflow:hidden; background:#0f1116; }
-  .teaser-card__img img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
-  .teaser-card:hover .teaser-card__img img{ transform:scale(1.04); }
-  .teaser-card__body{ padding:1.1rem 1.25rem 1.35rem; }
-  .teaser-card__body h3{ font-family:var(--font-display); font-size:1.05rem; font-weight:700; margin-bottom:.35rem; color:var(--text); }
-  .teaser-card__tag{ display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:.6rem; }
-  .teaser-card__body p{ font-size:.9rem; color:var(--text-muted); margin:0; max-width:none; }
-  .portfolio-teaser .glass-panel { max-width: 900px; margin: 0 auto; text-align: center; }
-  .portfolio-teaser p { color: var(--text-muted); max-width: 640px; margin: 0 auto 1.75rem; font-size: 1.02rem; }
-
-  /* Contact */
-  .contact{ background:transparent; padding:clamp(5rem,10vh,8rem) clamp(1.5rem,6vw,5rem); overflow:hidden; }
-  .contact__inner{ max-width:1100px; margin:0 auto; position: relative; z-index: 2; }
-  .contact__head{ max-width:640px; }
-  .contact__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(2.2rem, 5vw, 3.6rem); letter-spacing:0.03em; margin-bottom:1.25rem; }
-  .contact__head p{ color:var(--text-muted); font-size:1.05rem; max-width:520px; }
-  .portfolio-cta{ display:inline-flex; align-items:center; gap:10px; margin-top:1.5rem; padding:0.85rem 1.4rem; border:1px solid var(--border-strong); border-radius:100px; font-family:var(--font-mono); font-size:0.82rem; letter-spacing:0.06em; color:var(--text-muted); transition:all 0.3s ease; }
-  .portfolio-cta:hover{ color:var(--accent); border-color:var(--accent); box-shadow:0 0 16px rgba(61,220,132,0.12); transform:translateY(-1px); }
-  .portfolio-cta__arrow{ transition:transform 0.3s ease; }
-  .portfolio-cta:hover .portfolio-cta__arrow{ transform:translateX(3px); }
-  .whatsapp-card{ margin-top:2.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.5rem; padding:1.75rem 2rem; border:1px solid var(--border-strong); border-radius:16px; background:linear-gradient(135deg, rgba(61,220,132,0.05), transparent 60%); }
-  .whatsapp-card__text{ font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; color:var(--text-muted); }
-  .whatsapp-card__number{ color:var(--text); font-size:1.05rem; letter-spacing:0.08em; }
-  
-  .vendor-trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 100%; margin: 15px 0 0 0; font-family: var(--font-body); }
-  .trust-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 20px; text-align: left; backdrop-filter: blur(10px); transition: all 0.3s ease; }
-  .trust-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; }
-  .trust-value { display: block; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--text); }
-  .trust-value.level-1 { color: var(--accent); }
-  .trust-value.compliant { color: #00d2ff; }
-  .trust-box.pending { opacity: 0.6; border-style: dashed; }
-  .trust-note { font-size: 0.8rem; color: var(--text-faint); margin: 6px 0 0 0; }
-  @media (max-width: 600px) {
-    .vendor-trust-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .trust-box { padding: 12px 14px; }
-    .trust-label { font-size: 0.58rem; letter-spacing: 0.06em; }
-    .trust-note { display: none; }
-  }
-
-  .remote{ margin-top:clamp(4rem,8vh,6rem); display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:start; }
-  @media (max-width:860px){ .remote{grid-template-columns:1fr; gap:3rem;} }
-  .remote__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.4rem,2.6vw,1.9rem); letter-spacing:0.02em; margin-bottom:0.9rem; }
-  .remote__intro{ color:var(--text-muted); font-size:0.98rem; margin-bottom:1.75rem; max-width:480px; }
-  .step{ display:flex; gap:1.25rem; padding:1.4rem 0; border-top:1px solid var(--border); }
-  .step:first-of-type{border-top:1px solid var(--border);}
-  .step__num{ font-family:var(--font-mono); font-size:0.85rem; color:var(--accent); letter-spacing:0.1em; flex-shrink:0; padding-top:0.1rem; }
-  .step__body p{ color:var(--text-muted); font-size:0.95rem; }
-  .step__body a{ color:var(--text); border-bottom:1px solid var(--border-strong); transition:border-color 0.2s ease, color 0.2s ease; }
-  .step__body a:hover{ color:var(--accent); border-color:var(--accent); }
-
-  .hours{ border:1px solid var(--border-strong); border-radius:16px; overflow:hidden; background:var(--bg); }
-  .hours__head{ display:flex; align-items:center; justify-content:space-between; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); }
-  .hours__row{ display:flex; align-items:center; justify-content:space-between; padding:1rem 1.4rem; border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.04em; }
-  .hours__row:last-child{border-bottom:none;}
-  .hours__row--today{ background:rgba(61,220,132,0.05); }
-  .hours__day{color:var(--text);}
-  .hours__time{color:var(--text-muted);}
-  .hours__note{ padding:1rem 1.4rem; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.04em; color:var(--text-faint); line-height:1.6; }
-
-  /* Footer */
-  .footer{ background:var(--bg); border-top:1px solid var(--border); padding:2.5rem clamp(1.5rem,6vw,5rem); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-faint); }
-  .footer-badge-wrap { position: relative; display: inline-block; vertical-align: middle; }
-  .css-bbbee-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: var(--text-faint); letter-spacing: 0.05em; cursor: pointer; transition: all 0.3s ease; }
-  .css-bbbee-badge span { color: var(--text-muted); transition: color 0.3s ease; }
-  .footer-badge-wrap:hover .css-bbbee-badge { border-color: var(--accent); color: var(--text); box-shadow: 0 0 12px rgba(61,220,132,0.15); }
-  .footer-badge-wrap:hover .css-bbbee-badge span { color: var(--accent); }
-  .badge-tooltip { visibility: hidden; position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%); background: #111; color: #fff; font-size: 0.7rem; padding: 5px 10px; border-radius: 4px; white-space: nowrap; border: 1px solid rgba(255, 255, 255, 0.1); opacity: 0; transition: opacity 0.2s ease; }
-  .footer-badge-wrap:hover .badge-tooltip { visibility: visible; opacity: 1; }
-  
-  .footer-terms-link { color: var(--text-muted); text-decoration: none; margin-left: 20px; transition: color 0.3s ease; cursor: pointer; }
-  .footer-terms-link:hover { color: var(--accent); }
-
-
-  /* =========================================================
-     TERMS OVERLAY (JUMP FIX PRESERVED)
-     ========================================================= */
-  .terms-overlay {
-    position: fixed; top: 0; right: 0; width: 100vw; height: 100vh;
-    z-index: 999999; transform: translateX(100%); transition: transform 0.6s var(--easing);
-    --t-bg-deep: #050810; --t-bg-panel: rgba(15, 23, 42, 0.6);
-    --t-text-main: #f8fafc; --t-text-muted: #94a3b8; --t-text-faint: #475569;
-    --t-border-light: rgba(255, 255, 255, 0.08); --t-border-strong: rgba(255, 255, 255, 0.15);
-    --t-accent-cyan: #00E5FF; --t-accent-cyan-dim: rgba(0, 229, 255, 0.15);
-    background-color: var(--t-bg-deep); color: var(--t-text-main);
-  }
-  .terms-overlay.active { transform: translateX(0); }
-  
-  .t-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; object-fit: cover; opacity: 0.65; pointer-events: none; }
-  .t-video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: linear-gradient(180deg, rgba(5,8,16,0.4) 0%, rgba(5,8,16,0.7) 100%); pointer-events: none; }
-  
-  .t-scroll-wrapper {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    overflow-y: auto; overflow-x: hidden; z-index: 10;
-  }
-
-  .t-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 5%; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(5, 8, 16, 0.6); border-bottom: 1px solid var(--t-border-light); }
-  .t-nav__logo { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.1em; color: var(--t-text-main); }
-  .t-nav__back { font-family: var(--font-mono); font-size: 0.8rem; color: var(--t-accent-cyan); background: transparent; border: 1px solid var(--t-accent-cyan-dim); padding: 8px 16px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s var(--easing); }
-  .t-nav__back:hover { background: var(--t-accent-cyan-dim); box-shadow: 0 0 15px var(--t-accent-cyan-dim); }
-  .t-container { position: relative; z-index: 10; max-width: 1000px; margin: 80px auto 80px auto; padding: 0 5%; }
-  .t-page-header { text-align: center; margin-bottom: 60px; }
-  .t-eyebrow { font-family: var(--font-mono); font-size: 0.8rem; color: var(--t-accent-cyan); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 15px; display: block; }
-  .t-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
-  .t-vendor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 60px; }
-  .t-trust-box { background: var(--t-bg-panel); backdrop-filter: blur(12px); border: 1px solid var(--t-border-strong); border-radius: 12px; padding: 24px; transition: all 0.4s var(--easing); }
-  .t-trust-box:hover { transform: translateY(-5px); border-color: var(--t-accent-cyan); box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1); }
-  .t-trust-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; color: var(--t-text-muted); margin-bottom: 12px; text-transform: uppercase; }
-  .t-trust-value { display: block; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--t-text-main); margin-bottom: 8px; }
-  .t-trust-value.highlight { color: #3DDC84; }
-  .t-trust-value.cyan { color: var(--t-accent-cyan); }
-  .t-trust-note { font-size: 0.85rem; color: var(--t-text-faint); }
-  .t-legal-content { background: var(--t-bg-panel); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--t-border-light); border-radius: 20px; padding: clamp(30px, 5vw, 60px); box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-  .t-legal-section { margin-bottom: 40px; }
-  .t-legal-section:last-child { margin-bottom: 0; }
-  .t-legal-section h2 { font-family: var(--font-display); font-size: 1.5rem; color: var(--t-accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--t-border-light); display: flex; align-items: center; gap: 15px; }
-  .t-legal-section h2 span { font-family: var(--font-mono); font-size: 1rem; color: var(--t-text-faint); }
-  .t-legal-item { margin-bottom: 20px; }
-  .t-legal-item h3 { font-size: 1.1rem; color: var(--t-text-main); margin-bottom: 8px; font-weight: 600; }
-  .t-legal-item p { color: var(--t-text-muted); font-size: 0.95rem; }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
-  }
-</style>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 </head>
+
 <body>
 
-<div id="portal-bg" class="portal-element"></div>
-<div id="cursor-follower" class="portal-element"></div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
 
+      <h1 class="logo"><a href="index.html">iFix IT Services</a></h1>
 
-<header id="hero-section" class="portal-element">
-    <img class="hero-canvas-bg" src="images/home-hero-poster.jpg" alt="" aria-hidden="true">
-    <video class="hero-canvas-bg hero-canvas-bg--video" autoplay loop muted playsinline preload="auto" aria-hidden="true">
-        <source src="videos/home-hero.mp4" type="video/mp4">
-    </video>
-    <div class="hero-portal-sign">
-        <span class="hero-portal-sign__eyebrow">Install. Update. Innovate.</span>
-        <span class="hero-portal-sign__title">Welcome to <span>IFIX &#8212; I.T Services</span></span>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
     </div>
-    <button class="cta-button" onclick="document.body.classList.add('unlocked','final-unlock'); document.querySelectorAll('#capability-showcase .box-video').forEach(v => v.play());">Enter</button>
-</header>
+  </header><!-- End Header -->
 
-<main id="main-interior" class="portal-element">
-    <a href="#" class="back-arrow" onclick="location.reload()">&#8592;</a>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
 
-    <div id="capability-showcase" style="display:flex; margin-top:10px; gap: 40px; flex-wrap: wrap; justify-content: center;">
-        <div class="draggable">
-            <video autoplay loop muted playsinline preload="none" poster="images/box1_support-poster.jpg" class="box-video" style="opacity:0.7;"><source src="videos/box1_support.mp4" type="video/mp4"></video>
-            <div class="box-label">WEBSITES</div>
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Powerful Digital Solutions For Your Business<span>.</span></h1>
+          <h2>We build modern web applications, booking engines, and digital products tailored to your needs.</h2>
         </div>
-        <div class="draggable">
-            <video autoplay loop muted playsinline preload="none" poster="images/box2_automation-poster.jpg" class="box-video" style="opacity:0.7;"><source src="videos/box2_automation.mp4" type="video/mp4"></video>
-            <div class="box-label">BOOKING SYSTEMS</div>
-        </div>
-        <div class="draggable">
-            <video autoplay loop muted playsinline preload="none" poster="images/box3_design-poster.jpg" class="box-video" style="opacity:0.7;"><source src="videos/box3_design.mp4" type="video/mp4"></video>
-            <div class="box-label">WEB APPS</div>
-        </div>
-    </div>
-
-    <div id="mission-draft">
-        <h2 style="color: white; margin-bottom: 10px;">Get your business out of its DMs.</h2>
-        <p>Taking orders and bookings over WhatsApp works &#8212; until it doesn't. Prices repeated ten times a day, double-booked slots, orders lost in a scroll. At <strong>IFIX &#8212; I.T Services</strong> we build the system that handles it for you: customers browse, book and pay from their phone, and the order lands with you ready to go. Built from scratch around how your business actually runs.</p>
-        <p class="mission-draft__pillars">Custom websites. Booking &amp; ordering systems. Web apps. Digital celebration sites. Built for South African businesses &#8212; remote, nationwide.</p>
-    </div>
-
-    <div id="final-door">
-        <a href="#" class="door-btn" onclick="event.preventDefault(); transitionToMainSite();">→</a>
-        <span>SEE THE WORK</span>
-    </div>
-</main>
-
-<div class="scanlines" aria-hidden="true"></div>
-
-<nav class="nav">
-  <div class="nav__logo">IFIX &#8212; I.T Services</div>
-  <div class="nav__links">
-    <a href="/portfolio/">Portfolio</a>
-    <a href="#about">About</a>
-    <a href="#webservices-tools">Pricing</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="nav__status" id="statusBadge">
-    <span class="dot" id="statusDot"></span>
-    <span id="statusText">CHECKING STATUS…</span>
-  </div>
-</nav>
-
-<section id="home" class="section hero">
-  <div class="media-fallback" aria-hidden="true"></div>
-  <img class="media-bg" src="images/home-hero-poster.jpg" alt="" aria-hidden="true">
-
-  <div class="hero__content">
-    <div class="eyebrow"><span class="dot"></span> Cape Town &#8212; Remote, nationwide</div>
-    <h1 class="hero__title"><span>Design.</span><span>Build.</span><span>Automate.</span></h1>
-    <p class="hero__copy">If your business still takes orders and bookings through WhatsApp DMs, you already know where it breaks &#8212; repeating prices, chasing confirmations, double-booked slots. We build the system that handles all of it: your customers browse, book and pay from their phone, and the order reaches you ready to go. Built from scratch, around your business.</p>
-    <div class="hero__actions">
-      <a href="https://wa.me/27677368173" class="btn btn--primary" target="_blank" rel="noopener">Start a Project on WhatsApp</a>
-      <a href="#about" class="btn btn--ghost">About IFIX</a>
-    </div>
-  </div>
-  <div class="scroll-cue"><span class="scroll-cue__line"></span>Scroll</div>
-</section>
-<section id="webservices-intro" class="webservices-intro-section section">
-  <div class="sticky-frame">
-    <video loop muted playsinline preload="none" poster="images/webservices-bg-poster.jpg"><source src="videos/webservices-bg.mp4" type="video/mp4"></video>
-    <div class="sticky-overlay"></div>
-    <div class="scroll-phrase" id="phrase1">Crafted for the Few</div>
-    <div class="scroll-phrase" id="phrase2">Who Define the Many</div>
-    <div class="scroll-phrase" id="phrase3">Performance You Can <span>Feel</span><br>Code You Can <span>Trust</span></div>
-    <div class="scroll-phrase" id="phrase4">Your Vision. Engineered.<br><span>Build Your Custom Business Site Below</span></div>
-  </div>
-</section>
-<section id="portfolio-teaser" class="portfolio-teaser section">
-  <div class="glass-panel">
-    <span class="section-label" style="justify-content:center;"><span class="dot"></span> // 01 — Real Builds, Real Businesses</span>
-    <h2 class="about__title" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">Don&#39;t take our word for it &#8212; go click around.</h2>
-    <p>Every project is a real, live site built for a real business &#8212; ordering and booking systems that replace WhatsApp DM chaos, plus hand-built digital celebration sites. Have a look before you build your quote.</p>
-
-    <div class="teaser-grid">
-      <a class="teaser-card" href="/portfolio/">
-        <div class="teaser-card__img"><img src="images/thumb-waheed.jpg" alt="Treats by Waheed ordering site" loading="lazy"></div>
-        <div class="teaser-card__body">
-          <h3>Treats by Waheed</h3>
-          <span class="teaser-card__tag">Handmade Chocolate &#183; Ordering system</span>
-          <p>WhatsApp order flow with an owner-managed &ldquo;specials&rdquo; panel that updates the live menu.</p>
-        </div>
-      </a>
-      <a class="teaser-card" href="/portfolio/">
-        <div class="teaser-card__img"><img src="images/thumb-missj.jpg" alt="Nailed by Miss J booking site" loading="lazy"></div>
-        <div class="teaser-card__body">
-          <h3>Nailed by Miss J</h3>
-          <span class="teaser-card__tag">Nail Artistry &#183; Booking system</span>
-          <p>Clients pick a service, date and time, then confirm straight through to WhatsApp.</p>
-        </div>
-      </a>
-    </div>
-
-    <a href="/portfolio/" class="btn btn--primary">View all projects &#8594;</a>
-  </div>
-</section>
-<section id="about" class="section about">
-  <div class="about__grid">
-    <div class="about__text">
-      <span class="section-label"><span class="dot"></span> // 02 — The Studio</span>
-      <h2 class="about__title"><span class="founder-tag">Founder · Tasleem</span></h2>
-      <p>Founded and led by Tasleem, <strong>IFIX &#8212; I.T Services</strong> builds custom websites, booking and ordering systems, and web apps for South African businesses. Based in Cape Town, working remotely with clients anywhere in the country.</p>
-      <p>Every build starts from scratch &#8212; no templates, no page-builder shortcuts. We look at how your business actually takes orders and bookings today, then build the system that handles it properly: live menus, real-time availability, secure checkout, and orders that arrive ready to work with. You get a private preview link before anything goes live, and once it's live we host, secure and maintain it for a flat monthly fee &#8212; no surprise costs, and you're never locked into someone else's platform.</p>
-      <div class="stats">
-        <div class="stats__item"><div class="stats__value">Custom</div><div class="stats__label">Built From Scratch</div></div>
-        <div class="stats__item"><div class="stats__value">Remote</div><div class="stats__label">Nationwide</div></div>
-        <div class="stats__item"><div class="stats__value">Honest</div><div class="stats__label">Free Quotes</div></div>
       </div>
+
     </div>
-    <div class="about__media">
-      <img class="about__media-img" src="images/about-build-poster-new.jpg" alt="A booking system built by IFIX shown on a laptop and phone" loading="lazy">
-      <div class="about__media-frame"></div>
-      <div class="about__media-label"><span class="dot"></span>In the Studio &#8212; Build in Progress</div>
-    </div>
-  </div>
-</section>
-<section id="webservices-tools" class="webservices-tools-section section">
-  <div class="web-main-grid">
-    <div class="calculator-card glass-panel">
-      <span class="section-label" style="margin-bottom: 20px; color: var(--text-muted);">// Build Cost Estimator</span>
-      <form id="quote-form" class="calc-form">
-        
-        <div class="base-price">
-          <div class="base-price-header"><span>Standard Setup Base</span><span>R6,500</span></div>
-          <span class="calc-desc">The foundational build of your custom, mobile-responsive website. Includes core framework setup, a customized homepage design, and basic UI/UX formatting.</span>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <h3>Reliable IT & Web Development Services</h3>
+            <p class="fst-italic">
+              At iFix IT Services, we deliver high-performing web solutions that convert site visitors into paying customers.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Custom Web & Mobile Application Development.</li>
+              <li><i class="ri-check-double-line"></i> Integrated Online Booking & Reservation Systems.</li>
+              <li><i class="ri-check-double-line"></i> Fast, Secure, and Cloud-Hosted Infrastructure.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="calc-options">
-          
-          <div class="calc-option">
-            <div class="calc-info">
-              <span class="calc-label">Additional Pages</span>
-              <span class="calc-price">+R750 per page</span>
-              <span class="calc-desc">Expand your site's footprint with dedicated pages (e.g., About Us, Portfolios, or Contact). Note: Please specify if you prefer a standard vertical scroll or a modern horizontal layout when adding multiple pages.</span>
-              
-              <div id="scroll-dir-wrapper" class="select-wrapper" style="display: none; margin-top: 10px; max-width: 220px;">
-                <select id="scroll-dir" class="custom-select" style="width: 100%;">
-                  <option value="" disabled selected>Select Scroll Layout...</option>
-                  <option value="Vertical Scroll">Vertical Scroll</option>
-                  <option value="Horizontal Layout">Horizontal Layout</option>
-                </select>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>Check our Portfolio</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <!-- Sambo House -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/sambo-house.jpg" class="img-fluid" alt="Sambo House">
+              <div class="portfolio-info">
+                <h4>Sambo House</h4>
+                <p>Web & Booking System</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/sambo-house.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Sambo House"><i class="bx bx-plus"></i></a>
+                  <a href="https://sambohouse.co.za/" target="_blank" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
               </div>
             </div>
-            <div class="select-wrapper">
-              <select id="page-count" class="custom-select">
-                <option value="0">0 Pages</option><option value="1">1 Page</option><option value="2">2 Pages</option><option value="3">3 Pages</option><option value="4">4 Pages</option><option value="5">5 Pages</option>
-              </select>
+          </div>
+
+          <!-- Cape Jobs -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/cape-jobs.jpg" class="img-fluid" alt="Cape Jobs">
+              <div class="portfolio-info">
+                <h4>Cape Jobs</h4>
+                <p>Web</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/cape-jobs.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Cape Jobs"><i class="bx bx-plus"></i></a>
+                  <a href="https://cape-jobs.co.za/" target="_blank" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
             </div>
           </div>
 
-          <label class="calc-option">
-            <div class="calc-info">
-              <span class="calc-label">E-Commerce Integration</span>
-              <span class="calc-price">+R3,500</span>
-              <span class="calc-desc">Transform your site into a fully functional online store. Includes product displays, a shopping cart system, and secure payment gateway connections to process sales.</span>
+          <!-- Nova Personal Agent -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/nova.jpg" class="img-fluid" alt="Nova Personal Agent">
+              <div class="portfolio-info">
+                <h4>Nova Personal Agent</h4>
+                <p>App</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/nova.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Nova Personal Agent"><i class="bx bx-plus"></i></a>
+                  <a href="https://nova-personal-agent.pages.dev/" target="_blank" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
             </div>
-            <input type="checkbox" value="3500" class="calc-checkbox" id="opt-ecomm"><div class="toggle-switch"></div>
-          </label>
-
-          <label class="calc-option">
-            <div class="calc-info">
-              <span class="calc-label">Media &amp; Content Integration</span>
-              <span class="calc-price">+R950 (Files requested via WhatsApp)</span>
-              <span class="calc-desc">Professional placement, resizing, and formatting of the text, images, and videos you provide to ensure a cohesive and polished brand look.</span>
-            </div>
-            <input type="checkbox" value="950" class="calc-checkbox" id="opt-media"><div class="toggle-switch"></div>
-          </label>
-
-          <label class="calc-option">
-            <div class="calc-info">
-              <span class="calc-label">Advanced SEO Setup</span>
-              <span class="calc-price">+R1,800</span>
-              <span class="calc-desc">In-depth Search Engine Optimization, including meta-tagging, site mapping, and keyword structuring, designed to boost your Google ranking and visibility.</span>
-            </div>
-            <input type="checkbox" value="1800" class="calc-checkbox" id="opt-seo"><div class="toggle-switch"></div>
-          </label>
-
-          <label class="calc-option">
-            <div class="calc-info">
-              <span class="calc-label">Domain &amp; Hosting Configuration</span>
-              <span class="calc-price">+R1,200</span>
-              <span class="calc-desc">End-to-end setup of your custom web address (e.g., yourbusiness.co.za), secure SSL certificate installation, and deployment to a high-speed hosting server. (Note: This setup initiates the standard R550/month recurring hosting and maintenance subscription).</span>
-            </div>
-            <input type="checkbox" value="1200" class="calc-checkbox" id="opt-hosting"><div class="toggle-switch"></div>
-          </label>
-
-        </div>
-        <div class="client-details">
-          <span class="client-details-title">Project Details</span>
-          <div class="form-group"><input type="text" id="client-name" placeholder="Your Full Name" required></div>
-          <div class="form-group"><input type="text" id="client-company" placeholder="Company Name" required></div>
-          <div class="form-group"><input type="tel" id="client-whatsapp" placeholder="WhatsApp Number" required></div>
-          <div class="form-group select-wrapper">
-            <select id="client-industry" required>
-              <option value="" disabled selected>Select Your Industry...</option>
-              <option value="Retail & E-Commerce">Retail & E-Commerce</option><option value="Construction & Trade">Construction & Trade</option><option value="Healthcare & Medical">Healthcare & Medical</option><option value="Real Estate">Real Estate</option><option value="Hospitality & Restaurant">Hospitality & Restaurant</option><option value="Logistics & Transport">Logistics & Transport</option><option value="Financial & Legal">Financial & Legal</option><option value="IT & Technology">IT & Technology</option><option value="Other">Other (Mention in description)</option>
-            </select>
           </div>
-          <div class="form-group"><textarea id="client-desc" placeholder="Explain what you want and need on your website..." required></textarea></div>
+
+          <!-- Gas & Electric Planner -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/gas-planner.jpg" class="img-fluid" alt="Gas & Electric Planner">
+              <div class="portfolio-info">
+                <h4>Gas & Electric Planner</h4>
+                <p>Web</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/gas-planner.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Gas & Electric Planner"><i class="bx bx-plus"></i></a>
+                  <a href="https://gas-and-electric-planner.pages.dev/" target="_blank" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="submit-block">
-          <div class="total-price-row"><span>Total:</span><span class="total-price-value" id="calc-total">R6,500</span></div>
-          <div class="deposit-note"><span>50% DEPOSIT</span> required to commence build</div>
-          <div class="desktop-instruction"><strong>💻 Ordering from a PC or Laptop?</strong><br>Clicking submit will open WhatsApp Web. Open WhatsApp on your phone, go to <strong>Linked Devices</strong>, and scan the QR code on your screen to instantly send your order details directly to us.</div>
-          <button type="submit" class="btn btn--primary btn-submit">
-            Submit Build Request 
-            <span class="terms-indicator"><span class="terms-arrow">↓</span> i</span>
-          </button>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
         </div>
-      </form>
-    </div>
-    <div class="showcase-panel">
-      <div class="web-video-grid">
-        <div class="lab-video-wrapper"><span class="video-overlay-tag">Engine Core</span><video muted loop playsinline preload="none" poster="images/engine-core-poster.jpg"><source src="videos/engine-core.mp4" type="video/mp4"></video></div>
-        <div class="lab-video-wrapper"><span class="video-overlay-tag">Celebration Sites</span><img src="images/celebration-poster-v2.jpg" alt="Custom digital birthday and celebration site" loading="lazy"></div>
+
+        <div class="row mt-5">
+          <div class="col-lg-12">
+            <form action="#" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>iFix IT Services</span></strong>. All Rights Reserved
       </div>
     </div>
-  </div>
-</section>
-<section id="contact" class="section contact">
-  <div class="media-fallback" aria-hidden="true"></div>
-  <video class="media-bg" loop muted playsinline preload="none" poster="images/contact-keyboard-poster.jpg" style="opacity:0.08;" aria-hidden="true"><source src="videos/contact-keyboard.mp4" type="video/mp4"></video>
-  <div class="contact__inner">
-    <div class="contact__head"><span class="section-label"><span class="dot"></span> // 03 — Get In Touch</span><h2 class="contact__title">Let's build it.</h2><p>The fastest way to reach us is WhatsApp. Tell us what you need &#8212; a booking system, an ordering site, or something custom &#8212; and we'll come back with a plan and a free quote.</p>
-    </div>
-    <div class="whatsapp-card">
-      <div><div class="whatsapp-card__text">WhatsApp — Free Quote</div><div class="whatsapp-card__number">+27 67 736 8173</div></div>
-      <a href="https://wa.me/27677368173" class="btn btn--primary" target="_blank" rel="noopener">Message Us on WhatsApp</a>
-    </div>
-    <div class="vendor-trust-grid">
-        <div class="trust-box"><span class="trust-label">CIPC ENTERPRISE NUMBER</span><span class="trust-value">2026 / 473706 / 07</span><p class="trust-note">Legally registered & active entity.</p></div>
-        <div class="trust-box"><span class="trust-label">B-BBEE STATUS</span><span class="trust-value level-1">LEVEL 1 EME</span><p class="trust-note">Sworn Affidavit available immediately upon request.</p></div>
-        <div class="trust-box pending"><span class="trust-label">NATIONAL TREASURY CSD</span><span class="trust-value">MAAA Pending</span><p class="trust-note">Central Supplier Database profile processing.</p></div>
-        <div class="trust-box"><span class="trust-label">SARS TAX STATUS</span><span class="trust-value compliant">COMPLIANT</span><p class="trust-note">Good standing verified via SARS TCS.</p></div>
-    </div>
-    <div class="remote">
-      <div class="remote__col">
-        <h3 class="remote__title">How a project starts</h3><p class="remote__intro">No sales calls. You build your own quote, we confirm it, and the work begins.</p>
-        <div class="step"><div class="step__num">01</div><div class="step__body"><p>Use the <a href="#webservices-tools">build estimator</a> above &#8212; pick your pages and add-ons, describe what you need, and watch the price update live. Submit it and it reaches us on WhatsApp with your reference code.</p></div></div>
-        <div class="step"><div class="step__num">02</div><div class="step__body"><p>We review it, confirm the scope and send a formal invoice. A <strong>50% deposit</strong> starts the build; the balance is due on completion.</p></div></div>
-        <div class="step"><div class="step__num">03</div><div class="step__body"><p>You get a <strong>private preview link</strong> to check everything and request changes. Once you're happy, it goes live &#8212; and we keep it hosted, secured and maintained.</p></div></div>
-        <p class="remote__intro" style="margin-top:1.25rem">Not sure what you need yet? <a href="https://wa.me/27677368173" target="_blank" rel="noopener">Message us on WhatsApp</a> and we'll work it out with you first.</p>
-      </div>
-      <div class="remote__col">
-        <div class="hours">
-          <div class="hours__head"><span>Operating Hours</span><span id="hoursStatus">—</span></div>
-          <div class="hours__row" data-days="1,2,3,4,5"><span class="hours__day">Mon &#8211; Fri</span><span class="hours__time">09:00 &#8211; 16:00</span></div>
-          <div class="hours__row" data-days="6"><span class="hours__day">Saturday</span><span class="hours__time">Closed</span></div>
-          <div class="hours__row" data-days="0"><span class="hours__day">Sunday &amp; Public Holidays</span><span class="hours__time">Closed</span></div>
-          <div class="hours__note">Outside these hours, send us a message on WhatsApp &#8212; we'll come back to you first thing.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </footer><!-- End Footer -->
 
-<footer class="footer">
-  <div style="display: flex; align-items: center; gap: 1rem;">
-      <span>© 2026 IFIX-I.T SERVICES — Mitchells Plain, Cape Town</span>
-      <div class="footer-badge-wrap"><div class="css-bbbee-badge">B-BBEE <span>LVL 1</span></div><span class="badge-tooltip">Level 1 EME Contributor</span></div>
-      
-      <a href="#" id="open-terms" class="footer-terms-link">Terms & Conditions</a>
-  </div>
-  <span id="main-clock">// LOCAL TIME —:—</span>
-</footer>
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-<div id="terms-panel" class="terms-overlay">
-  <video class="t-video-bg" loop muted playsinline preload="none" poster="images/terms-bg-poster.jpg"><source src="videos/terms-bg.mp4" type="video/mp4"></video>
-  <div class="t-video-overlay"></div>
-  
-  <div class="t-scroll-wrapper">
-      <nav class="t-nav">
-        <div class="t-nav__logo">IFIX-I.T SERVICES</div>
-        <button id="close-terms" class="t-nav__back">← Return to Site</button>
-      </nav>
-      <div class="t-container">
-        <header class="t-page-header">
-          <span class="t-eyebrow">Legal Framework</span>
-          <h2 class="t-title">Terms & Conditions</h2>
-          <p style="color: var(--t-text-muted); font-family: var(--font-mono); font-size: 0.9rem;">IFIX-I.T SERVICES (PTY) LTD</p>
-        </header>
-        <div class="t-vendor-grid">
-          <div class="t-trust-box"><span class="t-trust-label">CIPC Enterprise Number</span><span class="t-trust-value">2026 / 473706 / 07</span><p class="t-trust-note">Legally registered & active entity.</p></div>
-          <div class="t-trust-box"><span class="t-trust-label">B-BBEE Status</span><span class="t-trust-value highlight">LEVEL 1 EME</span><p class="t-trust-note">Sworn Affidavit available immediately upon request.</p></div>
-          <div class="t-trust-box" style="opacity: 0.7; border-style: dashed;"><span class="t-trust-label">National Treasury CSD</span><span class="t-trust-value">MAAA Pending</span><p class="t-trust-note">Central Supplier Database profile processing.</p></div>
-          <div class="t-trust-box"><span class="t-trust-label">SARS Tax Status</span><span class="t-trust-value cyan">COMPLIANT</span><p class="t-trust-note">Good standing verified via SARS TCS.</p></div>
-        </div>
-        <div class="t-legal-content">
-          <div class="t-legal-section">
-            <h2><span>01.</span> Deposits and Payment Terms</h2>
-            <div class="t-legal-item"><h3>Upfront Deposit</h3><p>A 50% deposit is required before any build commences. This deposit is non-refundable once development work has started, as it covers time reserved for your project.</p></div>
-            <div class="t-legal-item"><h3>Final Balance</h3><p>The remaining 50% is due on completion, once the build has been approved on your private preview link and before the site is deployed to your live domain.</p></div>
-            <div class="t-legal-item"><h3>Payment Methods</h3><p>Payments are made via Electronic Funds Transfer (EFT). Work begins once the deposit reflects in our account. All quotes are valid for 30 days from the date issued.</p></div>
-          </div>
-          <div class="t-legal-section">
-            <h2><span>02.</span> Website Development & Monthly Maintenance Terms</h2>
-            <div class="t-legal-item"><h3>Project Commencement</h3><p>Web design and development will only begin once the 50% non-refundable deposit has been paid and all required client content/media is supplied.</p></div>
-            <div class="t-legal-item"><h3>Monthly Billing Structure</h3><p>Web services are billed monthly via Zoho Invoice on a tiered structure based on utilization. <strong>Base Tier (R550/month):</strong> Charged every month if no client-requested modifications or updates are made. This covers server hosting management, active SSL security certificates, and keeping the site online and secure. <strong>Active Tier (R1,100/month):</strong> Charged during months where the client requests maintenance, content changes, layout modifications, or technical updates (up to an agreed hour limit).</p></div>
-            <div class="t-legal-item"><h3>Subscription Default</h3><p>If a monthly invoice remains unpaid, we will send a reminder and allow 14 days to settle before the site is temporarily suspended. Your files and content are never deleted, and the site is restored as soon as the account is brought up to date. You may cancel the monthly plan at any time with 30 days’ notice, and we will hand over a full export of your site.</p></div>
-          </div>
-          <div class="t-legal-section">
-            <h2><span>03.</span> Ownership, Content &amp; Revisions</h2>
-            <div class="t-legal-item"><h3>Ownership of the Finished Build</h3><p>On full payment, the completed website and its custom design and code belong to the client. Should you choose to move the site elsewhere, we will provide a full export of your files at no charge. You are never locked in.</p></div>
-            <div class="t-legal-item"><h3>Client-Supplied Content</h3><p>The client is responsible for supplying text, images, logos and any other media, and warrants that they hold the rights to use them. IFIX-I.T SERVICES (PTY) LTD accepts no liability for third-party copyright or trademark claims arising from client-supplied material.</p></div>
-            <div class="t-legal-item"><h3>Revisions</h3><p>Each build includes one round of revisions on the private preview link before going live. Further changes, or changes requested after launch, are handled under the monthly maintenance tiers set out in section 02.</p></div>
-            <div class="t-legal-item"><h3>Third-Party Services</h3><p>Payment gateways, domain registrars, hosting providers and similar third-party services are governed by their own terms and pricing. Any fees they charge are separate from our build and maintenance fees.</p></div>
-          </div>
-          <div class="t-legal-section">
-            <h2><span>04.</span> Support &amp; Service Standards</h2>
-            <div class="t-legal-item"><h3>Post-Launch Support</h3><p>We provide a 30-day warranty on the build itself. Any fault, bug or broken function attributable to our work is corrected at no cost within this period.</p></div>
-            <div class="t-legal-item"><h3>Uptime &amp; Backups</h3><p>Sites on an active monthly plan are monitored, backed up and kept updated. While we take every reasonable precaution, we cannot guarantee uninterrupted availability of third-party hosting infrastructure.</p></div>
-            <div class="t-legal-item"><h3>Scope of the Warranty</h3><p>The warranty covers our own work. It does not cover changes made by the client or a third party after handover, nor failures caused by external services outside our control.</p></div>
-          </div>
-          <div class="t-legal-section">
-            <h2><span>05.</span> Corporate and Institutional Governance</h2>
-            <div class="t-legal-item"><h3>B-BBEE & Tax Verification</h3><p>A sworn affidavit verifying our Level 1 B-BBEE status and our SARS Tax Compliance status pin are available immediately upon request for supply chain vetting.</p></div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
-<script>
-    // =========================================================
-    // SMART VIDEO OBSERVER (THE LAG CURE)
-    // =========================================================
-    // Checks real visibility (opacity/display up the ancestor chain), not just
-    // geometric position — a fixed-position element sitting behind the portal
-    // at opacity:0 still "intersects" the viewport, which was causing every
-    // portal-phase video to fetch and play immediately on page load.
-    function isActuallyVisible(el) {
-        let node = el;
-        while (node && node !== document.documentElement) {
-            const cs = window.getComputedStyle(node);
-            if (cs.opacity === '0' || cs.visibility === 'hidden' || cs.display === 'none') return false;
-            node = node.parentElement;
-        }
-        return true;
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // Puzzle box-videos and the terms panel background both have their own
-        // dedicated play/pause handling elsewhere — the generic observer's
-        // geometric check isn't reliable for fixed-position/transform-hidden elements.
-        const allVideos = document.querySelectorAll('video:not(.box-video):not(.t-video-bg):not(.hero-canvas-bg--video)');
-
-        if ('IntersectionObserver' in window) {
-            const videoObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && isActuallyVisible(entry.target)) {
-                        entry.target.play().catch(e => console.log("Autoplay prevented by browser", e));
-                    } else {
-                        entry.target.pause();
-                    }
-                });
-            }, { rootMargin: "0px 0px 200px 0px" }); // Pre-load slightly before it enters the screen
-
-            allVideos.forEach(video => {
-                videoObserver.observe(video);
-            });
-        }
-
-        const heroBgVideo = document.querySelector('.hero-canvas-bg--video');
-        if (heroBgVideo) {
-            const revealHeroVideo = () => heroBgVideo.classList.add('is-playing');
-            heroBgVideo.addEventListener('playing', revealHeroVideo);
-            heroBgVideo.addEventListener('loadeddata', revealHeroVideo);
-            // Covers browsers where autoplay starts before this listener attaches.
-            if (heroBgVideo.readyState >= 2) revealHeroVideo();
-            const playPromise = heroBgVideo.play();
-            if (playPromise && playPromise.then) {
-                playPromise.then(revealHeroVideo).catch(() => {});
-            }
-        }
-    });
-
-    // =========================================================
-    // PORTAL LOGIC
-    // =========================================================
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    const terminalGlass = document.getElementById('terminal-glass');
-    let portalActive = true; 
-
-    document.addEventListener('mousemove', e => {
-        if (!portalActive) return;
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        if (!mouseTicking) {
-            requestAnimationFrame(updateMouseEffects);
-            mouseTicking = true;
-        }
-    });
-
-    let mouseTicking = false;
-    let mouseFrameCount = 0;
-    function updateMouseEffects() {
-        mouseTicking = false;
-        mouseFrameCount++;
-        const cur = document.getElementById('cursor-follower');
-        if (cur) {
-            cur.style.transform = `translate3d(${mouseX - 10}px, ${mouseY - 10}px, 0)`;
-        }
-
-        const dashboardOn = document.body.classList.contains('dashboard-unlocked');
-        const orb = document.getElementById('ambient-orb');
-        if(dashboardOn && orb) {
-            orb.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-            // the spotlight mask is the most expensive repaint here (full-viewport
-            // mask recompute), so it only needs updating at ~30fps, not every frame
-            if (mouseFrameCount % 2 === 0) {
-                document.documentElement.style.setProperty('--mx', mouseX + 'px');
-                document.documentElement.style.setProperty('--my', mouseY + 'px');
-            }
-        }
-
-        if(dashboardOn && terminalGlass) {
-            const xAxis = (window.innerWidth / 2 - mouseX) / 60;
-            const yAxis = (window.innerHeight / 2 - mouseY) / -60;
-            terminalGlass.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        }
-    }
-
-    if (terminalGlass) {
-        document.addEventListener('mouseleave', () => {
-            if(portalActive) terminalGlass.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
-        });
-    }
-
-    setInterval(() => {
-        if(!portalActive) return;
-        const now = new Date();
-        const pClock = document.getElementById('portal-clock');
-        if(pClock) pClock.innerText = now.toLocaleTimeString('en-GB', { timeZone: 'Africa/Johannesburg' });
-    }, 1000);
-
-    function scrambleText(elementId, finalString) {
-        const el = document.getElementById(elementId);
-        if(!el) return;
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-        let iterations = 0;
-        
-        const interval = setInterval(() => {
-            el.innerText = finalString.split("").map((char, index) => {
-                if (index < iterations) return char;
-                return chars[Math.floor(Math.random() * chars.length)];
-            }).join("");
-            
-            if (iterations >= finalString.length) clearInterval(interval);
-            iterations += 1/2; 
-        }, 30);
-    }
-
-    const simulations = {
-        web_order: { 
-            title: "SOLUTION: CUSTOM WEB ORDERING SYSTEM",
-            customer: "Customer browses your custom IFIX-I.T web portal, selects items, and clicks Checkout.",
-            engine: "System verifies live stock, confirms availability instantly on the web page, and processes the order.",
-            business: "Order drops directly into the business WhatsApp with a ready-to-pay invoice, or processes instantly via integrated card gateways. Zero manual DMs needed."
-        },
-        booking: { 
-            title: "SOLUTION: SMART SCHEDULING",
-            customer: "Client opens your custom booking portal and selects 'Fade Haircut - Friday 2PM'.",
-            engine: "System cross-references Barber's live calendar, locks the slot, and triggers an automated SMS.",
-            business: "Slot is booked securely on Google Calendar and staff is notified via WhatsApp instantly."
-        },
-        admin: { 
-            title: "SOLUTION: WORKFLOW AUTOMATION",
-            customer: "Service technician marks 'Job Complete' on their mobile web portal.",
-            engine: "Webhook triggers. System automatically drafts a PDF invoice based on the job details.",
-            business: "Invoice is emailed to the client and logged into accounting software. 2 hours of admin saved."
-        }
-    };
-
-    function runSimulation(type) {
-        document.getElementById('diagnostic-screen').style.display = 'none';
-        const simScreen = document.getElementById('simulation-screen');
-        simScreen.style.display = 'flex';
-
-        const data = simulations[type];
-        scrambleText('sim-title', data.title);
-        
-        document.getElementById('text-customer').innerText = data.customer;
-        document.getElementById('text-engine').innerText = data.engine;
-        document.getElementById('text-business').innerText = data.business;
-
-        setTimeout(() => { document.getElementById('node-customer').classList.add('active'); }, 500);
-        setTimeout(() => { document.getElementById('dot-1').style.animation = 'sendData 1s forwards'; }, 1500);
-        setTimeout(() => { document.getElementById('node-engine').classList.add('active'); }, 2500);
-        setTimeout(() => { document.getElementById('dot-2').style.animation = 'sendData 1s forwards'; }, 4000);
-        setTimeout(() => { document.getElementById('node-business').classList.add('active'); }, 5000);
-        setTimeout(() => { document.getElementById('btn-bridge').classList.add('active'); }, 6500);
-    }
-
-    function transitionToMainSite() {
-        document.body.classList.add('portal-dismissed');
-        
-        portalActive = false; 
-        
-        document.querySelectorAll('.portal-element video').forEach(v => {
-            if(v) v.pause();
-        });
-        
-        setTimeout(() => {
-            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-        }, 150);
-
-        setTimeout(() => {
-            document.querySelectorAll('.portal-element').forEach(el => {
-                el.style.display = 'none'; 
-            });
-            document.body.classList.add('portal-gone');
-        }, 1500); 
-    }
-
-    // =========================================================
-    // MAIN SITE LOGIC
-    // =========================================================
-    const bizHours = { 0: null, 1: [9*60, 16*60], 2: [9*60, 16*60], 3: [9*60, 16*60], 4: [9*60, 16*60], 5: [9*60, 16*60], 6: null };
-    function getSASTNow(){ const now = new Date(); const utc = now.getTime() + now.getTimezoneOffset() * 60000; return new Date(utc + 2 * 60 * 60000); }
-    function pad(n){ return n.toString().padStart(2,'0'); }
-
-    function updateMainStatus(){
-        const now = getSASTNow(); const day = now.getDay(); const minutes = now.getHours() * 60 + now.getMinutes(); const range = bizHours[day]; const isOpen = range && minutes >= range[0] && minutes < range[1];
-        const dot = document.getElementById('statusDot'); const text = document.getElementById('statusText'); const hoursStatus = document.getElementById('hoursStatus'); const mClock = document.getElementById('main-clock');
-        if(isOpen){ dot.classList.remove('dot--closed'); text.textContent = 'OPEN NOW'; hoursStatus.textContent = 'OPEN NOW'; hoursStatus.style.color = 'var(--accent)'; } else { dot.classList.add('dot--closed'); text.textContent = 'CLOSED'; hoursStatus.textContent = 'CLOSED'; hoursStatus.style.color = 'var(--text-muted)'; }
-        if(mClock) mClock.textContent = '// LOCAL TIME (SAST) ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
-        document.querySelectorAll('.hours__row').forEach(row => { const days = row.dataset.days.split(',').map(Number); row.classList.toggle('hours__row--today', days.includes(day)); });
-    }
-    updateMainStatus(); setInterval(updateMainStatus, 30000);
-
-    const introSection = document.getElementById('webservices-intro');
-    const phrases = [document.getElementById('phrase1'), document.getElementById('phrase2'), document.getElementById('phrase3'), document.getElementById('phrase4')];
-
-    let scrollTicking = false;
-    function updateScrollPhrases() {
-        scrollTicking = false;
-        if(!introSection) return;
-        const rect = introSection.getBoundingClientRect();
-        const progress = -rect.top / (rect.height - window.innerHeight);
-
-        phrases.forEach((p, i) => {
-            if(!p) return;
-            const start = i * 0.22; const end = start + 0.2;
-            const active = progress > start && progress < end;
-            p.style.opacity = active ? 1 : 0;
-            p.style.transform = `translate(-50%, ${active ? '-50%' : '-40%'})`;
-        });
-    }
-    window.addEventListener('scroll', () => {
-        if (!scrollTicking) {
-            requestAnimationFrame(updateScrollPhrases);
-            scrollTicking = true;
-        }
-    }, { passive: true });
-
-    const quoteForm = document.getElementById('quote-form'); 
-    const checkboxes = document.querySelectorAll('.calc-checkbox'); 
-    const pageCountSelect = document.getElementById('page-count'); 
-    const totalDisplay = document.getElementById('calc-total');
-    const scrollDirWrapper = document.getElementById('scroll-dir-wrapper');
-    const scrollDirSelect = document.getElementById('scroll-dir');
-
-    function calculateTotal() {
-        let total = 6500 + (parseInt(pageCountSelect.value) * 750);
-        checkboxes.forEach(box => { if (box.checked) total += parseInt(box.value); });
-        totalDisplay.textContent = 'R' + total.toLocaleString(); return total;
-    }
-
-    if(pageCountSelect) {
-        pageCountSelect.addEventListener('change', () => {
-            calculateTotal();
-            if (parseInt(pageCountSelect.value) > 1) {
-                scrollDirWrapper.style.display = 'block';
-            } else {
-                scrollDirWrapper.style.display = 'none';
-                scrollDirSelect.value = ''; 
-            }
-        });
-    }
-
-    checkboxes.forEach(el => el.addEventListener('change', calculateTotal));
-
-    if(quoteForm) {
-        quoteForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('client-name').value;
-            const company = document.getElementById('client-company').value || "Not Provided";
-            const whatsapp = document.getElementById('client-whatsapp').value || "Not Provided";
-            const industry = document.getElementById('client-industry').value || "Not Selected";
-            const desc = document.getElementById('client-desc').value;
-            
-            const pages = parseInt(pageCountSelect.value);
-            const scrollPref = scrollDirSelect.value ? ` [Layout Pref: ${scrollDirSelect.value}]` : '';
-            const pageString = pages > 1 ? `${pages} (+R${(pages * 750).toLocaleString()})${scrollPref}` : `${pages} (+R${(pages * 750).toLocaleString()})`;
-
-            const totalCost = calculateTotal();
-            const depositCost = totalCost / 2;
-            
-            const namePrefix = name.replace(/[^a-zA-Z]/g, '').substring(0, 3).toUpperCase();
-            const randomNum = Math.floor(1000 + Math.random() * 9000);
-            const refCode = `IFIX-${namePrefix}-${randomNum}`;
-            
-            let selectedAddons = [];
-            if(document.getElementById('opt-ecomm').checked) selectedAddons.push("E-Commerce Integration");
-            if(document.getElementById('opt-media').checked) selectedAddons.push("Media & Content Integration");
-            if(document.getElementById('opt-seo').checked) selectedAddons.push("Advanced SEO Setup");
-            if(document.getElementById('opt-hosting').checked) selectedAddons.push("Domain & Hosting Config");
-            
-            const addonString = selectedAddons.length > 0 ? selectedAddons.join("\n- ") : "None";
-
-            const messageText = encodeURIComponent(
-`*NEW WEB SERVICE ORDER REQUEST*
-*REFERENCE CODE:* ${refCode}
-
-*CLIENT DETAILS*
-Name: ${name}
-Company: ${company}
-WhatsApp: ${whatsapp}
-Industry: ${industry}
-
-*PROJECT DESCRIPTION*
-${desc}
-
-*BUILD SPECIFICATIONS*
-Standard Setup Base: R6,500
-Additional Pages: ${pageString}
-Selected Add-ons: 
-- ${addonString}
-
-*ESTIMATED TOTAL:* R${totalCost.toLocaleString()}
-*REQUIRED 50% DEPOSIT:* R${depositCost.toLocaleString()}
-
-Please use ${refCode} as your payment reference once the formal invoice is received.`
-            );
-
-            alert("Order draft generated! You will now be redirected to WhatsApp.\n\n📱 On a phone? It will open the app directly.\n💻 On a PC? Have your phone ready to scan the QR code to send the message.");
-            window.location.href = `https://wa.me/27677368173?text=${messageText}`;
-            quoteForm.reset(); 
-            scrollDirWrapper.style.display = 'none'; 
-            calculateTotal(); 
-        });
-    }
-
-    const openTermsBtn = document.getElementById('open-terms');
-    const closeTermsBtn = document.getElementById('close-terms');
-    const termsPanel = document.getElementById('terms-panel');
-    const termsVideo = document.querySelector('.t-video-bg');
-
-    if(openTermsBtn && termsPanel) {
-        openTermsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            termsPanel.classList.add('active');
-            if (termsVideo) termsVideo.play().catch(() => {});
-        });
-    }
-
-    if(closeTermsBtn && termsPanel) {
-        closeTermsBtn.addEventListener('click', () => {
-            termsPanel.classList.remove('active');
-            if (termsVideo) termsVideo.pause();
-        });
-    }
-</script>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://ifix-itservices.co.za/#business",
-  "name": "IFIX - I.T Services",
-  "legalName": "IFIX-I.T SERVICES (PTY) LTD",
-  "url": "https://ifix-itservices.co.za/",
-  "image": "https://ifix-itservices.co.za/images/og-cover.jpg",
-  "description": "Custom website development, booking and ordering systems, and web apps for South African businesses.",
-  "telephone": "+27677368173",
-  "founder": { "@type": "Person", "name": "Tasleem" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Mitchells Plain",
-    "addressRegion": "Western Cape",
-    "addressCountry": "ZA"
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Cape Town" },
-    { "@type": "Country", "name": "South Africa" }
-  ],
-  "priceRange": "R450 - R20000",
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00", "closes": "16:00"
-  }],
-  "knowsAbout": [
-    "Web development","Online booking systems","Online ordering systems",
-    "E-commerce development","Web application development"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Services",
-    "itemListElement": [
-      { "@type": "Offer", "priceCurrency": "ZAR", "price": "6500",
-        "itemOffered": { "@type": "Service", "name": "Custom website design and development" } },
-      { "@type": "Offer", "priceCurrency": "ZAR", "price": "6500",
-        "itemOffered": { "@type": "Service", "name": "Booking and appointment systems" } },
-      { "@type": "Offer", "priceCurrency": "ZAR", "price": "10000",
-        "itemOffered": { "@type": "Service", "name": "Online ordering and e-commerce systems" } },
-      { "@type": "Offer", "priceCurrency": "ZAR", "price": "450",
-        "itemOffered": { "@type": "Service", "name": "Digital celebration and greeting sites" } }
-    ]
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://ifix-itservices.co.za/",
-  "name": "IFIX - I.T Services",
-  "publisher": { "@id": "https://ifix-itservices.co.za/#business" }
-}
-</script>
 </body>
+
 </html>
