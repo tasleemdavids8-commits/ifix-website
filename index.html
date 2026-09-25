@@ -508,7 +508,7 @@
 
   /* Reviews */
   .portfolio-teaser { background: transparent; padding: clamp(4rem,8vh,6rem) clamp(1.5rem,6vw,5rem); }
-  .teaser-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:2.25rem 0 2rem; text-align:left; }
+  .teaser-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin:2.25rem 0 2rem; text-align:left; }
   @media (max-width:760px){
     .teaser-grid{ grid-template-columns:1fr 1fr; gap:12px; }
     .teaser-card__body{ padding:0.85rem 0.9rem 1rem; }
@@ -767,6 +767,14 @@
           <h3>Nailed by Miss J</h3>
           <span class="teaser-card__tag">Nail Artistry &#183; Booking system</span>
           <p>Clients pick a service, date and time, then confirm straight through to WhatsApp.</p>
+        </div>
+      </a>
+      <a class="teaser-card" href="/portfolio/">
+        <div class="teaser-card__img"><img src="images/sambo-house.jpg" alt="The Sambo House barber site" loading="lazy"></div>
+        <div class="teaser-card__body">
+          <h3>The Sambo House</h3>
+          <span class="teaser-card__tag">Barber &#183; Booking system</span>
+          <p>Clients browse the cuts gallery, pick a service and time, then book straight through to WhatsApp.</p>
         </div>
       </a>
     </div>
