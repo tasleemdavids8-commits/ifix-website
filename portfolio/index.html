@@ -1,77 +1,1529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio - iFix IT Services</title>
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="../assets/css/style.css" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Portfolio — Booking &amp; Ordering Systems | IFIX &#8212; I.T Services</title>
+<meta name="description" content="Custom ordering &amp; booking systems, and hand-built digital celebration sites. Real, live projects. Cape Town &amp; anywhere." />
+<meta name="theme-color" content="#0b0c10" />
+
+<link rel="canonical" href="https://ifix-itservices.co.za/portfolio/" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta property="og:url" content="https://ifix-itservices.co.za/portfolio/" />
+<meta property="og:site_name" content="IFIX - I.T Services" />
+<meta property="og:locale" content="en_ZA" />
+<meta property="og:image" content="https://ifix-itservices.co.za/images/og-portfolio.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Portfolio — Booking &amp; Ordering Systems | IFIX - I.T Services" />
+<meta name="twitter:description" content="Custom ordering/booking systems and hand-built celebration sites — real, live projects, not mockups." />
+<meta name="twitter:image" content="https://ifix-itservices.co.za/images/og-portfolio.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Portfolio — Booking &amp; Ordering Systems | IFIX &#8212; I.T Services" />
+<meta property="og:description" content="Custom ordering/booking systems and hand-built celebration sites — real, live projects, not mockups." />
+<meta name="twitter:card" content="summary_large_image" />
+
+<style>
+/* ============================================================
+   PORTFOLIO — IFIX - I.T Services (web/booking systems + celebration sites)
+   ============================================================ */
+
+:root{
+  --bg:      #0b0c10;
+  --bg-2:    #121419;
+  --panel:   #161920;
+  --line:    rgba(255,255,255,.10);
+  --text:    #f2efe9;
+  --muted:   #9aa0ac;
+  --faint:   #646b78;
+
+  --accent:  #e8b04b;      /* warm gold  */
+  --accent-2:#ff6f91;      /* pink       */
+  --accent-3:#5ec4ff;      /* blue       */
+  --accent-4:#7ee0a8;      /* mint       */
+
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:  ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono:  ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --ease:  cubic-bezier(.16,1,.3,1);
+  --pad:   clamp(20px,5vw,72px);
+  --maxw:  1180px;
+}
+
+*,*::before,*::after{ box-sizing:border-box }
+html{ background:var(--bg); scroll-behavior:smooth; -webkit-text-size-adjust:100% }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--sans); font-size:16px; line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+img,svg,iframe{ display:block; max-width:100% }
+a{ color:inherit; text-decoration:none }
+button,input,textarea,select{ font:inherit; color:inherit }
+::selection{ background:var(--accent); color:#151109 }
+
+/* ---------- ambient ---------- */
+.glowfield{
+  position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(760px 520px at 12% -6%,  rgba(232,176,75,.14), transparent 62%),
+    radial-gradient(700px 520px at 88% 4%,   rgba(255,111,145,.11), transparent 60%),
+    radial-gradient(820px 640px at 50% 108%, rgba(94,196,255,.09),  transparent 62%);
+}
+.grain{
+  position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:.035;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+/* Looping celebration canvas.
+   `contain:layout paint` + its own compositor layer means it can never trigger
+   layout or paint on the page itself — scrolling stays perfectly smooth. */
+#bgfx{
+  position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;
+  contain:layout paint; will-change:transform; transform:translateZ(0);
+}
+
+/* ---------- layout ---------- */
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad) }
+section{ position:relative; z-index:1 }
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  background:rgba(11,12,16,.72); border-bottom:1px solid var(--line);
+}
+.nav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; height:64px;
+}
+.logo{ display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:-.01em }
+.logo .dot{
+  width:9px; height:9px; border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 0 12px rgba(232,176,75,.6);
+}
+.nav nav{ display:flex; align-items:center; gap:clamp(10px,2.4vw,28px); min-width:0 }
+.nav nav a{ font-size:14px; color:var(--muted); transition:color .2s; white-space:nowrap }
+.nav nav a:hover{ color:var(--text) }
+@media (max-width:720px){ .nav nav a.hide-sm{ display:none } }
+/* very small phones: drop the text links, keep the CTA */
+@media (max-width:430px){
+  .nav nav a:not(.btn){ display:none }
+  .nav .wrap{ height:58px }
+  .logo{ font-size:14.5px }
+  .btn.sm{ padding:0 14px }
+}
+/* the fixed ambient layers must never create scroll width */
+.glowfield,.grain{ width:100vw; max-width:100%; overflow:hidden }
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  height:46px; padding:0 22px; border:0; border-radius:999px;
+  font-size:14px; font-weight:600; cursor:pointer; white-space:nowrap;
+  color:#151109; background:linear-gradient(135deg,#f3ce7e,var(--accent));
+  box-shadow:0 8px 24px rgba(232,176,75,.22);
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease), filter .2s;
+}
+.btn:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(232,176,75,.3) }
+.btn:active{ transform:translateY(0) }
+.btn.ghost{
+  color:var(--text); background:transparent; border:1px solid var(--line);
+  box-shadow:none;
+}
+.btn.ghost:hover{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.24) }
+.btn.sm{ height:38px; padding:0 16px; font-size:13px }
+.btn[disabled]{ opacity:.5; pointer-events:none }
+
+/* ---------- hero ---------- */
+.hero{ padding:clamp(56px,11vh,120px) 0 clamp(40px,7vh,80px) }
+.pill{
+  display:inline-flex; align-items:center; gap:8px; margin-bottom:22px;
+  padding:7px 15px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  font-size:12px; letter-spacing:.02em; color:var(--muted);
+}
+.pill i{
+  width:6px; height:6px; border-radius:50%; background:var(--accent-4);
+  box-shadow:0 0 10px var(--accent-4); animation:blip 2.4s ease-in-out infinite;
+}
+@keyframes blip{ 0%,100%{opacity:.5} 50%{opacity:1} }
+
+h1{
+  margin:0 0 20px; font-family:var(--serif); font-weight:400;
+  font-size:clamp(2.5rem,7.4vw,5.4rem); line-height:1.02; letter-spacing:-.02em;
+}
+h1 em{
+  font-style:italic;
+  background:linear-gradient(100deg,var(--accent) 0%,var(--accent-2) 48%,var(--accent-3) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.sub{ max-width:56ch; margin:0 0 30px; color:var(--muted); font-size:clamp(1rem,2.1vw,1.16rem) }
+.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center }
+.hero-note{ margin-top:18px; font-size:13px; color:var(--faint) }
+
+/* ---------- section heads ---------- */
+.shead{ margin-bottom:clamp(26px,4vh,44px) }
+.kicker{
+  margin:0 0 10px; font-family:var(--mono); font-size:11px;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--accent);
+}
+h2{
+  margin:0 0 10px; font-family:var(--serif); font-weight:400;
+  font-size:clamp(1.9rem,4.6vw,3.2rem); line-height:1.08; letter-spacing:-.015em;
+}
+.shead p{ margin:0; max-width:60ch; color:var(--muted) }
+
+/* ---------- work grid ---------- */
+.work{ padding:clamp(40px,7vh,80px) 0 }
+.grid{
+  display:grid; gap:clamp(16px,2.4vw,26px);
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+.card{
+  position:relative; display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:18px; overflow:hidden;
+  background:var(--panel);
+  transition:transform .35s var(--ease), border-color .35s, box-shadow .35s;
+}
+.card:hover{
+  transform:translateY(-5px); border-color:rgba(255,255,255,.2);
+  box-shadow:0 22px 50px rgba(0,0,0,.45);
+}
+.thumb{
+  position:relative; aspect-ratio:16/11; overflow:hidden;
+  display:grid; place-items:center; text-align:center; padding:22px;
+}
+.thumb .tt{
+  font-family:var(--serif); font-size:clamp(1.3rem,3vw,1.9rem);
+  line-height:1.15; letter-spacing:-.01em;
+}
+.thumb .ts{ margin-top:8px; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.72 }
+/* per-theme thumbnails */
+.t-midnight{ background:radial-gradient(120% 100% at 30% 0%,#3b2a63,#0a0a12 70%); color:#f6e7bd }
+.t-golden{
+  background:linear-gradient(180deg,#2a1a4d 0%,#6b3268 34%,#e0656f 62%,#ffa15c 82%,#ffd98a 100%);
+  color:#fff6e6;
+}
+
+.cbody{ padding:20px 20px 22px; display:flex; flex-direction:column; gap:12px; flex:1 }
+.cbody h3{ margin:0; font-size:1.06rem; font-weight:600 }
+.cbody p{ margin:0; color:var(--muted); font-size:14.5px }
+
+/* price header on each card */
+.chead{ display:flex; align-items:baseline; justify-content:space-between; gap:12px }
+.cprice{
+  font-family:var(--serif); font-size:1.85rem; line-height:1; white-space:nowrap;
+  background:linear-gradient(135deg,#f3ce7e,var(--accent));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* what you get */
+.cinc{ margin:2px 0 0; padding:0; list-style:none; display:grid; gap:7px; flex:1 }
+.cinc li{ position:relative; padding-left:20px; font-size:13.5px; color:var(--muted) }
+.cinc li::before{
+  content:"✓"; position:absolute; left:0; top:0; color:var(--accent-4); font-size:12px;
+}
+
+/* featured card */
+.card.feature{ border-color:rgba(232,176,75,.40) }
+.card.feature .cbody{
+  background:linear-gradient(180deg,rgba(232,176,75,.07),transparent 60%);
+}
+.cbadge{
+  position:absolute; top:12px; right:12px; z-index:2;
+  padding:5px 12px; border-radius:999px; font-size:11px; font-weight:600;
+  color:#151109; background:linear-gradient(135deg,#f3ce7e,var(--accent));
+  box-shadow:0 4px 14px rgba(0,0,0,.3);
+}
+.tags{ display:flex; flex-wrap:wrap; gap:6px }
+.tag{
+  font-size:11px; padding:4px 10px; border-radius:999px;
+  border:1px solid var(--line); color:var(--faint);
+}
+.cfoot{ display:flex; gap:14px; align-items:center; margin-top:6px; flex-wrap:wrap }
+.tlink{
+  font-size:13px; font-weight:500; color:var(--muted);
+  transition:color .2s var(--ease);
+}
+.tlink:hover{ color:var(--accent) }
+
+/* emerald thumbnail */
+.occasions{ margin-top:34px; padding:28px 26px 26px; border:1px solid var(--line,#23262d);
+  border-radius:16px; background:rgba(255,255,255,.02) }
+.occasions h3{ margin:0 0 6px; font-size:1.1rem; font-weight:650 }
+.occasions > p{ margin:0 0 20px; color:var(--muted); font-size:14.5px; max-width:62ch }
+.occ-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
+@media (max-width:900px){ .occ-grid{ grid-template-columns:1fr 1fr } }
+@media (max-width:620px){ .occ-grid{ grid-template-columns:1fr } }
+.occ{ padding:14px 16px; border:1px solid var(--line,#23262d); border-radius:12px;
+  background:rgba(255,255,255,.015); transition:border-color .25s ease, transform .25s ease }
+.occ:hover{ border-color:#c9a227; transform:translateY(-2px) }
+.occ b{ display:block; font-size:14.5px; font-weight:600; margin-bottom:4px }
+.occ span{ display:block; color:var(--muted); font-size:13.4px; line-height:1.5 }
+.occ-note{ margin:20px 0 0; font-size:14px; color:var(--muted) }
+
+.t-journey{
+  background:linear-gradient(165deg,#0a1620 0%,#123044 40%,#2c6b7a 68%,#e8d9a8 100%);
+  color:#eaf4f2;
+}
+.t-tribute{
+  background:radial-gradient(120% 100% at 30% 0%,#2b2f45,#0a0b10 74%);
+  color:#dfe4f0;
+}
+
+.t-nikah{
+  background:linear-gradient(165deg,#0d1f1a 0%,#123a2e 38%,#1f5c46 62%,#c9a227 100%);
+  color:#f7ecd2;
+}
+
+.t-emerald{
+  background:radial-gradient(120% 100% at 30% 0%,#14584a,#05201c 72%);
+  color:#f0d79a;
+}
+
+/* web/booking-system case thumbnails */
+.t-platters{ background:radial-gradient(120% 100% at 30% 0%,#5a3a12,#0b0c10 72%); color:#f3ce7e }
+.t-scratch{  background:radial-gradient(120% 100% at 30% 0%,#5c2338,#0b0c10 72%); color:#ffc4d8 }
+.t-vogue{    background:radial-gradient(120% 100% at 30% 0%,#2d1f5c,#0b0c10 72%); color:#d6c4ff }
+.t-nailedbymissj{ background:radial-gradient(120% 100% at 30% 0%,#5c2340,#0c0a0b 72%); color:#f4b8d4 }
+.t-waheed{   background:radial-gradient(120% 100% at 30% 0%,#4a2413,#0b0c10 72%); color:#f0c48a }
+
+/* price badge used on custom-quote cards (no fixed number) */
+.cprice.quote{ font-family:var(--sans); font-size:1rem; font-weight:600; -webkit-text-fill-color:initial; background:none; color:var(--accent) }
+
+/* ---------- work filter tabs ---------- */
+.filters{ display:flex; gap:10px; flex-wrap:wrap; margin:26px 0 34px }
+.ftab{
+  padding:11px 20px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03); color:var(--muted);
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  transition:all .25s var(--ease);
+}
+.ftab:hover{ border-color:rgba(255,255,255,.24); color:var(--text) }
+.ftab.active{
+  color:#151109; border-color:transparent;
+  background:linear-gradient(135deg,#f3ce7e,var(--accent));
+  box-shadow:0 8px 24px rgba(232,176,75,.22);
+}
+.workgroup{ display:none }
+.workgroup.active{ display:block }
+
+/* ---------- how ---------- */
+.how{ padding:clamp(40px,7vh,80px) 0 }
+.steps{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)) }
+.step{
+  padding:24px 22px; border:1px solid var(--line); border-radius:16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),transparent);
+}
+.step b{
+  display:grid; place-items:center; width:32px; height:32px; margin-bottom:14px;
+  border-radius:50%; font-family:var(--mono); font-size:13px;
+  background:rgba(232,176,75,.14); color:var(--accent);
+}
+.step h4{ margin:0 0 6px; font-size:15.5px }
+.step p{ margin:0; color:var(--muted); font-size:14px }
+
+/* ---------- pricing ---------- */
+.pricing{ padding:clamp(40px,7vh,80px) 0 }
+.tiers{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)) }
+.tier{
+  position:relative; padding:26px 24px; border-radius:18px;
+  border:1px solid var(--line); background:var(--panel);
+  display:flex; flex-direction:column; gap:14px;
+}
+.tier.feature{
+  border-color:rgba(232,176,75,.42);
+  background:linear-gradient(180deg,rgba(232,176,75,.07),var(--panel) 60%);
+}
+.tier .badge{
+  position:absolute; top:-11px; left:24px; padding:4px 12px; border-radius:999px;
+  font-size:11px; font-weight:600; color:#151109;
+  background:linear-gradient(135deg,#f3ce7e,var(--accent));
+}
+.tier h3{ margin:0; font-size:1.02rem; font-weight:600 }
+.price{ font-family:var(--serif); font-size:2.5rem; line-height:1 }
+.price small{ font-size:.95rem; color:var(--muted); font-family:var(--sans) }
+.tier ul{ margin:0; padding:0; list-style:none; display:grid; gap:9px; flex:1 }
+.tier li{ position:relative; padding-left:22px; font-size:14px; color:var(--muted) }
+.tier li::before{
+  content:"✓"; position:absolute; left:0; top:0; color:var(--accent-4); font-size:13px;
+}
+.note{ margin-top:16px; font-size:13px; color:var(--faint) }
+
+/* ---------- contact ---------- */
+.contact{ padding:clamp(40px,7vh,90px) 0 }
+.cbox{
+  display:grid; gap:clamp(24px,4vw,48px); align-items:start;
+  grid-template-columns:1fr; padding:clamp(24px,4vw,44px);
+  border:1px solid var(--line); border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),transparent);
+}
+@media (min-width:880px){ .cbox{ grid-template-columns:.9fr 1.1fr } }
+
+form{ display:grid; gap:14px }
+.row2{ display:grid; gap:14px; grid-template-columns:1fr }
+@media (min-width:560px){ .row2{ grid-template-columns:1fr 1fr } }
+label{ display:grid; gap:7px; font-size:13px; color:var(--muted) }
+input,select,textarea{
+  width:100%; padding:12px 14px; border-radius:11px;
+  background:rgba(255,255,255,.04); border:1px solid var(--line);
+  color:var(--text); outline:none; font-size:15px;
+  transition:border-color .2s, background .2s, box-shadow .2s;
+}
+textarea{ min-height:110px; resize:vertical }
+input:focus,select:focus,textarea:focus{
+  border-color:rgba(232,176,75,.6); background:rgba(255,255,255,.06);
+  box-shadow:0 0 0 3px rgba(232,176,75,.14);
+}
+input::placeholder,textarea::placeholder{ color:var(--faint) }
+select option{ background:#161920; color:var(--text) }
+.hp{ position:absolute; left:-9999px; opacity:0; height:0; width:0 }
+.formnote{ font-size:12.5px; color:var(--faint) }
+.send-row{ display:grid; gap:10px; grid-template-columns:1fr }
+@media (min-width:480px){ .send-row{ grid-template-columns:1.25fr 1fr } }
+.send-row .btn{ width:100% }
+.send-row .btn svg{ flex:0 0 auto }
+.ok{
+  padding:14px 16px; border-radius:12px; font-size:14.5px;
+  border:1px solid rgba(126,224,168,.34); background:rgba(126,224,168,.10);
+  color:#bff3d5;
+}
+.err{
+  padding:12px 14px; border-radius:12px; font-size:14px;
+  border:1px solid rgba(255,111,145,.34); background:rgba(255,111,145,.10);
+  color:#ffc4d2;
+}
+
+.clinks{ display:grid; gap:12px; margin-top:20px }
+.clink{
+  display:flex; align-items:center; gap:12px; padding:13px 15px;
+  border:1px solid var(--line); border-radius:13px;
+  transition:border-color .25s, background .25s, transform .25s var(--ease);
+}
+.clink:hover{ border-color:rgba(255,255,255,.24); background:rgba(255,255,255,.04); transform:translateX(3px) }
+.clink b{ display:block; font-size:14.5px; font-weight:600 }
+.clink span{ display:block; font-size:12.5px; color:var(--faint) }
+.clink .ic{
+  display:grid; place-items:center; width:36px; height:36px; flex:0 0 36px;
+  border-radius:10px; background:rgba(255,255,255,.05); font-size:16px;
+}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line); padding:28px 0 40px;
+  color:var(--faint); font-size:13px;
+}
+footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:wrap }
+
+/* ---------- reveal on scroll ---------- */
+[data-r]{ opacity:0; transform:translateY(22px) }
+[data-r].in{
+  opacity:1; transform:none;
+  transition:opacity .8s var(--ease), transform .9s var(--ease);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important; transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  [data-r]{ opacity:1 !important; transform:none !important }
+}
+
+</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 </head>
 <body>
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="../index.html">iFix<span>.</span></a></h1>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link" href="../index.html">Home</a></li>
-          <li><a class="nav-link active" href="#">Portfolio</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
+
+<div class="glowfield"></div>
+<div class="grain"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot"></span> IFIX &#8212; I.T&nbsp;Services</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#how" class="hide-sm">How it works</a>
+      <a href="#work" class="hide-sm">Pricing</a>
+      <a class="btn sm" href="#contact">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="pill" data-r><i></i> Taking on projects · Cape Town &amp; anywhere</span>
+    <h1 data-r>Systems that run things.<br>Pages people actually <em>keep</em>.</h1>
+    <p class="sub" data-r>
+      Two things we build: custom ordering &amp; booking systems that get a
+      business out of its DMs, and hand-built celebration sites made for one
+      person, one occasion. Real, live projects below — not mockups.
+    </p>
+    <div class="hero-cta" data-r>
+      <a class="btn" href="#work">See the work →</a>
+      <a class="btn ghost" href="#contact">Start a project</a>
     </div>
-  </header>
-  <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio</h2>
-          <ol><li><a href="../index.html">Home</a></li><li>Portfolio</li></ol>
-        </div>
-      </div>
-    </section>
-    <section id="portfolio" class="portfolio">
-      <div class="container" data-aos="fade-up">
-        <div class="row portfolio-container">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="../assets/img/portfolio/sambo-house.jpg" class="img-fluid">
-              <div class="portfolio-info">
-                <h4>Sambo House</h4><p>Web & Booking System</p>
-                <div class="portfolio-links">
-                  <a href="../assets/img/portfolio/sambo-house.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="https://sambohouse.co.za/" target="_blank"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="../assets/img/portfolio/cape-jobs.jpg" class="img-fluid">
-              <div class="portfolio-info">
-                <h4>Cape Jobs</h4><p>Web</p>
-                <div class="portfolio-links">
-                  <a href="../assets/img/portfolio/cape-jobs.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                  <a href="https://cape-jobs.co.za/" target="_blank"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
+    <p class="hero-note" data-r>Every example below is a real, live project — open one and tap around.</p>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="shead" data-r>
+      <p class="kicker">Live examples &amp; pricing</p>
+      <h2>Pick what you're here for</h2>
+      <p>Every one is built from scratch — click any of them and have a proper
+         look. These are the real sites, not screenshots. No watermarks and no
+         platform lock-in: the finished build is yours. Hosting and upkeep runs
+         at R550/month, and you can cancel anytime and take your files with you.</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Portfolio category">
+      <button class="ftab active" data-target="web" type="button">Web &amp; Booking Systems &#183; from R6,500</button>
+      <button class="ftab" data-target="birthday" type="button">Celebration Sites &#183; R450&#8211;R2,400</button>
+    </div>
+
+    <div class="workgroup active" id="work-web">
+    <div class="grid">
+
+      <article class="card" data-r>
+        <div class="thumb t-platters">
+          <div>
+            <div class="tt">Platters &amp; Co</div>
+            <div class="ts">Catering &amp; Events</div>
           </div>
         </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Platters &amp; Co</h3>
+            <span class="cprice quote">From R6,500</span>
+          </div>
+          <p>A full ordering platform for a catering business: customers browse
+             a live menu with imagery and portions, add platters to an order,
+             and pay through a secure checkout — no manual EFT confirmations,
+             no quoting prices over DM.</p>
+          <ul class="cinc">
+            <li>Live menu with imagery &amp; portions</li>
+            <li>Secure checkout, no manual EFT</li>
+            <li>Orders arrive as ready-to-prep kitchen tickets</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="https://plattersandco.netlify.app/" target="_blank" rel="noopener">View live project ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-scratch">
+          <div>
+            <div class="tt">From Scratch</div>
+            <div class="ts">Bespoke Bakery</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>From Scratch</h3>
+            <span class="cprice quote">From R6,500</span>
+          </div>
+          <p>Custom cake orders used to mean five DMs just to settle on
+             flavour and size. This builder lets a client choose cake type,
+             flavour and size, watch the price update live, then submit the
+             whole spec as one clean booking inquiry.</p>
+          <ul class="cinc">
+            <li>Interactive cake order builder</li>
+            <li>Live price calculator</li>
+            <li>One message instead of five</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="https://fromscratch-prototype.netlify.app/" target="_blank" rel="noopener">View live project ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-vogue">
+          <div>
+            <div class="tt">Vogue Beauty</div>
+            <div class="ts">Beauty &amp; Lashes</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Vogue Beauty</h3>
+            <span class="cprice quote">From R6,500</span>
+          </div>
+          <p>A booking-first landing page for a lash studio: clients see
+             available packages, secure their slot directly, and move
+             straight into a WhatsApp-connected purchase flow for add-ons —
+             so nothing is manually confirmed from scratch.</p>
+          <ul class="cinc">
+            <li>Direct booking &amp; slot locking</li>
+            <li>WhatsApp-connected checkout for add-ons</li>
+            <li>Fewer no-shows via confirmed slots</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="https://voguebeauty.netlify.app/" target="_blank" rel="noopener">View live project ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-nailedbymissj">
+          <div>
+            <div class="tt">Nailed by Miss J</div>
+            <div class="ts">Nail Artistry</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Nailed by Miss J</h3>
+            <span class="cprice quote">From R6,500</span>
+          </div>
+          <p>A studio site for a nail artist: clients browse a gallery of
+             her work, pick a service and date, and confirm straight through
+             to WhatsApp — no back-and-forth over prices or open slots.</p>
+          <ul class="cinc">
+            <li>Gallery showcase of finished sets</li>
+            <li>Service, date &amp; time picker into WhatsApp booking</li>
+            <li>Studio policy &amp; pricing built right in</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="https://jesslyn-vert.vercel.app/" target="_blank" rel="noopener">View live project ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-waheed">
+          <div>
+            <div class="tt">Treats by Waheed</div>
+            <div class="ts">Handmade Chocolate</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Treats by Waheed</h3>
+            <span class="cprice quote">From R6,500</span>
+          </div>
+          <p>A complete ordering site for a handmade chocolate business, with
+             a WhatsApp-based order flow and a password-protected admin panel
+             so the owner can add or remove "specials" himself — they
+             auto-appear on the live menu.</p>
+          <ul class="cinc">
+            <li>WhatsApp-based order flow</li>
+            <li>Owner-managed "specials" admin panel</li>
+            <li>Menu auto-refreshes as specials change</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="work/treats-by-waheed/index.html" target="_blank" rel="noopener">View live project ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    </div>
+
+    <div class="workgroup" id="work-birthday">
+    <div class="grid">
+
+      <article class="card" data-r>
+        <div class="thumb t-golden">
+          <div>
+            <div class="tt">Golden Hour</div>
+            <div class="ts">Single page · Scroll</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>The Card</h3>
+            <span class="cprice">R450</span>
+          </div>
+          <p>One page, no clicking — just scroll. The sky travels from dawn to a
+             starry night as the wish unfolds, and the candle goes out along the way.</p>
+          <ul class="cinc">
+            <li>A single scrolling page</li>
+            <li>Their name &amp; your message</li>
+            <li>Animation, confetti &amp; music</li>
+            <li>Live link within 48 hours</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="work/goldenhour/index.html" target="_blank" rel="noopener">Open demo ↗</a>
+            <a class="tlink" href="#contact">Order this →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card feature" data-r>
+        <span class="cbadge">Most popular</span>
+        <div class="thumb t-midnight">
+          <div>
+            <div class="tt">A Year Around the Sun</div>
+            <div class="ts">Midnight &amp; Gold</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>The Experience</h3>
+            <span class="cprice">R950</span>
+          </div>
+          <p>Five chapters you click through: a constellation you light star by
+             star, and candles you blow out with your actual breath.</p>
+          <ul class="cinc">
+            <li>Five-page click-through journey</li>
+            <li>Up to 5 of your photos</li>
+            <li>Interactive cake, gift or letter</li>
+            <li>Custom colours &amp; wording</li>
+            <li>One round of changes</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="work/midnight/index.html" target="_blank" rel="noopener">Open demo ↗</a>
+            <a class="tlink" href="#contact">Order this →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-emerald">
+          <div>
+            <div class="tt">The Emerald Years</div>
+            <div class="ts">Emerald &amp; Brass</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Occasions</h3>
+            <span class="cprice">R1,800</span>
+          </div>
+          <p>For the big ones. A monogram crest, a timeline of the years, glasses
+             that clink, and the evening's programme — built around your occasion.</p>
+          <ul class="cinc">
+            <li>Weddings &amp; anniversaries</li>
+            <li>Memorial &amp; tribute pages</li>
+            <li>Corporate &amp; client gifting</li>
+            <li>Unlimited photos &amp; sections</li>
+            <li>Custom domain setup</li>
+            <li>Written together with you</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="work/emerald/index.html" target="_blank" rel="noopener">Open demo ↗</a>
+            <a class="tlink" href="#contact">Enquire →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-nikah">
+          <div>
+            <div class="tt">The Nikah Suite</div>
+            <div class="ts">Concept &#183; Invitation &amp; keepsake</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Nikah &amp; Walima</h3>
+            <span class="cprice">From R2,400</span>
+          </div>
+          <p>A private invitation that becomes a keepsake. Guests open a link,
+             read the couple&#39;s story chapter by chapter, RSVP straight through
+             WhatsApp &#8212; and after the day, the same page turns into the
+             photo album everyone was sent.</p>
+          <ul class="cinc">
+            <li>Bespoke calligraphy title &amp; monogram</li>
+            <li>Chapter journey: the story, the families, the day</li>
+            <li>WhatsApp RSVP with live guest count</li>
+            <li>Venue map, programme &amp; dress code</li>
+            <li>Converts to a photo keepsake after the event</li>
+            <li>Custom domain for the couple</li>
+          </ul>
+          <div class="cfoot">
+            <a class="tlink" href="#contact">Enquire &#8594;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-journey">
+          <div>
+            <div class="tt">The Journey</div>
+            <div class="ts">Concept &#183; Send-off &amp; return</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Umrah &amp; Hajj</h3>
+            <span class="cprice">From R1,200</span>
+          </div>
+          <p>Two pages, one link. Before they leave, family and friends add their
+             duas and well-wishes to a page that fills up as the date approaches.
+             When they return, the same link becomes the album of the journey.</p>
+          <ul class="cinc">
+            <li>Duas &amp; messages wall, added via WhatsApp</li>
+            <li>Countdown to departure</li>
+            <li>Return chapter for photos &amp; reflections</li>
+            <li>Stays online as a permanent keepsake</li>
+          </ul>
+          <div class="cfoot">
+            <a class="tlink" href="#contact">Enquire &#8594;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-r>
+        <div class="thumb t-tribute">
+          <div>
+            <div class="tt">In Memory</div>
+            <div class="ts">Concept &#183; Tribute page</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Memorial &amp; Tribute</h3>
+            <span class="cprice">From R1,500</span>
+          </div>
+          <p>A quiet, permanent page for someone who has passed. No animation,
+             no confetti &#8212; just their life told properly, and space for the
+             people who loved them to add a memory whenever they want to.</p>
+          <ul class="cinc">
+            <li>A life in chapters, written with the family</li>
+            <li>Photo gallery &amp; favourite passages</li>
+            <li>Open memory wall for family and friends</li>
+            <li>Private link or public, your choice</li>
+            <li>Hosted permanently, never taken down</li>
+          </ul>
+          <div class="cfoot">
+            <a class="tlink" href="#contact">Enquire &#8594;</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    </div>
+
+    <div class="occasions" data-r>
+      <h3>Also built to order</h3>
+      <p>Every one is designed from scratch around the person and the occasion.
+         Same three tiers &#8212; The Card, The Experience, Occasions &#8212; unless noted.</p>
+      <div class="occ-grid">
+        <div class="occ"><b>Baby announcement &amp; Aqiqah</b><span>The name held back until the final chapter.</span></div>
+        <div class="occ"><b>Matric farewell &amp; graduation</b><span>The year in chapters, ending on the night itself.</span></div>
+        <div class="occ"><b>Engagement &amp; proposals</b><span>Built to be opened in the moment, on one phone.</span></div>
+        <div class="occ"><b>Eid &amp; Ramadan greetings</b><span>One page sent to everyone, personalised for each name.</span></div>
+        <div class="occ"><b>Retirement &amp; farewell</b><span>Colleagues contribute messages; we compile the journey.</span></div>
+        <div class="occ"><b>Business milestones</b><span>Ten years, twenty-five years &#8212; the story of the company.</span></div>
+        <div class="occ"><b>Corporate client gifting</b><span>Personalised pages sent at scale to a client list. Quoted per volume.</span></div>
       </div>
-    </section>
-  </main>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../assets/js/main.js"></script>
+      <p class="occ-note">Something not listed? If it has a story, it can be built.
+         <a class="tlink" href="#contact">Tell us the occasion &#8594;</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= HOW ================= -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="shead" data-r>
+      <p class="kicker">How it works</p>
+      <h2>You tell us what it's for. We send you a link.</h2>
+    </div>
+    <div class="steps">
+      <div class="step" data-r>
+        <b>1</b>
+        <h4>Tell us what you need</h4>
+        <p>A booking/ordering system for your business, or a celebration site
+           for someone. Either way, tell us the brief — no jargon required.</p>
+      </div>
+      <div class="step" data-r>
+        <b>2</b>
+        <h4>We plan it around you</h4>
+        <p>Your actual services and pricing for a system, or their name and
+           story for a celebration site. Not a generic template either way.</p>
+      </div>
+      <div class="step" data-r>
+        <b>3</b>
+        <h4>We build it</h4>
+        <p>You get a private preview link first and can ask for changes before
+           anything goes live.</p>
+      </div>
+      <div class="step" data-r>
+        <b>4</b>
+        <h4>It goes live</h4>
+        <p>One link, works on any phone. Yours to keep, plus support so it
+           keeps running.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="cbox">
+
+      <div data-r>
+        <p class="kicker">Start a project</p>
+        <h2 style="font-size:clamp(1.7rem,4vw,2.6rem)">Let&#39;s build it.</h2>
+        <p style="color:var(--muted);margin:0">
+          Tell us a little about what you need — a system for your business,
+          or a celebration site for someone. We'll reply with a plan and a
+          price, usually the same day.
+        </p>
+
+        <div class="clinks">
+          <a class="clink" id="waLink" href="#" target="_blank" rel="noopener">
+            <span class="ic">💬</span>
+            <span><b>WhatsApp</b><span>Fastest reply</span></span>
+          </a>
+          <a class="clink" id="mailLink" href="#">
+            <span class="ic">✉️</span>
+            <span><b>Email</b><span>Send us the details</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div data-r>
+        <!-- Sends via WhatsApp or email — no server required, works anywhere -->
+        <form id="enquiryForm" novalidate>
+          <div class="row2">
+            <label>Your name
+              <input name="name" placeholder="Your name" autocomplete="name" />
+            </label>
+            <label>Email or WhatsApp
+              <input name="contact" placeholder="So I can reply" />
+            </label>
+          </div>
+
+          <div class="row2">
+            <label>Business name, or who it's for
+              <input name="recipient" placeholder="e.g. your business, or their first name" />
+            </label>
+            <label>When do you need it live?
+              <input name="date" type="date" />
+            </label>
+          </div>
+
+          <div class="row2">
+            <label>What do you need?
+              <select name="occasion">
+                <option selected disabled value="">Select what you need&#8230;</option>
+                <optgroup label="For a business">
+                  <option>Website</option>
+                  <option>Booking / appointment system</option>
+                  <option>Ordering / e-commerce system</option>
+                  <option>Custom web app</option>
+                  <option>Corporate client gifting</option>
+                  <option>Business milestone page</option>
+                </optgroup>
+                <optgroup label="Celebration site">
+                  <option>Birthday</option>
+                  <option>Nikah &amp; Walima</option>
+                  <option>Wedding / anniversary</option>
+                  <option>Engagement / proposal</option>
+                  <option>Umrah &amp; Hajj</option>
+                  <option>Baby announcement / Aqiqah</option>
+                  <option>Matric farewell / graduation</option>
+                  <option>Eid &amp; Ramadan greeting</option>
+                  <option>Memorial &amp; tribute</option>
+                  <option>Retirement &amp; farewell</option>
+                  <option>Other occasion</option>
+                </optgroup>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>Package
+              <select name="package">
+                <option selected disabled value="">Select a package&#8230;</option>
+                <option>Web / booking system &#8212; from R6,500</option>
+                <option>The Card &#8212; R450</option>
+                <option>The Experience &#8212; R950</option>
+                <option>Occasions &#8212; R1,800</option>
+                <option>Nikah &amp; Walima &#8212; from R2,400</option>
+                <option>Umrah &amp; Hajj &#8212; from R1,200</option>
+                <option>Memorial &amp; Tribute &#8212; from R1,500</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+          </div>
+
+          <label>Tell us more
+            <textarea name="about" placeholder="What's the business (or the person)? What's currently slow or DM-heavy about it, or what's the story you want told?"></textarea>
+          </label>
+
+          <div class="send-row">
+            <button class="btn" type="button" id="sendWa">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.6 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/>
+              </svg>
+              Send on WhatsApp
+            </button>
+            <button class="btn ghost" type="button" id="sendMail">
+              ✉️ Send by email
+            </button>
+          </div>
+          <p class="formnote">
+            Opens WhatsApp or your email app with everything filled in — just hit send.
+            No spam, ever.
+          </p>
+          <div id="formMsg" aria-live="polite"></div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>IFIX-I.T SERVICES · Cape Town, South Africa</span>
+    <span>Custom systems &amp; celebration sites, built one at a time.</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   PORTFOLIO — behaviour
+   ------------------------------------------------------------
+   >>> EDIT YOUR CONTACT DETAILS HERE <<<
+   ============================================================ */
+var CONTACT = {
+  whatsapp: "27677368173",              // 067 736 8173 in international format
+  email:    "ifix44007@gmail.com",
+  name:     "Tasleem"
+};
+
+(function () {
+  "use strict";
+
+  /* ---------- wire up contact links ---------- */
+  var msg = encodeURIComponent(
+    "Hi! I saw your portfolio and I'd like to start a project."
+  );
+  var wa = document.getElementById("waLink");
+  if (wa) {
+    wa.href = "https://wa.me/" + CONTACT.whatsapp + "?text=" + msg;
+    var waSub = wa.querySelector("span span");
+    if (waSub && CONTACT.whatsapp) {
+      // pretty-print a SA number: 27677368173 -> +27 67 736 8173
+      var d = CONTACT.whatsapp.replace(/\D/g, "");
+      waSub.textContent = (d.length === 11)
+        ? "+" + d.slice(0,2) + " " + d.slice(2,4) + " " + d.slice(4,7) + " " + d.slice(7)
+        : "+" + d;
+    }
+  }
+  var ml = document.getElementById("mailLink");
+  if (ml) {
+    ml.href = "mailto:" + CONTACT.email +
+      "?subject=" + encodeURIComponent("New project enquiry") +
+      "&body=" + msg;
+    var mlSub = ml.querySelector("span span");
+    if (mlSub) mlSub.textContent = CONTACT.email;
+  }
+
+  /* ---------- work filter tabs ---------- */
+  var tabs = [].slice.call(document.querySelectorAll(".ftab"));
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.classList.remove("active"); });
+      tab.classList.add("active");
+      var target = tab.getAttribute("data-target");
+      document.querySelectorAll(".workgroup").forEach(function (g) {
+        var show = g.id === "work-" + target;
+        g.classList.toggle("active", show);
+        if (show) {
+          // IntersectionObserver never fires on display:none elements,
+          // so make sure cards in a newly-revealed group are visible.
+          [].slice.call(g.querySelectorAll("[data-r]")).forEach(function (el) {
+            el.classList.add("in");
+          });
+        }
+      });
+    });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var items = [].slice.call(document.querySelectorAll("[data-r]"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var sibs = [].slice.call(e.target.parentNode.children)
+                     .filter(function (n) { return n.hasAttribute("data-r"); });
+        var i = Math.max(0, sibs.indexOf(e.target));
+        setTimeout(function () { e.target.classList.add("in"); }, i * 80);
+        io.unobserve(e.target);
+      });
+    }, { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- enquiry form ----------
+     No server, no backend, nothing to break. The two buttons build a
+     readable message from the fields and hand it to WhatsApp or the
+     visitor's email app, pre-filled. Works locally, on Netlify, anywhere. */
+  var form = document.getElementById("enquiryForm");
+  var out  = document.getElementById("formMsg");
+  var waBtn = document.getElementById("sendWa");
+  var mailBtn = document.getElementById("sendMail");
+
+  function field(n) {
+    var el = form.querySelector('[name="' + n + '"]');
+    return el && el.value ? el.value.trim() : "";
+  }
+
+  /* Build a tidy plain-text enquiry. Only includes what was filled in. */
+  function buildMessage() {
+    var lines = ["Hi! I'd like to start a project.", ""];
+    var rows = [
+      ["Name",     field("name")],
+      ["Contact",  field("contact")],
+      ["For",      field("recipient")],
+      ["Needed by",field("date")],
+      ["Occasion", field("occasion")],
+      ["Package",  field("package")]
+    ];
+    rows.forEach(function (r) {
+      if (r[1]) lines.push(r[0] + ": " + r[1]);
+    });
+    var about = field("about");
+    if (about) { lines.push("", "About them:", about); }
+    return lines.join("\n");
+  }
+
+  /* Only name + contact are genuinely required. */
+  function valid() {
+    var missing = [];
+    if (!field("name"))    missing.push("your name");
+    if (!field("contact")) missing.push("an email or WhatsApp number");
+    if (missing.length) {
+      out.innerHTML = '<div class="err">Please add ' + missing.join(" and ") + '.</div>';
+      var first = !field("name")
+        ? form.querySelector('[name="name"]')
+        : form.querySelector('[name="contact"]');
+      if (first) first.focus();
+      return false;
+    }
+    return true;
+  }
+
+  function sent(where) {
+    out.innerHTML =
+      '<div class="ok">Opening ' + where + ' with your enquiry filled in — ' +
+      'just press send. If nothing opened, use the ' + where +
+      ' button just above.</div>';
+    confetti();
+  }
+
+  if (waBtn) {
+    waBtn.addEventListener("click", function () {
+      if (!valid()) return;
+      var url = "https://wa.me/" + CONTACT.whatsapp +
+                "?text=" + encodeURIComponent(buildMessage());
+      window.open(url, "_blank", "noopener");
+      sent("WhatsApp");
+    });
+  }
+
+  if (mailBtn) {
+    mailBtn.addEventListener("click", function () {
+      if (!valid()) return;
+      var subject = "Project enquiry" +
+                    (field("recipient") ? " — " + field("recipient") : "");
+      var url = "mailto:" + CONTACT.email +
+                "?subject=" + encodeURIComponent(subject) +
+                "&body="    + encodeURIComponent(buildMessage());
+      window.location.href = url;
+      sent("your email app");
+    });
+  }
+
+  /* Enter key inside the form shouldn't reload the page */
+  if (form) {
+    form.addEventListener("submit", function (e) { e.preventDefault(); });
+    form.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
+        e.preventDefault();
+        if (waBtn) waBtn.click();
+      }
+    });
+  }
+
+  /* ---------- tiny confetti on success ---------- */
+  function confetti() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var c = document.createElement("canvas");
+    c.style.cssText = "position:fixed;inset:0; width:100%; height:100%;z-index:99;pointer-events:none";
+    document.body.appendChild(c);
+    var x = c.getContext("2d");
+    var DPR = Math.min(devicePixelRatio || 1, 1.5);
+    c.width = innerWidth * DPR; c.height = innerHeight * DPR;
+    c.style.width = innerWidth + "px"; c.style.height = innerHeight + "px";
+    x.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var COL = ["#e8b04b", "#ff6f91", "#5ec4ff", "#7ee0a8", "#ffffff"];
+    var P = [];
+    for (var i = 0; i < 90; i++) {
+      var a = Math.random() * 6.283, s = 2 + Math.random() * 8;
+      P.push({
+        x: innerWidth / 2, y: innerHeight * .55,
+        vx: Math.cos(a) * s, vy: Math.sin(a) * s - 4,
+        w: 4 + Math.random() * 7, h: 6 + Math.random() * 9,
+        r: Math.random() * 6.28, vr: (Math.random() - .5) * .3,
+        c: COL[(Math.random() * COL.length) | 0], life: 150, age: 0
+      });
+    }
+    (function loop() {
+      x.clearRect(0, 0, innerWidth, innerHeight);
+      var alive = 0;
+      P.forEach(function (p) {
+        p.vy += .18; p.vx *= .99; p.x += p.vx; p.y += p.vy;
+        p.r += p.vr; p.age++;
+        var f = 1 - p.age / p.life;
+        if (f <= 0 || p.y > innerHeight + 40) return;
+        alive++;
+        x.globalAlpha = f; x.fillStyle = p.c;
+        x.save(); x.translate(p.x, p.y); x.rotate(p.r);
+        x.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        x.restore();
+      });
+      x.globalAlpha = 1;
+      if (alive) requestAnimationFrame(loop);
+      else c.remove();
+    })();
+  }
+
+  /* ---------- smooth anchor scroll ---------- */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("href");
+    if (id === "#" || id.length < 2) return;
+    var t = document.querySelector(id);
+    if (!t) return;
+    e.preventDefault();
+    t.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", id);
+  });
+})();
+
+</script>
+<script>
+/* ============================================================
+   AMBIENT CELEBRATION BACKGROUND
+   ------------------------------------------------------------
+   A slow, endlessly looping celebration behind the page:
+   drifting light motes, falling confetti ribbons, rising balloon
+   silhouettes and the occasional soft firework bloom.
+
+   Built so it can never hurt scrolling:
+     · fixed + pointer-events:none + contain:layout paint  (own layer,
+       never triggers page layout or paint)
+     · NO scroll listeners driving animation
+     · work is throttled while the user is actively scrolling
+     · pauses completely when the tab is hidden
+     · particle budget scales to the device, then self-corrects
+       downward if real frame times come back slow
+     · delta-time motion, so it looks identical at 30 or 120fps
+     · disabled entirely for prefers-reduced-motion
+   ============================================================ */
+(function () {
+  "use strict";
+
+  var W = window, D = document;
+  if (W.matchMedia && W.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  /* ---------- device tier ---------- */
+  var cores  = navigator.hardwareConcurrency || 4;
+  var mem    = navigator.deviceMemory || 4;
+  var touch  = matchMedia("(hover:none) and (pointer:coarse)").matches;
+  var small  = Math.min(screen.width, screen.height) < 820;
+  var tier   = (cores <= 4 || mem <= 4 || small) ? "low" : (cores <= 8 ? "mid" : "high");
+  var scale  = tier === "low" ? .45 : tier === "mid" ? .72 : 1;
+
+  /* ---------- canvas ---------- */
+  var c = D.createElement("canvas");
+  c.id = "bgfx";
+  c.setAttribute("aria-hidden", "true");
+  var host = D.querySelector(".glowfield");
+  (host && host.parentNode ? host.parentNode : D.body).insertBefore(c, host ? host.nextSibling : null);
+
+  var ctx = c.getContext("2d", { alpha: true, desynchronized: true });
+  if (!ctx) { c.remove(); return; }
+
+  var DPR = Math.min(W.devicePixelRatio || 1, touch ? 1.15 : 1.5);
+  var w = 0, h = 0;
+
+  function size() {
+    w = W.innerWidth; h = W.innerHeight;
+    c.width  = Math.round(w * DPR);
+    c.height = Math.round(h * DPR);
+    c.style.width  = w + "px";
+    c.style.height = h + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  /* ---------- palette ---------- */
+  var GOLD = "#e8b04b", PINK = "#ff6f91", BLUE = "#5ec4ff", MINT = "#7ee0a8";
+  var CONFETTI = [GOLD, PINK, BLUE, MINT, "#f3ce7e", "#ffffff"];
+
+  /* ---------- pre-baked glow sprites (never use shadowBlur) ---------- */
+  var sprites = {};
+  function glow(col) {
+    if (sprites[col]) return sprites[col];
+    var s = 34, cv = D.createElement("canvas");
+    cv.width = cv.height = s;
+    var g = cv.getContext("2d");
+    var rg = g.createRadialGradient(s/2, s/2, 0, s/2, s/2, s/2);
+    rg.addColorStop(0,   col);
+    rg.addColorStop(.28, col);
+    rg.addColorStop(1,   "rgba(0,0,0,0)");
+    g.fillStyle = rg;
+    g.beginPath(); g.arc(s/2, s/2, s/2, 0, 6.283); g.fill();
+    sprites[col] = cv;
+    return cv;
+  }
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function pick(a) { return a[(Math.random() * a.length) | 0]; }
+
+  /* ---------- populations ---------- */
+  var motes = [], ribbons = [], balloons = [], sparks = [];
+
+  function build() {
+    var area = w * h;
+    var nMotes    = Math.round(Math.min(area / 20000, 70) * scale);
+    var nRibbons  = Math.round(Math.min(area / 26000, 52) * scale);
+    var nBalloons = Math.max(3, Math.round(Math.min(area / 150000, 9) * scale));
+
+    motes = [];
+    for (var i = 0; i < nMotes; i++) {
+      motes.push({
+        x: Math.random()*w, y: Math.random()*h,
+        r: rand(.9, 3.0), a: rand(.22, .68),
+        vx: rand(-6, 6), vy: rand(-16, -4),
+        tw: rand(0, 6.28), ts: rand(.6, 1.8),
+        c: Math.random() < .55 ? GOLD : pick([PINK, BLUE, MINT, "#ffffff"])
+      });
+    }
+
+    ribbons = [];
+    for (var j = 0; j < nRibbons; j++) ribbons.push(newRibbon(true));
+
+    balloons = [];
+    for (var k = 0; k < nBalloons; k++) balloons.push(newBalloon(true));
+  }
+
+  function newRibbon(seed) {
+    return {
+      x: Math.random()*w,
+      y: seed ? Math.random()*h : -20,
+      vy: rand(14, 34),
+      vx: rand(-7, 7),
+      wdt: rand(5, 10),
+      hgt: rand(9, 17),
+      rot: rand(0, 6.28),
+      vr: rand(-1.1, 1.1),
+      sway: rand(0, 6.28),
+      ss: rand(.5, 1.3),
+      a: rand(.26, .62),
+      c: pick(CONFETTI)
+    };
+  }
+
+  function newBalloon(seed) {
+    var s = rand(.55, 1.15);
+    return {
+      x: Math.random()*w,
+      y: seed ? Math.random()*h : h + 120*s,
+      s: s,
+      vy: rand(9, 20),
+      sway: rand(0, 6.28),
+      ss: rand(.25, .55),
+      amp: rand(10, 26),
+      a: rand(.10, .19),
+      c: pick([PINK, GOLD, BLUE, MINT])
+    };
+  }
+
+  /* ---------- the celebration beat: a soft firework bloom ---------- */
+  var nextBloom = 1.2;                       // seconds until first bloom
+  function bloom(x, y) {
+    var col = pick([GOLD, PINK, BLUE, MINT]);
+    var n = Math.round(rand(24, 40) * scale);
+    if (sparks.length > 300 * scale) return;
+    for (var i = 0; i < n; i++) {
+      var a = (6.283 / n) * i + rand(-.08, .08);
+      var sp = rand(55, 140);
+      sparks.push({
+        x: x, y: y,
+        vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+        r: rand(1.6, 3.4),
+        c: Math.random() < .3 ? "#ffffff" : col,
+        life: rand(1.5, 2.6), age: 0
+      });
+    }
+  }
+
+  /* ---------- scroll throttling (passive, never blocks) ---------- */
+  var scrolling = 0;
+  if (touch) {
+    W.addEventListener("scroll", function () {
+      scrolling = 6;                          // skip ~6 frames of heavy work
+    }, { passive: true });
+  }
+
+  /* ---------- quality watchdog ---------- */
+  var slow = 0, checked = 0, downgraded = false;
+
+  /* ---------- main loop ---------- */
+  var raf = 0, last = 0, visible = true, acc = 0;
+
+  function frame(t) {
+    raf = requestAnimationFrame(frame);
+    if (!visible) { last = t; return; }
+
+    var dt = (t - last) / 1000;
+    last = t;
+    if (dt > .12) dt = .12;                   // tab regained focus / long frame
+    if (dt <= 0) return;
+
+    /* self-correcting quality: sample the first ~150 frames */
+    if (!downgraded && checked < 150) {
+      checked++;
+      if (dt > .034) slow++;
+      if (checked === 150 && slow > 40) {
+        downgraded = true;
+        scale *= .55;
+        build();
+      }
+    }
+
+    /* while the finger is dragging, let the compositor have the frame */
+    if (scrolling > 0) { scrolling--; return; }
+
+    ctx.clearRect(0, 0, w, h);
+
+    /* --- balloons (furthest back) --- */
+    for (var b = 0; b < balloons.length; b++) {
+      var B = balloons[b];
+      B.y -= B.vy * dt;
+      B.sway += B.ss * dt;
+      var bx = B.x + Math.sin(B.sway) * B.amp;
+      if (B.y < -140 * B.s) { balloons[b] = newBalloon(false); continue; }
+      ctx.globalAlpha = B.a;
+      ctx.fillStyle = B.c;
+      ctx.beginPath();
+      ctx.ellipse(bx, B.y, 20 * B.s, 25 * B.s, 0, 0, 6.283);
+      ctx.fill();
+      ctx.globalAlpha = B.a * .55;
+      ctx.beginPath();
+      ctx.moveTo(bx, B.y + 25 * B.s);
+      ctx.lineTo(bx + Math.sin(B.sway * 1.6) * 5, B.y + 60 * B.s);
+      ctx.strokeStyle = B.c;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    /* --- confetti ribbons --- */
+    for (var r = 0; r < ribbons.length; r++) {
+      var R = ribbons[r];
+      R.y += R.vy * dt;
+      R.sway += R.ss * dt;
+      R.x += (R.vx + Math.sin(R.sway) * 9) * dt;
+      R.rot += R.vr * dt;
+      if (R.y > h + 24) { ribbons[r] = newRibbon(false); continue; }
+      if (R.x < -30) R.x = w + 20; else if (R.x > w + 30) R.x = -20;
+      ctx.globalAlpha = R.a;
+      ctx.fillStyle = R.c;
+      ctx.save();
+      ctx.translate(R.x, R.y);
+      ctx.rotate(R.rot);
+      var squash = .45 + Math.abs(Math.cos(R.rot)) * .55;
+      ctx.fillRect(-R.wdt/2, -R.hgt/2, R.wdt, R.hgt * squash);
+      ctx.restore();
+    }
+
+    /* --- light motes --- */
+    for (var m = 0; m < motes.length; m++) {
+      var M = motes[m];
+      M.x += M.vx * dt;
+      M.y += M.vy * dt;
+      M.tw += M.ts * dt;
+      if (M.y < -20) { M.y = h + 14; M.x = Math.random()*w; }
+      if (M.x < -20) M.x = w + 14; else if (M.x > w + 20) M.x = -14;
+      ctx.globalAlpha = M.a * (.45 + Math.abs(Math.sin(M.tw)) * .55);
+      var d = M.r * 7;
+      ctx.drawImage(glow(M.c), M.x - d/2, M.y - d/2, d, d);
+    }
+
+    /* --- firework blooms, on a slow loop --- */
+    nextBloom -= dt;
+    if (nextBloom <= 0) {
+      nextBloom = rand(2.6, 5.2);
+      bloom(rand(w * .12, w * .88), rand(h * .10, h * .62));
+    }
+    for (var s = sparks.length - 1; s >= 0; s--) {
+      var S = sparks[s];
+      S.age += dt;
+      var f = 1 - S.age / S.life;
+      if (f <= 0) { sparks.splice(s, 1); continue; }
+      S.vx *= (1 - 1.1 * dt);
+      S.vy = S.vy * (1 - 1.1 * dt) + 16 * dt;
+      S.x += S.vx * dt;
+      S.y += S.vy * dt;
+      ctx.globalAlpha = f * .85;
+      var sd = S.r * 7;
+      ctx.drawImage(glow(S.c), S.x - sd/2, S.y - sd/2, sd, sd);
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  /* ---------- lifecycle ---------- */
+  var resizeTimer;
+  W.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { size(); build(); }, 180);
+  }, { passive: true });
+
+  D.addEventListener("visibilitychange", function () {
+    visible = !D.hidden;
+    if (visible) { last = performance.now(); }
+  });
+
+  size();
+  build();
+  raf = requestAnimationFrame(function (t) { last = t; frame(t); });
+})();
+
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ifix-itservices.co.za/" },
+    { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://ifix-itservices.co.za/portfolio/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "IFIX Portfolio",
+  "url": "https://ifix-itservices.co.za/portfolio/",
+  "description": "Live ordering and booking systems, plus hand-built celebration sites.",
+  "isPartOf": { "@id": "https://ifix-itservices.co.za/#business" }
+}
+</script>
 </body>
 </html>
