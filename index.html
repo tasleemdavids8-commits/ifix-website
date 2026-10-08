@@ -488,16 +488,46 @@
   .deposit-note { text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: -10px; }
   .deposit-note span { color: #ef4444; font-weight: 700; }
   
-  .terms-indicator { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-left: 10px; border: 1px solid var(--accent); border-radius: 50%; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); cursor: help; animation: subtle-pulse 2s infinite; }
-  @keyframes subtle-pulse { 0% { box-shadow: 0 0 0 0 rgba(61,220,132,0.4); } 70% { box-shadow: 0 0 0 6px rgba(61,220,132,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,132,0); } }
-  .terms-indicator::after { content: "Review T&Cs below before submitting ↓"; position: absolute; bottom: 130%; right: -50px; background: #1a1a1c; border: 1px solid var(--border-strong); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; color: #fff; pointer-events: none; }
-  .terms-indicator:hover::after { opacity: 1; visibility: visible; }
-  .terms-arrow { margin-bottom: 2px; }
 
   .desktop-instruction { background: rgba(61,220,132,0.05); border-left: 3px solid var(--accent); padding: 15px; border-radius: 4px; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
   .desktop-instruction strong { color: var(--text); }
   @media (max-width: 768px) { .desktop-instruction { display: none; } }
   .btn-submit { width: 100%; justify-content: center; padding: 1rem; font-size: 0.85rem; }
+
+  /* Terms notice next to the submit button */
+  .terms-notice { display: flex; flex-direction: column; gap: 10px; }
+  .terms-notice__text { text-align: center; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .terms-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 0.85rem 1rem; background: rgba(61,220,132,0.08); border: 1px solid var(--accent); border-radius: 8px; color: var(--accent); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease, box-shadow 0.3s ease; }
+  .terms-btn:hover { background: rgba(61,220,132,0.16); box-shadow: 0 0 16px rgba(61,220,132,0.18); }
+  .terms-btn:focus-visible, .send-option:focus-visible, .send-modal__link:focus-visible, .email-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Send-order choice popup */
+  .send-modal { position: fixed; inset: 0; z-index: 100000; display: none; align-items: center; justify-content: center; padding: 1.25rem; background: rgba(5,8,16,0.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .send-modal.active { display: flex; }
+  .send-modal__box { width: 100%; max-width: 460px; max-height: 90vh; overflow-y: auto; background: #0A0A0C; border: 1px solid var(--border-strong); border-radius: 16px; padding: 1.75rem; box-shadow: 0 25px 60px rgba(0,0,0,0.6); }
+  .send-modal__title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+  .send-modal__ref { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 0.9rem; }
+  .send-modal__sub { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.25rem; }
+  .send-option { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 1rem 1.1rem; margin-bottom: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-strong); border-radius: 12px; color: var(--text); font-family: var(--font-body); cursor: pointer; transition: border-color 0.3s ease, background 0.3s ease; }
+  .send-option:hover { border-color: var(--accent); background: rgba(61,220,132,0.06); }
+  .send-option__icon { font-size: 1.5rem; flex-shrink: 0; }
+  .send-option__title { display: block; font-weight: 600; font-size: 1rem; }
+  .send-option__desc { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+  .send-modal__hint { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin: 0.25rem 0 1rem; padding: 10px 12px; border-left: 3px solid var(--accent); background: rgba(61,220,132,0.05); border-radius: 4px; }
+  .send-modal__actions { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .send-modal__link { background: none; border: none; padding: 6px 2px; color: var(--text-muted); font-family: var(--font-body); font-size: 0.85rem; text-decoration: underline; cursor: pointer; }
+  .send-modal__link:hover { color: var(--accent); }
+  .send-modal__status { min-height: 1.2em; font-size: 0.8rem; color: var(--accent); margin-top: 0.75rem; }
+
+  /* Email contact card (matches the WhatsApp card) */
+  .contact-cards { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+  .contact-cards .whatsapp-card { margin-top: 0; }
+  .email-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.75rem 2rem; border: 1px solid var(--border-strong); border-radius: 16px; background: linear-gradient(135deg, rgba(0,229,255,0.05), transparent 60%); }
+  .email-card__text { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em; color: var(--text-muted); }
+  .email-card__address { color: var(--text); font-size: 1.05rem; letter-spacing: 0.04em; word-break: break-all; }
+  .email-card__note { margin-top: 6px; font-size: 0.8rem; color: var(--text-faint); }
+  .footer-email-link { color: var(--text-muted); text-decoration: none; margin-left: 20px; transition: color 0.3s ease; }
+  .footer-email-link:hover { color: var(--accent); }
 
   .showcase-panel { display: flex; flex-direction: column; gap: 30px; }
 
@@ -508,7 +538,7 @@
 
   /* Reviews */
   .portfolio-teaser { background: transparent; padding: clamp(4rem,8vh,6rem) clamp(1.5rem,6vw,5rem); }
-  .teaser-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin:2.25rem 0 2rem; text-align:left; }
+  .teaser-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:2.25rem 0 2rem; text-align:left; }
   @media (max-width:760px){
     .teaser-grid{ grid-template-columns:1fr 1fr; gap:12px; }
     .teaser-card__body{ padding:0.85rem 0.9rem 1rem; }
@@ -769,14 +799,6 @@
           <p>Clients pick a service, date and time, then confirm straight through to WhatsApp.</p>
         </div>
       </a>
-      <a class="teaser-card" href="/portfolio/">
-        <div class="teaser-card__img"><img src="images/sambo-house.jpg" alt="The Sambo House barber site" loading="lazy"></div>
-        <div class="teaser-card__body">
-          <h3>The Sambo House</h3>
-          <span class="teaser-card__tag">Barber &#183; Booking system</span>
-          <p>Clients browse the cuts gallery, pick a service and time, then book straight through to WhatsApp.</p>
-        </div>
-      </a>
     </div>
 
     <a href="/portfolio/" class="btn btn--primary">View all projects &#8594;</a>
@@ -889,11 +911,12 @@
         <div class="submit-block">
           <div class="total-price-row"><span>Total:</span><span class="total-price-value" id="calc-total">R6,500</span></div>
           <div class="deposit-note"><span>50% DEPOSIT</span> required to commence build</div>
-          <div class="desktop-instruction"><strong>💻 Ordering from a PC or Laptop?</strong><br>Clicking submit will open WhatsApp Web. Open WhatsApp on your phone, go to <strong>Linked Devices</strong>, and scan the QR code on your screen to instantly send your order details directly to us.</div>
-          <button type="submit" class="btn btn--primary btn-submit">
-            Submit Build Request 
-            <span class="terms-indicator"><span class="terms-arrow">↓</span> i</span>
-          </button>
+          <div class="desktop-instruction"><strong>💻 Ordering from a PC or Laptop?</strong><br>After you submit, you can send your request by <strong>WhatsApp</strong> or by <strong>email</strong>. If you choose WhatsApp on a PC, it opens WhatsApp Web: open WhatsApp on your phone, go to <strong>Linked Devices</strong>, and scan the QR code on your screen. Prefer to skip that? Choose email instead.</div>
+          <div class="terms-notice">
+            <p class="terms-notice__text">Please read our Terms &amp; Conditions before you submit. A 50% deposit and our monthly hosting terms apply.</p>
+            <button type="button" class="terms-btn" data-open-terms>📄 Read Terms &amp; Conditions</button>
+          </div>
+          <button type="submit" class="btn btn--primary btn-submit">Submit Build Request</button>
         </div>
       </form>
     </div>
@@ -909,11 +932,21 @@
   <div class="media-fallback" aria-hidden="true"></div>
   <video class="media-bg" loop muted playsinline preload="none" poster="images/contact-keyboard-poster.jpg" style="opacity:0.08;" aria-hidden="true"><source src="videos/contact-keyboard.mp4" type="video/mp4"></video>
   <div class="contact__inner">
-    <div class="contact__head"><span class="section-label"><span class="dot"></span> // 03 — Get In Touch</span><h2 class="contact__title">Let's build it.</h2><p>The fastest way to reach us is WhatsApp. Tell us what you need &#8212; a booking system, an ordering site, or something custom &#8212; and we'll come back with a plan and a free quote.</p>
+    <div class="contact__head"><span class="section-label"><span class="dot"></span> // 03 — Get In Touch</span><h2 class="contact__title">Let's build it.</h2><p>The fastest way to reach us is WhatsApp. Prefer email? Send us your project details. Tell us what you need &#8212; a booking system, an ordering site, or something custom &#8212; and we'll come back with a plan and a free quote.</p>
     </div>
-    <div class="whatsapp-card">
-      <div><div class="whatsapp-card__text">WhatsApp — Free Quote</div><div class="whatsapp-card__number">+27 67 736 8173</div></div>
-      <a href="https://wa.me/27677368173" class="btn btn--primary" target="_blank" rel="noopener">Message Us on WhatsApp</a>
+    <div class="contact-cards">
+      <div class="whatsapp-card">
+        <div><div class="whatsapp-card__text">WhatsApp — Free Quote</div><div class="whatsapp-card__number">+27 67 736 8173</div></div>
+        <a href="https://wa.me/27677368173" class="btn btn--primary" target="_blank" rel="noopener">Message Us on WhatsApp</a>
+      </div>
+      <div class="email-card">
+        <div>
+          <div class="email-card__text">Email — Quotes &amp; Project Briefs</div>
+          <div class="email-card__address">info@ifix-itservices.co.za</div>
+          <div class="email-card__note">We reply during business hours, Monday to Friday, 09:00 &#8211; 16:00.</div>
+        </div>
+        <a href="mailto:info@ifix-itservices.co.za?subject=Project%20Enquiry" class="btn btn--primary">Email Us Your Project</a>
+      </div>
     </div>
     <div class="vendor-trust-grid">
         <div class="trust-box"><span class="trust-label">CIPC ENTERPRISE NUMBER</span><span class="trust-value">2026 / 473706 / 07</span><p class="trust-note">Legally registered & active entity.</p></div>
@@ -924,10 +957,10 @@
     <div class="remote">
       <div class="remote__col">
         <h3 class="remote__title">How a project starts</h3><p class="remote__intro">No sales calls. You build your own quote, we confirm it, and the work begins.</p>
-        <div class="step"><div class="step__num">01</div><div class="step__body"><p>Use the <a href="#webservices-tools">build estimator</a> above &#8212; pick your pages and add-ons, describe what you need, and watch the price update live. Submit it and it reaches us on WhatsApp with your reference code.</p></div></div>
+        <div class="step"><div class="step__num">01</div><div class="step__body"><p>Use the <a href="#webservices-tools">build estimator</a> above &#8212; pick your pages and add-ons, describe what you need, and watch the price update live. Submit it and send it to us on WhatsApp or by email, with your reference code.</p></div></div>
         <div class="step"><div class="step__num">02</div><div class="step__body"><p>We review it, confirm the scope and send a formal invoice. A <strong>50% deposit</strong> starts the build; the balance is due on completion.</p></div></div>
         <div class="step"><div class="step__num">03</div><div class="step__body"><p>You get a <strong>private preview link</strong> to check everything and request changes. Once you're happy, it goes live &#8212; and we keep it hosted, secured and maintained.</p></div></div>
-        <p class="remote__intro" style="margin-top:1.25rem">Not sure what you need yet? <a href="https://wa.me/27677368173" target="_blank" rel="noopener">Message us on WhatsApp</a> and we'll work it out with you first.</p>
+        <p class="remote__intro" style="margin-top:1.25rem">Not sure what you need yet? <a href="https://wa.me/27677368173" target="_blank" rel="noopener">Message us on WhatsApp</a> or <a href="mailto:info@ifix-itservices.co.za?subject=Project%20Enquiry">email us</a> and we'll work it out with you first.</p>
       </div>
       <div class="remote__col">
         <div class="hours">
@@ -935,7 +968,7 @@
           <div class="hours__row" data-days="1,2,3,4,5"><span class="hours__day">Mon &#8211; Fri</span><span class="hours__time">09:00 &#8211; 16:00</span></div>
           <div class="hours__row" data-days="6"><span class="hours__day">Saturday</span><span class="hours__time">Closed</span></div>
           <div class="hours__row" data-days="0"><span class="hours__day">Sunday &amp; Public Holidays</span><span class="hours__time">Closed</span></div>
-          <div class="hours__note">Outside these hours, send us a message on WhatsApp &#8212; we'll come back to you first thing.</div>
+          <div class="hours__note">Outside these hours, send us a message on WhatsApp or an email &#8212; we'll come back to you first thing.</div>
         </div>
       </div>
     </div>
@@ -948,10 +981,33 @@
       <div class="footer-badge-wrap"><div class="css-bbbee-badge">B-BBEE <span>LVL 1</span></div><span class="badge-tooltip">Level 1 EME Contributor</span></div>
       
       <a href="#" id="open-terms" class="footer-terms-link">Terms & Conditions</a>
+      <a href="mailto:info@ifix-itservices.co.za" class="footer-email-link">info@ifix-itservices.co.za</a>
   </div>
   <span id="main-clock">// LOCAL TIME —:—</span>
 </footer>
 
+
+<div id="send-modal" class="send-modal" role="dialog" aria-modal="true" aria-labelledby="send-modal-title" aria-hidden="true">
+  <div class="send-modal__box">
+    <h3 class="send-modal__title" id="send-modal-title">How would you like to send it?</h3>
+    <div class="send-modal__ref" id="send-modal-ref"></div>
+    <p class="send-modal__sub">Your build details and reference code are already filled in. Choose where to send them.</p>
+    <button type="button" class="send-option" id="send-whatsapp">
+      <span class="send-option__icon" aria-hidden="true">💬</span>
+      <span><span class="send-option__title">Send on WhatsApp</span><span class="send-option__desc">Opens WhatsApp with your request ready to send.</span></span>
+    </button>
+    <button type="button" class="send-option" id="send-email">
+      <span class="send-option__icon" aria-hidden="true">✉️</span>
+      <span><span class="send-option__title">Send by Email</span><span class="send-option__desc">Opens your email app with your request addressed to info@ifix-itservices.co.za.</span></span>
+    </button>
+    <p class="send-modal__hint">No email app opens? Tap <strong>Copy my request</strong> and paste it into an email to info@ifix-itservices.co.za.</p>
+    <div class="send-modal__actions">
+      <button type="button" class="send-modal__link" id="send-copy">Copy my request</button>
+      <button type="button" class="send-modal__link" id="send-cancel">Cancel and edit</button>
+    </div>
+    <div class="send-modal__status" id="send-status" role="status" aria-live="polite"></div>
+  </div>
+</div>
 
 <div id="terms-panel" class="terms-overlay">
   <video class="t-video-bg" loop muted playsinline preload="none" poster="images/terms-bg-poster.jpg"><source src="videos/terms-bg.mp4" type="video/mp4"></video>
@@ -1003,6 +1059,10 @@
           <div class="t-legal-section">
             <h2><span>05.</span> Corporate and Institutional Governance</h2>
             <div class="t-legal-item"><h3>B-BBEE & Tax Verification</h3><p>A sworn affidavit verifying our Level 1 B-BBEE status and our SARS Tax Compliance status pin are available immediately upon request for supply chain vetting.</p></div>
+          </div>
+          <div class="t-legal-section">
+            <h2><span>06.</span> Questions About These Terms</h2>
+            <div class="t-legal-item"><h3>Contact Us</h3><p>If you have any questions about these terms, email <a href="mailto:info@ifix-itservices.co.za" style="color: var(--t-accent-cyan);">info@ifix-itservices.co.za</a> or message us on WhatsApp on +27 67 736 8173 before you submit a build request.</p></div>
           </div>
         </div>
       </div>
@@ -1270,6 +1330,34 @@
 
     checkboxes.forEach(el => el.addEventListener('change', calculateTotal));
 
+    const BUSINESS_EMAIL = 'info@ifix-itservices.co.za';
+    const BUSINESS_WA = '27677368173';
+    const sendModal = document.getElementById('send-modal');
+    const sendRef = document.getElementById('send-modal-ref');
+    const sendStatus = document.getElementById('send-status');
+    let pendingOrder = null;
+    let lastFocused = null;
+
+    function openSendModal() {
+        lastFocused = document.activeElement;
+        sendStatus.textContent = '';
+        sendModal.classList.add('active');
+        sendModal.setAttribute('aria-hidden', 'false');
+        document.getElementById('send-whatsapp').focus();
+    }
+    function closeSendModal() {
+        sendModal.classList.remove('active');
+        sendModal.setAttribute('aria-hidden', 'true');
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+    function finishOrder() {
+        closeSendModal();
+        pendingOrder = null;
+        quoteForm.reset();
+        scrollDirWrapper.style.display = 'none';
+        calculateTotal();
+    }
+
     if(quoteForm) {
         quoteForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -1298,7 +1386,7 @@
             
             const addonString = selectedAddons.length > 0 ? selectedAddons.join("\n- ") : "None";
 
-            const messageText = encodeURIComponent(
+            const rawMessage =
 `*NEW WEB SERVICE ORDER REQUEST*
 *REFERENCE CODE:* ${refCode}
 
@@ -1320,27 +1408,64 @@ Selected Add-ons:
 *ESTIMATED TOTAL:* R${totalCost.toLocaleString()}
 *REQUIRED 50% DEPOSIT:* R${depositCost.toLocaleString()}
 
-Please use ${refCode} as your payment reference once the formal invoice is received.`
-            );
+Please use ${refCode} as your payment reference once the formal invoice is received.`;
 
-            alert("Order draft generated! You will now be redirected to WhatsApp.\n\n📱 On a phone? It will open the app directly.\n💻 On a PC? Have your phone ready to scan the QR code to send the message.");
-            window.location.href = `https://wa.me/27677368173?text=${messageText}`;
-            quoteForm.reset(); 
-            scrollDirWrapper.style.display = 'none'; 
-            calculateTotal(); 
+            pendingOrder = {
+                refCode: refCode,
+                whatsappText: rawMessage,
+                emailText: rawMessage.replace(/\*/g, '')
+            };
+            sendRef.textContent = 'Reference: ' + refCode;
+            openSendModal();
         });
     }
 
-    const openTermsBtn = document.getElementById('open-terms');
+    if (sendModal) {
+        document.getElementById('send-whatsapp').addEventListener('click', () => {
+            if (!pendingOrder) return;
+            const url = `https://wa.me/${BUSINESS_WA}?text=${encodeURIComponent(pendingOrder.whatsappText)}`;
+            finishOrder();
+            window.location.href = url;
+        });
+
+        document.getElementById('send-email').addEventListener('click', () => {
+            if (!pendingOrder) return;
+            const subject = `Web Service Order Request ${pendingOrder.refCode}`;
+            const url = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(pendingOrder.emailText)}`;
+            finishOrder();
+            window.location.href = url;
+        });
+
+        document.getElementById('send-copy').addEventListener('click', async () => {
+            if (!pendingOrder) return;
+            const text = `To: ${BUSINESS_EMAIL}\nSubject: Web Service Order Request ${pendingOrder.refCode}\n\n${pendingOrder.emailText}`;
+            try {
+                await navigator.clipboard.writeText(text);
+                sendStatus.textContent = 'Copied. Paste it into an email to ' + BUSINESS_EMAIL + '.';
+            } catch (err) {
+                sendStatus.textContent = 'Could not copy automatically. Please choose WhatsApp or Email instead.';
+            }
+        });
+
+        document.getElementById('send-cancel').addEventListener('click', closeSendModal);
+        sendModal.addEventListener('click', (e) => { if (e.target === sendModal) closeSendModal(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sendModal.classList.contains('active')) closeSendModal();
+        });
+    }
+
+    const openTermsBtns = document.querySelectorAll('#open-terms, [data-open-terms]');
     const closeTermsBtn = document.getElementById('close-terms');
     const termsPanel = document.getElementById('terms-panel');
     const termsVideo = document.querySelector('.t-video-bg');
 
-    if(openTermsBtn && termsPanel) {
-        openTermsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            termsPanel.classList.add('active');
-            if (termsVideo) termsVideo.play().catch(() => {});
+    if(openTermsBtns.length && termsPanel) {
+        openTermsBtns.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                termsPanel.classList.add('active');
+                if (termsVideo) termsVideo.play().catch(() => {});
+            });
         });
     }
 
@@ -1364,6 +1489,7 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
   "image": "https://ifix-itservices.co.za/images/og-cover.jpg",
   "description": "Custom website development, booking and ordering systems, and web apps for South African businesses.",
   "telephone": "+27677368173",
+  "email": "info@ifix-itservices.co.za",
   "founder": { "@type": "Person", "name": "Tasleem" },
   "address": {
     "@type": "PostalAddress",
