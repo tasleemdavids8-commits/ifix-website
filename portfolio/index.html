@@ -289,6 +289,11 @@ h2{
 .t-sambo{    background:radial-gradient(120% 100% at 30% 0%,#2a2a2a,#0b0c10 72%); color:#e8b04b }
 .t-nailedbymissj{ background:radial-gradient(120% 100% at 30% 0%,#5c2340,#0c0a0b 72%); color:#f4b8d4 }
 .t-waheed{   background:radial-gradient(120% 100% at 30% 0%,#4a2413,#0b0c10 72%); color:#f0c48a }
+.t-creator{  background:radial-gradient(120% 100% at 30% 0%,#4d3b19,#0b0c10 72%); color:#ecd08f }
+.t-creator-pro{ background:radial-gradient(120% 100% at 30% 0%,#3a2c4f,#0b0c10 72%); color:#e8c98a }
+.hostnote{ margin:0 0 26px; padding:14px 18px; border:1px solid rgba(232,176,75,.35); border-radius:14px; background:rgba(232,176,75,.07); color:var(--text); font-size:14.5px; line-height:1.55 }
+.hostnote strong{ color:var(--accent) }
+.cinc-label{ margin:16px 0 8px; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent) }
 
 /* price badge used on custom-quote cards (no fixed number) */
 .cprice.quote{ font-family:var(--sans); font-size:1rem; font-weight:600; -webkit-text-fill-color:initial; background:none; color:var(--accent) }
@@ -380,6 +385,9 @@ input:focus,select:focus,textarea:focus{
 input::placeholder,textarea::placeholder{ color:var(--faint) }
 select option{ background:#161920; color:var(--text) }
 .hp{ position:absolute; left:-9999px; opacity:0; height:0; width:0 }
+label.agree{ display:flex; gap:12px; align-items:flex-start; padding:12px 14px; border:1px solid var(--line); border-radius:11px; background:rgba(255,255,255,.03); line-height:1.5; cursor:pointer }
+label.agree input{ flex:0 0 auto; width:20px; height:20px; padding:0; margin-top:1px; accent-color:var(--accent); cursor:pointer; box-shadow:none }
+label.agree a{ color:var(--accent); text-decoration:underline }
 .formnote{ font-size:12.5px; color:var(--faint) }
 .send-row{ display:grid; gap:10px; grid-template-columns:1fr }
 @media (min-width:480px){ .send-row{ grid-template-columns:1.25fr 1fr } }
@@ -487,9 +495,10 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
     <span class="pill" data-r><i></i> Taking on projects · Cape Town &amp; anywhere</span>
     <h1 data-r>Systems that run things.<br>Pages people actually <em>keep</em>.</h1>
     <p class="sub" data-r>
-      Two things we build: custom ordering &amp; booking systems that get a
-      business out of its DMs, and hand-built celebration sites made for one
-      person, one occasion. Real, live projects below — not mockups.
+      Three things we build: custom ordering &amp; booking systems that get a
+      business out of its DMs, hand-built celebration sites made for one
+      person, one occasion, and collab portals that let creators be booked
+      properly instead of through a bio email. Real, live projects below — not mockups.
     </p>
     <div class="hero-cta" data-r>
       <a class="btn" href="#work">See the work →</a>
@@ -507,13 +516,15 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
       <h2>Pick what you're here for</h2>
       <p>Every one is built from scratch — click any of them and have a proper
          look. These are the real sites, not screenshots. No watermarks and no
-         platform lock-in: the finished build is yours. Hosting and upkeep runs
-         at R550/month, and you can cancel anytime and take your files with you.</p>
+         platform lock-in: the finished build is yours. Web &amp; booking systems carry
+         R550/month hosting and upkeep (cancel anytime and take your files with
+         you). Creator Portals include hosting, with no monthly fee.</p>
     </div>
 
     <div class="filters" role="tablist" aria-label="Portfolio category">
       <button class="ftab active" data-target="web" type="button">Web &amp; Booking Systems &#183; from R6,500</button>
       <button class="ftab" data-target="birthday" type="button">Celebration Sites &#183; R450&#8211;R2,400</button>
+      <button class="ftab" data-target="creator" type="button">Creator Portals &#183; from R2,500 &#183; hosting included</button>
     </div>
 
     <div class="workgroup active" id="work-web">
@@ -778,6 +789,88 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
     </div>
     </div>
 
+    <div class="workgroup" id="work-creator">
+    <p class="hostnote" data-r><strong>Hosting included. No monthly fees.</strong>
+       Every Creator Portal is custom designed and built for you, never a
+       template, and priced once-off, with no R550/month hosting charge.</p>
+    <div class="grid">
+
+      <article class="card" data-r>
+        <div class="thumb t-creator">
+          <div>
+            <div class="tt">Studio Naledi</div>
+            <div class="ts">Creator Portal · Concept demo</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Creator Portal</h3>
+            <span class="cprice">R2,500</span>
+          </div>
+          <p>A one-page portal custom designed and built around you, so brands
+             book you properly instead of emailing your bio. Open the concept
+             demo to try it.</p>
+          <div class="cinc-label">What the concept demo contains</div>
+          <ul class="cinc">
+            <li>Profile hero with portrait, socials, location &amp; booking status</li>
+            <li>Direct email card with one-tap Copy Email</li>
+            <li>Media snapshot: reach, engagement, main market &amp; median views</li>
+            <li>Expandable audience breakdown: cities, age &amp; gender split</li>
+            <li>Three campaign case-study cards that open in detail</li>
+            <li>5-step guided brief: reason, platforms &amp; deliverables, compensation &amp; budget, timeline &amp; date/time, your details</li>
+            <li>Live email draft with an auto-tagged subject line &amp; reference number</li>
+            <li>Opens in the brand's email app, or copy the full brief</li>
+            <li>Three colour palettes: White &amp; Gold, Champagne &amp; Noir</li>
+            <li>Hosting included, no monthly fees</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="work/creator-portal-demo/index.html" target="_blank" rel="noopener">Open demo ↗</a>
+            <a class="tlink" href="#contact">Order this →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card feature" data-r>
+        <span class="cbadge">For busy inboxes</span>
+        <div class="thumb t-creator-pro">
+          <div>
+            <div class="tt">Creator Portal Pro</div>
+            <div class="ts">Everything below, custom built</div>
+          </div>
+        </div>
+        <div class="cbody">
+          <div class="chead">
+            <h3>Creator Portal Pro</h3>
+            <span class="cprice">R4,000</span>
+          </div>
+          <p>For creators with a steady flow of enquiries: sort different kinds
+             of requests, set expectations before anyone writes, and show
+             exactly when you are free.</p>
+          <div class="cinc-label">Everything in Creator Portal</div>
+          <ul class="cinc">
+            <li>Profile hero, direct email card &amp; media snapshot with audience breakdown</li>
+            <li>Campaign case-study cards</li>
+            <li>5-step guided brief with live, auto-tagged email draft &amp; reference number</li>
+          </ul>
+          <div class="cinc-label">Plus, only in Pro</div>
+          <ul class="cinc">
+            <li>Custom theme and colour of your choice</li>
+            <li>Separate enquiry types, each with its own subject tag</li>
+            <li>Rate card or media kit download</li>
+            <li>Minimum budget shown up front</li>
+            <li>Availability dates you control</li>
+            <li>Custom domain setup</li>
+            <li>Hosting included, no monthly fees</li>
+          </ul>
+          <div class="cfoot">
+            <a class="btn sm" href="#contact">Ask about Pro →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    </div>
+
     <div class="occasions" data-r>
       <h3>Also built to order</h3>
       <p>Every one is designed from scratch around the person and the occasion.
@@ -928,6 +1021,11 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
             <textarea name="about" placeholder="What's the business (or the person)? What's currently slow or DM-heavy about it, or what's the story you want told?"></textarea>
           </label>
 
+          <label class="agree">
+            <input type="checkbox" name="terms" id="agreeTerms">
+            <span>I have read and agree to the <a href="/#terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>, including how my personal information is handled under POPIA.</span>
+          </label>
+
           <div class="send-row">
             <button class="btn" type="button" id="sendWa">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -1075,6 +1173,11 @@ var CONTACT = {
     var missing = [];
     if (!field("name"))    missing.push("your name");
     if (!field("contact")) missing.push("an email or WhatsApp number");
+    if (!missing.length && !document.getElementById("agreeTerms").checked) {
+      out.innerHTML = '<div class="err">Please tick the box to confirm you have read the Terms &amp; Conditions.</div>';
+      document.getElementById("agreeTerms").focus();
+      return false;
+    }
     if (missing.length) {
       out.innerHTML = '<div class="err">Please add ' + missing.join(" and ") + '.</div>';
       var first = !field("name")
