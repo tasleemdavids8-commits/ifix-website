@@ -499,6 +499,9 @@
   .terms-notice__text { text-align: center; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
   .terms-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 0.85rem 1rem; background: rgba(61,220,132,0.08); border: 1px solid var(--accent); border-radius: 8px; color: var(--accent); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease, box-shadow 0.3s ease; }
   .terms-btn:hover { background: rgba(61,220,132,0.16); box-shadow: 0 0 16px rgba(61,220,132,0.18); }
+  .terms-agree { display: flex; align-items: flex-start; gap: 12px; padding: 0.8rem 1rem; border: 1px solid var(--border-strong); border-radius: 8px; background: rgba(0,0,0,0.25); font-family: var(--font-body); font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; cursor: pointer; }
+  .terms-agree input { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); cursor: pointer; }
+  .terms-agree a { color: var(--accent); text-decoration: underline; }
   .terms-btn:focus-visible, .send-option:focus-visible, .send-modal__link:focus-visible, .email-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* Send-order choice popup */
@@ -915,6 +918,10 @@
           <div class="terms-notice">
             <p class="terms-notice__text">Please read our Terms &amp; Conditions before you submit. A 50% deposit and our monthly hosting terms apply.</p>
             <button type="button" class="terms-btn" data-open-terms>📄 Read Terms &amp; Conditions</button>
+            <label class="terms-agree" for="terms-agree">
+              <input type="checkbox" id="terms-agree" required>
+              <span>I have read and agree to the <a href="#" data-open-terms>Terms &amp; Conditions</a>, including how my personal information is handled under POPIA.</span>
+            </label>
           </div>
           <button type="submit" class="btn btn--primary btn-submit">Submit Build Request</button>
         </div>
@@ -1023,6 +1030,7 @@
           <span class="t-eyebrow">Legal Framework</span>
           <h2 class="t-title">Terms & Conditions</h2>
           <p style="color: var(--t-text-muted); font-family: var(--font-mono); font-size: 0.9rem;">IFIX-I.T SERVICES (PTY) LTD</p>
+          <p style="color: var(--t-text-muted); font-family: var(--font-mono); font-size: 0.9rem; margin-top: 6px;">Last updated: 28 October 2026</p>
         </header>
         <div class="t-vendor-grid">
           <div class="t-trust-box"><span class="t-trust-label">CIPC Enterprise Number</span><span class="t-trust-value">2026 / 473706 / 07</span><p class="t-trust-note">Legally registered & active entity.</p></div>
@@ -1042,6 +1050,7 @@
             <div class="t-legal-item"><h3>Project Commencement</h3><p>Web design and development will only begin once the 50% non-refundable deposit has been paid and all required client content/media is supplied.</p></div>
             <div class="t-legal-item"><h3>Monthly Billing Structure</h3><p>Web services are billed monthly via Zoho Invoice on a tiered structure based on utilization. <strong>Base Tier (R550/month):</strong> Charged every month if no client-requested modifications or updates are made. This covers server hosting management, active SSL security certificates, and keeping the site online and secure. <strong>Active Tier (R1,100/month):</strong> Charged during months where the client requests maintenance, content changes, layout modifications, or technical updates (up to an agreed hour limit).</p></div>
             <div class="t-legal-item"><h3>Subscription Default</h3><p>If a monthly invoice remains unpaid, we will send a reminder and allow 14 days to settle before the site is temporarily suspended. Your files and content are never deleted, and the site is restored as soon as the account is brought up to date. You may cancel the monthly plan at any time with 30 days’ notice, and we will hand over a full export of your site.</p></div>
+            <div class="t-legal-item"><h3>Creator Portals</h3><p>A Creator Portal is a once-off price that includes hosting, with no monthly fee. The monthly billing tiers and subscription terms in this section 02 do not apply to Creator Portals. Changes requested after launch are agreed with you before any work begins. Third-party costs such as domain registration and renewal remain separate under &ldquo;Third-Party Services&rdquo; in section 03.</p></div>
           </div>
           <div class="t-legal-section">
             <h2><span>03.</span> Ownership, Content &amp; Revisions</h2>
@@ -1061,7 +1070,19 @@
             <div class="t-legal-item"><h3>B-BBEE & Tax Verification</h3><p>A sworn affidavit verifying our Level 1 B-BBEE status and our SARS Tax Compliance status pin are available immediately upon request for supply chain vetting.</p></div>
           </div>
           <div class="t-legal-section">
-            <h2><span>06.</span> Questions About These Terms</h2>
+            <h2><span>06.</span> Protection of Personal Information (POPIA)</h2>
+            <div class="t-legal-item"><h3>Our Commitment</h3><p>IFIX-I.T SERVICES (PTY) LTD is the responsible party for the personal information you give us. We process it lawfully and in line with the Protection of Personal Information Act 4 of 2013 (&ldquo;POPIA&rdquo;).</p></div>
+            <div class="t-legal-item"><h3>Information We Collect</h3><p>When you contact us or submit a build request we collect your name, company name, WhatsApp or phone number, email address, industry, project description and the selections you make in the build estimator. We also receive any text, images, logos or other media you supply for your project, and the billing details we need to invoice you.</p></div>
+            <div class="t-legal-item"><h3>Why We Use It</h3><p>We use your information only to respond to your request, prepare quotes and invoices, build, host and maintain your website, communicate with you about your project, and meet our legal, tax and record-keeping obligations. We do not sell your personal information.</p></div>
+            <div class="t-legal-item"><h3>Your Consent</h3><p>By ticking the Terms &amp; Conditions box and submitting a request, you consent to us processing your information for the purposes above. You may withdraw your consent at any time by contacting us; this does not affect processing that already took place, and we may still need to keep certain records where the law requires it.</p></div>
+            <div class="t-legal-item"><h3>Sharing &amp; Service Providers</h3><p>We share information only where needed to deliver our service, with providers such as WhatsApp and email services (when you contact us), Zoho Invoice (quotes and invoices) and our hosting, domain and email providers. We use reputable providers and take reasonable steps to make sure your information stays protected, including where a provider stores or processes it outside South Africa.</p></div>
+            <div class="t-legal-item"><h3>Security &amp; Retention</h3><p>We apply reasonable technical and organisational measures to protect your information against loss, damage and unauthorised access. We keep it only for as long as we need it for the purposes above or as the law requires (for example, tax and accounting records), and then delete or de-identify it.</p></div>
+            <div class="t-legal-item"><h3>Information From Your Own Customers</h3><p>Where a site or system we build collects personal information from your customers (such as bookings or orders), you are the responsible party for that information and we act as your operator: we process it only on your instructions, keep it confidential and apply reasonable security. You remain responsible for having the right to collect it and for telling your customers how you use it. If you give us personal information about other people, you confirm you are entitled to share it with us.</p></div>
+            <div class="t-legal-item"><h3>Creator Portals</h3><p>A Creator Portal prepares an enquiry in the sender&rsquo;s own email app, addressed to the creator. The portal itself does not store the contents of those enquiries on our servers.</p></div>
+            <div class="t-legal-item"><h3>Your Rights</h3><p>You may ask us to confirm what personal information we hold about you, to correct or delete it, or to stop using it, and you may object to its processing. Email our Information Officer at <a href="mailto:info@ifix-itservices.co.za" style="color: var(--t-accent-cyan);">info@ifix-itservices.co.za</a> and we will respond within a reasonable time. If you believe your rights have been infringed, you may lodge a complaint with the Information Regulator (South Africa) at <a href="mailto:POPIAComplaints@inforegulator.org.za" style="color: var(--t-accent-cyan);">POPIAComplaints@inforegulator.org.za</a>.</p></div>
+          </div>
+          <div class="t-legal-section">
+            <h2><span>07.</span> Questions About These Terms</h2>
             <div class="t-legal-item"><h3>Contact Us</h3><p>If you have any questions about these terms, email <a href="mailto:info@ifix-itservices.co.za" style="color: var(--t-accent-cyan);">info@ifix-itservices.co.za</a> or message us on WhatsApp on +27 67 736 8173 before you submit a build request.</p></div>
           </div>
         </div>
@@ -1358,6 +1379,12 @@
         calculateTotal();
     }
 
+    const termsAgree = document.getElementById('terms-agree');
+    if (termsAgree) {
+        termsAgree.addEventListener('invalid', () => termsAgree.setCustomValidity('Please tick the box to confirm you have read the Terms & Conditions.'));
+        termsAgree.addEventListener('change', () => termsAgree.setCustomValidity(''));
+    }
+
     if(quoteForm) {
         quoteForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -1458,6 +1485,10 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
     const closeTermsBtn = document.getElementById('close-terms');
     const termsPanel = document.getElementById('terms-panel');
     const termsVideo = document.querySelector('.t-video-bg');
+    if (termsPanel && window.location.hash === '#terms') {
+        termsPanel.classList.add('active');
+        if (termsVideo) termsVideo.play().catch(() => {});
+    }
 
     if(openTermsBtns.length && termsPanel) {
         openTermsBtns.forEach((btn) => {
