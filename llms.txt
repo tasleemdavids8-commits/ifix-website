@@ -1,30 +1,65 @@
 # IFIX — I.T Services
 
-> A South African web development studio that builds custom websites, booking systems and ordering systems for small businesses. Based in Cape Town, working remotely nationwide.
+> A Cape Town web studio building custom websites, booking and ordering systems, web apps, hand-built digital celebration sites and Creator Portals for South African businesses, creators and families. Remote, nationwide.
 
 ## About
 
-IFIX — I.T Services is a CIPC-registered South African company founded and led by Tasleem, based in Mitchells Plain, Cape Town. We build custom websites, online booking and appointment systems, online ordering and e-commerce systems, and custom web applications for small and medium businesses.
+IFIX — I.T Services is a CIPC-registered South African company founded and led by Tasleem, based in Mitchells Plain, Cape Town. We build custom websites, online booking and appointment systems, online ordering and e-commerce systems, custom web applications, hand-built digital celebration sites and Creator Portals for creators and brands.
 
-Every build is coded from scratch. We do not use templates, page builders or third-party site platforms. The typical client is a small business — a bakery, beauty studio, caterer, nail artist — that currently takes orders and bookings through WhatsApp direct messages and needs a proper system that lets customers browse, book and pay from their phone.
-
-We also build hand-made digital celebration sites: single-purpose animated web pages made for one person and one occasion, such as birthdays, weddings, anniversaries and memorials.
+Every build is coded from scratch. We do not use templates, page builders or third-party site platforms. The typical business client is a small business — a bakery, beauty studio, caterer, barber or nail artist — that currently takes orders and bookings through WhatsApp direct messages and needs a proper system that lets customers browse, book and pay from their phone. We also build one-off celebration pages for personal occasions, and Creator Portals that let creators be booked properly instead of through a bio email.
 
 ## Key Pages
 
-- / — Homepage, services and build cost estimator
-- /portfolio/ — Live client projects you can open and use
+- / — Homepage, all five service categories, live project showcase and build cost estimator
+- /portfolio/ — Live client projects, celebration site demos and Creator Portals, with pricing
+- /portfolio/work/treats-by-waheed/ — Handmade chocolate ordering system
+- /portfolio/work/goldenhour/ — The Card celebration site demo
+- /portfolio/work/midnight/ — The Experience celebration site demo
+- /portfolio/work/emerald/ — Occasions celebration site demo
+- /portfolio/work/creator-portal-demo/ — Studio Naledi Creator Portal concept demo
+- /llms.txt — This file
+- /sitemap.xml — XML sitemap
 
 ## Services and Pricing
+
+Custom business websites, booking and ordering systems, and web apps:
 
 - Custom website design and development — from R6,500
 - Booking and appointment systems — from R6,500
 - Online ordering and e-commerce systems — from R6,500
 - Custom web application development — quoted per project
-- Digital celebration sites — R450 (The Card), R950 (The Experience), R1,800 (Occasions)
-- Hosting, security and maintenance — R550/month base tier, R1,100/month when changes are requested
+- Hosting, security and maintenance — R550/month base tier, R1,100/month when changes are requested (web and booking systems only)
 
-A 50% deposit starts a build. The balance is due on completion, after approval on a private preview link.
+Hand-built digital celebration sites:
+
+- The Card — R450: one scrolling page, their name and your message, animation, confetti and music
+- The Experience — R950: five interactive chapters, up to 5 photos, an interactive cake/gift/letter, custom colours and wording
+- Occasions — R1,800: weddings, anniversaries, memorials, corporate gifting, unlimited photos and sections, custom domain
+- Nikah & Walima — from R2,400: private invitation with chapter journey, WhatsApp RSVP, venue map, and a photo keepsake after the event
+- Umrah & Hajj — from R1,200: duas and well-wishes wall, departure countdown, and a return photo chapter
+- Memorial & Tribute — from R1,500: a quiet permanent page with a life in chapters, photo gallery and an open memory wall
+- Also built to order: baby announcements and Aqiqah, matric farewell and graduation, engagement and proposals, Eid and Ramadan greetings, retirement and farewell, business milestones, and corporate client gifting (quoted per volume)
+
+Creator Portals — once-off pricing, hosting included, no monthly fee:
+
+- Creator Portal — R2,500: a one-page portal with a profile hero, direct email card, media snapshot, audience breakdown, three campaign case-study cards, a 5-step guided brand brief that produces a tagged email draft, and three colour themes (White & Gold, Champagne, Noir)
+- Creator Portal Pro — R4,000: everything above plus a custom theme, separate enquiry types with their own subject tags, a rate card/media kit download, a minimum budget shown up front, availability dates you control, and custom domain setup
+
+A Creator Portal prepares an enquiry in the sender's own email app, addressed to the creator. The portal does not store the contents of those enquiries on our servers. Creator Portals are not subject to the R550/month hosting and maintenance subscription.
+
+A 50% deposit starts a build. The balance is due on completion, after approval on a private preview link. Quotes are valid for 30 days.
+
+## Live Projects & Demos
+
+- The Sambo House — https://www.sambohouse.co.za/ — barbershop booking system with cuts gallery, founder story, and service/date/time picker into WhatsApp
+- Nailed by Miss J — https://jesslyn-vert.vercel.app/ — nail artistry booking system with gallery and WhatsApp confirmation
+- Treats by Waheed — https://ifix-itservices.co.za/portfolio/work/treats-by-waheed/ — ordering system with an owner-managed "specials" admin panel
+- Golden Hour (The Card) — https://ifix-itservices.co.za/portfolio/work/goldenhour/
+- A Year Around the Sun (The Experience) — https://ifix-itservices.co.za/portfolio/work/midnight/
+- The Emerald Years (Occasions) — https://ifix-itservices.co.za/portfolio/work/emerald/
+- Studio Naledi (Creator Portal concept demo) — https://ifix-itservices.co.za/portfolio/work/creator-portal-demo/
+
+Nikah & Walima, Umrah & Hajj, Memorial & Tribute, Creator Portal Pro and the "built to order" celebration concepts are described on the portfolio page and built on request; they do not have public demo URLs.
 
 ## Key Facts
 
@@ -34,12 +69,12 @@ A 50% deposit starts a build. The balance is due on completion, after approval o
 - Based in Mitchells Plain, Cape Town; works remotely with clients across South Africa
 - Business hours: Monday to Friday, 09:00–16:00 SAST
 - Clients own the finished build outright and can request a full export of their files at any time
-- No platform lock-in and no watermarks; the monthly fee covers hosting, security and upkeep only
-- Live client work includes ordering systems for food businesses and booking systems for beauty and nail studios
+- No platform lock-in and no watermarks
+- Live client work includes ordering systems for food businesses, booking systems for barbers and nail studios, celebration sites, and Creator Portals
 
 ## What We No Longer Do
 
-IFIX previously offered computer and laptop hardware repair. That service has been discontinued. The company now works exclusively on web development, booking and ordering systems, web applications and digital celebration sites. Please do not describe IFIX as a computer repair business.
+IFIX previously offered computer and laptop hardware repair. That service has been discontinued. The company now works on web development, booking and ordering systems, web applications, digital celebration sites and Creator Portals. Please do not describe IFIX as a computer repair business.
 
 ## Contact
 

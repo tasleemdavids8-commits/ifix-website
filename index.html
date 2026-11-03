@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Websites &amp; Booking Systems | IFIX &#8212; I.T Services</title>
-<meta name="description" content="We build custom websites, booking and ordering systems, and web apps for South African businesses. Get your business out of its DMs. Remote nationwide, based in Cape Town." />
+<title>Websites, Booking Systems, Celebration Sites &amp; Creator Portals | IFIX &#8212; I.T Services</title>
+<meta name="description" content="IFIX builds custom websites, booking and ordering systems, web apps, hand-built digital celebration sites and Creator Portals for South African businesses and creators. Based in Cape Town, working nationwide." />
 <link rel="canonical" href="https://ifix-itservices.co.za/" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <meta name="author" content="IFIX - I.T Services" />
@@ -13,15 +13,15 @@
 <meta property="og:url" content="https://ifix-itservices.co.za/" />
 <meta property="og:site_name" content="IFIX - I.T Services" />
 <meta property="og:locale" content="en_ZA" />
-<meta property="og:title" content="Custom Websites &amp; Booking Systems | IFIX - I.T Services" />
-<meta property="og:description" content="We build custom websites, booking and ordering systems, and web apps for South African businesses. Get your business out of its DMs." />
+<meta property="og:title" content="Websites, Booking Systems, Celebration Sites &amp; Creator Portals | IFIX - I.T Services" />
+<meta property="og:description" content="Custom websites, booking and ordering systems, web apps, celebration sites made for one day, and Creator Portals for brand deals. Built in Cape Town, nationwide." />
 <meta property="og:image" content="https://ifix-itservices.co.za/images/og-cover.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Custom Websites &amp; Booking Systems | IFIX - I.T Services" />
-<meta name="twitter:description" content="Custom websites, booking and ordering systems, and web apps for South African businesses." />
+<meta name="twitter:title" content="Websites, Booking Systems, Celebration Sites &amp; Creator Portals | IFIX - I.T Services" />
+<meta name="twitter:description" content="Custom websites, booking systems, web apps, celebration sites and Creator Portals for South African businesses and creators." />
 <meta name="twitter:image" content="https://ifix-itservices.co.za/images/og-cover.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,6 +189,10 @@
   .draggable { width: 220px; height: 320px; background: rgba(255,255,255,0.03); border: 1px solid #777; border-radius: 15px; display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; position: relative; overflow: hidden; }
   
   .box-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; transition: opacity 1.5s ease; }
+  .box-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.7; }
+  /* five service blocks share one row; wrap only when the screen is too narrow */
+  #capability-showcase { max-width: 100%; }
+  #capability-showcase .draggable { flex: 0 0 auto; }
   .box-label { position: relative; z-index: 2; text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.9); background: rgba(0,0,0,0.4); padding: 10px; width: 100%; letter-spacing: 1px; color: var(--text-pure); }
 
   #mission-draft { max-width: 800px; margin-top: 40px; text-align: center; opacity: 0; transition: 2s; line-height: 1.8; color: #cbd5e0; }
@@ -541,7 +545,10 @@
 
   /* Reviews */
   .portfolio-teaser { background: transparent; padding: clamp(4rem,8vh,6rem) clamp(1.5rem,6vw,5rem); }
-  .teaser-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:2.25rem 0 2rem; text-align:left; }
+  .teaser-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:2.25rem 0 2rem; text-align:left; }
+  @media (min-width:761px){
+    .teaser-grid .teaser-card:last-child{ grid-column:2; }
+  }
   @media (max-width:760px){
     .teaser-grid{ grid-template-columns:1fr 1fr; gap:12px; }
     .teaser-card__body{ padding:0.85rem 0.9rem 1rem; }
@@ -549,7 +556,7 @@
     .teaser-card__tag{ font-size:0.58rem; letter-spacing:0.06em; margin-bottom:0.45rem; }
     .teaser-card__body p{ font-size:0.8rem; line-height:1.45; }
   }
-  /* keep both cards side by side even on small phones */
+  /* keep cards side by side even on small phones */
   @media (max-width:560px){
     /* claw back horizontal space so the two cards are not squeezed */
     .portfolio-teaser{ padding-left:0.9rem; padding-right:0.9rem; }
@@ -711,7 +718,7 @@
 <main id="main-interior" class="portal-element">
     <a href="#" class="back-arrow" onclick="location.reload()">&#8592;</a>
 
-    <div id="capability-showcase" style="display:flex; margin-top:10px; gap: 40px; flex-wrap: wrap; justify-content: center;">
+    <div id="capability-showcase" style="display:flex; margin-top:10px; gap: 18px; flex-wrap: wrap; justify-content: center;">
         <div class="draggable">
             <video autoplay loop muted playsinline preload="none" poster="images/box1_support-poster.jpg" class="box-video" style="opacity:0.7;"><source src="videos/box1_support.mp4" type="video/mp4"></video>
             <div class="box-label">WEBSITES</div>
@@ -724,12 +731,20 @@
             <video autoplay loop muted playsinline preload="none" poster="images/box3_design-poster.jpg" class="box-video" style="opacity:0.7;"><source src="videos/box3_design.mp4" type="video/mp4"></video>
             <div class="box-label">WEB APPS</div>
         </div>
+        <div class="draggable">
+            <img src="images/box4_celebration-poster.jpg" alt="A Year Around the Sun (Midnight &amp; Gold), a hand-built digital celebration site by IFIX" class="box-image" loading="lazy">
+            <div class="box-label">CELEBRATION SITES</div>
+        </div>
+        <div class="draggable">
+            <img src="images/box5_creator-poster.jpg" alt="Studio Naledi Creator Portal in its Noir theme, by IFIX" class="box-image" loading="lazy">
+            <div class="box-label">CREATOR PORTALS</div>
+        </div>
     </div>
 
     <div id="mission-draft">
         <h2 style="color: white; margin-bottom: 10px;">Get your business out of its DMs.</h2>
         <p>Taking orders and bookings over WhatsApp works &#8212; until it doesn't. Prices repeated ten times a day, double-booked slots, orders lost in a scroll. At <strong>IFIX &#8212; I.T Services</strong> we build the system that handles it for you: customers browse, book and pay from their phone, and the order lands with you ready to go. Built from scratch around how your business actually runs.</p>
-        <p class="mission-draft__pillars">Custom websites. Booking &amp; ordering systems. Web apps. Digital celebration sites. Built for South African businesses &#8212; remote, nationwide.</p>
+        <p class="mission-draft__pillars">Custom websites. Booking &amp; ordering systems. Web apps. Celebration sites for life's big moments. Creator Portals for brand deals. Built in Cape Town &#8212; remote, nationwide.</p>
     </div>
 
     <div id="final-door">
@@ -781,17 +796,17 @@
 </section>
 <section id="portfolio-teaser" class="portfolio-teaser section">
   <div class="glass-panel">
-    <span class="section-label" style="justify-content:center;"><span class="dot"></span> // 01 — Real Builds, Real Businesses</span>
+    <span class="section-label" style="justify-content:center;"><span class="dot"></span> // 01 — Real Builds, Real Projects</span>
     <h2 class="about__title" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">Don&#39;t take our word for it &#8212; go click around.</h2>
-    <p>Every project is a real, live site built for a real business &#8212; ordering and booking systems that replace WhatsApp DM chaos, plus hand-built digital celebration sites. Have a look before you build your quote.</p>
+    <p>Real, live builds you can open and tap around &#8212; ordering and booking systems that replace WhatsApp DM chaos, hand-built celebration sites, and a Creator Portal concept demo. Have a look before you build your quote.</p>
 
     <div class="teaser-grid">
       <a class="teaser-card" href="/portfolio/">
-        <div class="teaser-card__img"><img src="images/thumb-waheed.jpg" alt="Treats by Waheed ordering site" loading="lazy"></div>
+        <div class="teaser-card__img"><img src="images/thumb-sambohouse.jpg" alt="The Sambo House barbershop booking site" loading="lazy"></div>
         <div class="teaser-card__body">
-          <h3>Treats by Waheed</h3>
-          <span class="teaser-card__tag">Handmade Chocolate &#183; Ordering system</span>
-          <p>WhatsApp order flow with an owner-managed &ldquo;specials&rdquo; panel that updates the live menu.</p>
+          <h3>The Sambo House</h3>
+          <span class="teaser-card__tag">Barber &#183; Booking system</span>
+          <p>Clients browse the cuts gallery, pick a service, date and time, and book straight through to WhatsApp.</p>
         </div>
       </a>
       <a class="teaser-card" href="/portfolio/">
@@ -802,7 +817,49 @@
           <p>Clients pick a service, date and time, then confirm straight through to WhatsApp.</p>
         </div>
       </a>
+      <a class="teaser-card" href="/portfolio/">
+        <div class="teaser-card__img"><img src="images/thumb-waheed.jpg" alt="Treats by Waheed ordering site" loading="lazy"></div>
+        <div class="teaser-card__body">
+          <h3>Treats by Waheed</h3>
+          <span class="teaser-card__tag">Handmade Chocolate &#183; Ordering system</span>
+          <p>WhatsApp order flow with an owner-managed &ldquo;specials&rdquo; panel that updates the live menu.</p>
+        </div>
+      </a>
+      <a class="teaser-card" href="/portfolio/">
+        <div class="teaser-card__img"><img src="images/thumb-goldenhour.jpg" alt="Golden Hour digital birthday celebration site" loading="lazy"></div>
+        <div class="teaser-card__body">
+          <h3>Golden Hour</h3>
+          <span class="teaser-card__tag">Celebration site &#183; The Card</span>
+          <p>One scrolling page where the sky travels from dawn to starry night as the wish unfolds.</p>
+        </div>
+      </a>
+      <a class="teaser-card" href="/portfolio/">
+        <div class="teaser-card__img"><img src="images/thumb-midnight.jpg" alt="A Year Around the Sun interactive celebration site" loading="lazy"></div>
+        <div class="teaser-card__body">
+          <h3>A Year Around the Sun</h3>
+          <span class="teaser-card__tag">Celebration site &#183; The Experience</span>
+          <p>Five chapters, a constellation you light star by star, and candles you blow out with your breath.</p>
+        </div>
+      </a>
+      <a class="teaser-card" href="/portfolio/">
+        <div class="teaser-card__img"><img src="images/thumb-emerald.jpg" alt="The Emerald Years anniversary celebration site" loading="lazy"></div>
+        <div class="teaser-card__body">
+          <h3>The Emerald Years</h3>
+          <span class="teaser-card__tag">Celebration site &#183; Occasions</span>
+          <p>A monogram crest, a timeline of the years, and the evening's programme, built around the occasion.</p>
+        </div>
+      </a>
+      <a class="teaser-card" href="/portfolio/">
+        <div class="teaser-card__img"><img src="images/thumb-creator-portal.jpg" alt="Studio Naledi Creator Portal concept demo in its Noir theme" loading="lazy"></div>
+        <div class="teaser-card__body">
+          <h3>Studio Naledi</h3>
+          <span class="teaser-card__tag">Creator Portal &#183; Concept demo</span>
+          <p>A one-page portal where brands send a structured collaboration brief instead of emailing a bio link.</p>
+        </div>
+      </a>
     </div>
+
+    <p class="teaser-more" style="font-size:.9rem; margin-top:-.5rem;">Also built to order: Creator Portal Pro, Nikah &amp; Walima, Umrah &amp; Hajj, memorial &amp; tribute pages, baby announcements, matric farewells, Eid greetings, business milestones and corporate gifting. <a href="/portfolio/">See every option &#8594;</a></p>
 
     <a href="/portfolio/" class="btn btn--primary">View all projects &#8594;</a>
   </div>
@@ -906,7 +963,7 @@
           <div class="form-group select-wrapper">
             <select id="client-industry" required>
               <option value="" disabled selected>Select Your Industry...</option>
-              <option value="Retail & E-Commerce">Retail & E-Commerce</option><option value="Construction & Trade">Construction & Trade</option><option value="Healthcare & Medical">Healthcare & Medical</option><option value="Real Estate">Real Estate</option><option value="Hospitality & Restaurant">Hospitality & Restaurant</option><option value="Logistics & Transport">Logistics & Transport</option><option value="Financial & Legal">Financial & Legal</option><option value="IT & Technology">IT & Technology</option><option value="Other">Other (Mention in description)</option>
+              <option value="Retail & E-Commerce">Retail & E-Commerce</option><option value="Construction & Trade">Construction & Trade</option><option value="Healthcare & Medical">Healthcare & Medical</option><option value="Real Estate">Real Estate</option><option value="Hospitality & Restaurant">Hospitality & Restaurant</option><option value="Logistics & Transport">Logistics & Transport</option><option value="Financial & Legal">Financial & Legal</option><option value="IT & Technology">IT & Technology</option><option value="Creator / Influencer">Creator / Influencer</option><option value="Other">Other (Mention in description)</option>
             </select>
           </div>
           <div class="form-group"><textarea id="client-desc" placeholder="Explain what you want and need on your website..." required></textarea></div>
@@ -1518,7 +1575,7 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
   "legalName": "IFIX-I.T SERVICES (PTY) LTD",
   "url": "https://ifix-itservices.co.za/",
   "image": "https://ifix-itservices.co.za/images/og-cover.jpg",
-  "description": "Custom website development, booking and ordering systems, and web apps for South African businesses.",
+  "description": "Custom website development, booking and ordering systems, web apps, hand-built digital celebration sites and Creator Portals for South African businesses and creators.",
   "telephone": "+27677368173",
   "email": "info@ifix-itservices.co.za",
   "founder": { "@type": "Person", "name": "Tasleem" },
@@ -1540,7 +1597,8 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
   }],
   "knowsAbout": [
     "Web development","Online booking systems","Online ordering systems",
-    "E-commerce development","Web application development"
+    "E-commerce development","Web application development",
+    "Digital celebration sites","Creator Portals","Brand collaboration portals"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -1553,7 +1611,15 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
       { "@type": "Offer", "priceCurrency": "ZAR", "price": "10000",
         "itemOffered": { "@type": "Service", "name": "Online ordering and e-commerce systems" } },
       { "@type": "Offer", "priceCurrency": "ZAR", "price": "450",
-        "itemOffered": { "@type": "Service", "name": "Digital celebration and greeting sites" } }
+        "itemOffered": { "@type": "Service", "name": "Digital celebration and greeting sites", "description": "The Card — a single scrolling wish with animation, confetti and music" } },
+      { "@type": "Offer", "priceCurrency": "ZAR", "price": "950",
+        "itemOffered": { "@type": "Service", "name": "The Experience celebration site", "description": "Five interactive chapters, up to 5 photos and a candle you blow out" } },
+      { "@type": "Offer", "priceCurrency": "ZAR", "price": "1800",
+        "itemOffered": { "@type": "Service", "name": "Occasions celebration site", "description": "Bespoke weddings, anniversaries, memorials and milestone pages" } },
+      { "@type": "Offer", "priceCurrency": "ZAR", "price": "2500",
+        "itemOffered": { "@type": "Service", "name": "Creator Portal", "description": "One-page creator portal with media snapshot, campaign case studies and a 5-step brand brief. Hosting included, no monthly fee" } },
+      { "@type": "Offer", "priceCurrency": "ZAR", "price": "4000",
+        "itemOffered": { "@type": "Service", "name": "Creator Portal Pro", "description": "Separate enquiry types, rate card, minimum budget, availability dates and custom domain. Hosting included, no monthly fee" } }
     ]
   }
 }
