@@ -472,9 +472,9 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
   /* =========================================================
      RESPONSIVE FIT — very narrow phones
      ========================================================= */
-  /* Safety lock: never allow sideways panning on any device. */
-  html { overflow-x: clip; }
-  body { max-width: 100%; }
+  /* Safety lock: never allow sideways panning on any device.
+     Kept on <body> (not <html>) so position:sticky keeps working. */
+  body { max-width: 100%; overflow-x: clip; }
   @media (max-width: 320px){
     .grid { grid-template-columns: 1fr; }
     .btn { white-space: normal; text-align: center; height: auto; min-height: 38px; padding: 8px 14px; }

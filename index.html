@@ -699,9 +699,11 @@
   /* =========================================================
      RESPONSIVE FIT — no block may force a wider-than-screen layout
      ========================================================= */
-  /* Safety lock: never allow sideways panning on any device. */
-  html { overflow-x: clip; }
-  body { max-width: 100%; }
+  /* Safety lock: never allow sideways panning on any device.
+     IMPORTANT: keep this on <body>, not <html> — overflow-x on <html>
+     breaks position:sticky and collapses the pinned "Crafted for the Few"
+     scroll-phrase sequence on the homepage. */
+  body { max-width: 100%; overflow-x: clip; }
   /* The footer used to be a single 450px flex row; let it wrap instead. */
   .footer > div { flex-wrap: wrap; min-width: 0; max-width: 100%; }
   .footer > div > * { min-width: 0; }
