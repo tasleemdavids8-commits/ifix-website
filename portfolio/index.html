@@ -468,6 +468,21 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
   .cprice{ font-size:14px }
 }
 
+
+  /* =========================================================
+     RESPONSIVE FIT — very narrow phones
+     ========================================================= */
+  /* Safety lock: never allow sideways panning on any device. */
+  html { overflow-x: clip; }
+  body { max-width: 100%; }
+  @media (max-width: 320px){
+    .grid { grid-template-columns: 1fr; }
+    .btn { white-space: normal; text-align: center; height: auto; min-height: 38px; padding: 8px 14px; }
+    .nav nav a.btn.sm { white-space: normal; text-align: center; height: auto; min-height: 38px; line-height: 1.15; padding: 6px 10px; font-size: 11px; letter-spacing: 0; }
+    .cprice { font-size: 1.5rem; }
+    .cbody, .thumb { padding-left: 14px; padding-right: 14px; }
+  }
+
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 </head>

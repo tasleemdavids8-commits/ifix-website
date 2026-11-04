@@ -278,3 +278,12 @@ h2.hd{
   .toastwrap{ min-height:auto }
   .timeline::before{ transform:scaleY(1) }
 }
+
+/* =========================================================
+   RESPONSIVE FIT — moment captions must wrap, never clip
+   ========================================================= */
+.moment span{ min-width:0; overflow-wrap:anywhere }
+@media (max-width:420px){
+  .moment{ padding:8px }
+  .moment span{ font-size:.8rem }
+}

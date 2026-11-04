@@ -695,6 +695,43 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
   }
+
+  /* =========================================================
+     RESPONSIVE FIT — no block may force a wider-than-screen layout
+     ========================================================= */
+  /* Safety lock: never allow sideways panning on any device. */
+  html { overflow-x: clip; }
+  body { max-width: 100%; }
+  /* The footer used to be a single 450px flex row; let it wrap instead. */
+  .footer > div { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+  .footer > div > * { min-width: 0; }
+  /* Long uppercase labels and headings must be allowed to break. */
+  .teaser-card { min-width: 0; }
+  .teaser-card__tag, .teaser-card__body h3, .teaser-card__body p { overflow-wrap: anywhere; }
+  .video-overlay-tag { max-width: calc(100% - 24px); white-space: normal; overflow-wrap: anywhere; }
+  .trust-box, .about__text, .lab-video-wrapper { min-width: 0; }
+  /* stats grid items must be allowed to shrink and wrap their labels */
+  .stats__item { min-width: 0; }
+  .stats__value, .stats__label { overflow-wrap: anywhere; }
+  /* long email / legal links in the Terms panel must wrap */
+  .t-container a, .t-legal-item p { overflow-wrap: anywhere; }
+  @media (max-width: 600px){
+    .footer { padding: 1.75rem 1rem; font-size: .62rem; letter-spacing: .06em; }
+    .footer > div { gap: .55rem .9rem; }
+    .footer-email-link, .footer-terms-link { margin-left: 0; }
+    .footer-email-link { overflow-wrap: anywhere; }
+    #main-clock { display: block; width: 100%; }
+    .t-nav { flex-wrap: wrap; gap: 10px; }
+  }
+  @media (max-width: 420px){
+    .t-vendor-grid { grid-template-columns: 1fr; }
+    .t-trust-box { padding: 16px; }
+  }
+  @media (max-width: 320px){
+    .trust-box { padding: 12px 10px; }
+    .video-overlay-tag { font-size: .6rem; padding: 3px 6px; }
+  }
+
 </style>
 </head>
 <body>
