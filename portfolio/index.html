@@ -233,7 +233,25 @@ h2{
 .card.feature .cbody{
   background:linear-gradient(180deg,rgba(232,176,75,.07),transparent 60%);
 }
-.cbadge{
+/* full-width featured project (Hobby Corner) */
+.hc-wide{ display:flex; flex-direction:column; margin-bottom:clamp(16px,2.4vw,26px) }
+.hc-wide .thumb{ aspect-ratio:auto; min-height:200px }
+.hc-wide .cbody{ padding:26px 28px 28px }
+.hc-wide .cbody p{ font-size:15px }
+.hc-wide .cinc{ display:grid }
+@media (min-width:900px){
+  .hc-wide{ flex-direction:row }
+  .hc-wide .thumb{ flex:0 0 42%; min-height:260px; aspect-ratio:auto }
+  .hc-wide .cbody{ flex:1 1 auto; justify-content:center }
+}
+@media (max-width:620px){
+  .hc-wide .cbody p{ display:block }
+  .hc-wide .cinc{ display:grid }
+  .hc-wide .cbody h3{ font-size:1.2rem }
+}
+.t-hobbycorner{ background:radial-gradient(120% 100% at 30% 0%,#f6a6c1,#c2185b 60%,#4a0f2c 100%); color:#fff6fa }
+.cbody .hc-tag{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-4) }
+
   position:absolute; top:12px; right:12px; z-index:2;
   padding:5px 12px; border-radius:999px; font-size:11px; font-weight:600;
   color:#151109; background:linear-gradient(135deg,#f3ce7e,var(--accent));
@@ -543,6 +561,32 @@ footer .wrap{ display:flex; gap:14px; justify-content:space-between; flex-wrap:w
     </div>
 
     <div class="workgroup active" id="work-web">
+    <article class="card feature hc-wide" data-r>
+      <span class="cbadge" style="position:absolute;top:12px;right:12px;z-index:2;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;color:#151109;background:linear-gradient(135deg,#f3ce7e,#e8b04b);box-shadow:0 4px 14px rgba(0,0,0,.3)">Live now</span>
+      <div class="thumb t-hobbycorner">
+        <div>
+          <div class="tt">Hobby Corner</div>
+          <div class="ts">Craft kit shop</div>
+        </div>
+      </div>
+      <div class="cbody">
+        <div class="chead">
+          <h3>Hobby Corner</h3>
+        </div>
+        <p class="hc-tag">Craft kit shop · Ordering system</p>
+        <p>A live online shop for craft kits. Customers pay by card at checkout, can pre-order
+           kits that aren't in stock yet with a ship date, and the owner runs orders, packing and
+           kit listings from a private admin area.</p>
+        <ul class="cinc">
+          <li>Card payments at checkout (Yoco)</li>
+          <li>Pre-orders with a ship date, paid in full up front</li>
+          <li>Admin for orders, packing and kit listings</li>
+        </ul>
+        <div class="cfoot">
+          <a class="btn sm" href="https://hobbycorner.co.za/" target="_blank" rel="noopener">View live shop ↗</a>
+        </div>
+      </div>
+    </article>
     <div class="grid">
 
       <article class="card" data-r>
@@ -1623,6 +1667,7 @@ var CONTACT = {
   "isPartOf": { "@id": "https://ifix-itservices.co.za/#business" },
   "hasPart": [
     { "@type": "CreativeWork", "name": "The Sambo House", "url": "https://www.sambohouse.co.za/", "description": "Barbershop booking system with service, date and time picker into WhatsApp" },
+    { "@type": "CreativeWork", "name": "Hobby Corner", "url": "https://hobbycorner.co.za/", "description": "Online craft kit shop with card payments, pre-orders and an owner admin area" },
     { "@type": "CreativeWork", "name": "Nailed by Miss J", "url": "https://jesslyn-vert.vercel.app/", "description": "Nail artistry booking system with gallery and WhatsApp confirmation" },
     { "@type": "CreativeWork", "name": "Treats by Waheed", "url": "https://ifix-itservices.co.za/portfolio/work/treats-by-waheed/", "description": "Handmade chocolate ordering site with an owner-managed specials panel" },
     { "@type": "CreativeWork", "name": "Golden Hour - The Card", "url": "https://ifix-itservices.co.za/portfolio/work/goldenhour/", "description": "Single-page scrolling digital birthday wish" },
