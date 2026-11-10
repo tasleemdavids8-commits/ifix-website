@@ -579,6 +579,16 @@
   .teaser-card__body h3{ font-family:var(--font-display); font-size:1.05rem; font-weight:700; margin-bottom:.35rem; color:var(--text); }
   .teaser-card__tag{ display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:.6rem; }
   .teaser-card__body p{ font-size:.9rem; color:var(--text-muted); margin:0; max-width:none; }
+  /* full-width Hobby Corner card */
+  .teaser-card--wide{ grid-column:1 / -1; display:block; }
+  .teaser-card--wide .teaser-card__img{ aspect-ratio:16/10; }
+  .teaser-card--wide .teaser-card__body p{ display:block !important; }
+  @media (min-width:760px){
+    .teaser-card--wide{ display:grid; grid-template-columns:1.1fr 1fr; align-items:stretch; }
+    .teaser-card--wide .teaser-card__img{ aspect-ratio:auto; min-height:320px; }
+    .teaser-card--wide .teaser-card__body{ display:flex; flex-direction:column; justify-content:center; padding:2rem 2.25rem; }
+    .teaser-card--wide .teaser-card__body h3{ font-size:1.35rem; }
+  }
   .portfolio-teaser .glass-panel { max-width: 900px; margin: 0 auto; text-align: center; }
   .portfolio-teaser p { color: var(--text-muted); max-width: 640px; margin: 0 auto 1.75rem; font-size: 1.02rem; }
 
@@ -981,6 +991,14 @@
     <p>Real, live builds you can open and tap around &#8212; ordering and booking systems that replace WhatsApp DM chaos, hand-built celebration sites, and a Creator Portal concept demo. Have a look before you build your quote.</p>
 
     <div class="teaser-grid">
+      <a class="teaser-card teaser-card--wide" href="https://hobbycorner.co.za/" target="_blank" rel="noopener">
+        <div class="teaser-card__img"><img src="images/thumb-hobbycorner.jpg" alt="Hobby Corner craft kit shop" loading="lazy" decoding="async"></div>
+        <div class="teaser-card__body">
+          <h3>Hobby Corner</h3>
+          <span class="teaser-card__tag">Craft kit shop &#183; Ordering system</span>
+          <p>A live online shop for craft kits. Customers pay by card at checkout, can pre-order kits that aren&#39;t in stock yet with a ship date, and the owner runs orders, packing and kit listings from a private admin area.</p>
+        </div>
+      </a>
       <a class="teaser-card" href="/portfolio/">
         <div class="teaser-card__img"><img src="images/thumb-sambohouse.jpg" alt="The Sambo House barbershop booking site" loading="lazy" decoding="async"></div>
         <div class="teaser-card__body">
