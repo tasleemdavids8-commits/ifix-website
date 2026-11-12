@@ -371,7 +371,7 @@
      ========================================================= */
   .scanlines{ display:none; }
   
-  .nav{ position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.4rem clamp(1.5rem, 5vw, 4rem); backdrop-filter:blur(16px); background:rgba(10,10,12,0.55); border-bottom:1px solid var(--border); }
+  .nav{ position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.4rem clamp(1.5rem, 5vw, 4rem); backdrop-filter:blur(16px); background:rgba(10,10,12,0.92); border-bottom:1px solid var(--border); }
   .nav__logo{ font-family:var(--font-display); font-weight:700; font-size:clamp(0.85rem, 2vw, 1.25rem); letter-spacing:clamp(0.04em, 0.6vw, 0.18em); white-space:nowrap; }
   .nav__links{ display:flex; gap:clamp(1.25rem, 3vw, 2.5rem); font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); }
   .nav__links a{ transition:color 0.2s ease; }
@@ -388,17 +388,36 @@
   .media-fallback{ position:absolute; inset:0; z-index:-1; }
 
   /* Hero */
-  .hero{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(6rem,12vh,9rem) clamp(1.5rem,6vw,5rem) clamp(3rem,6vh,5rem); overflow:hidden; }
+  .hero{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(6rem,12vh,9rem) clamp(1.5rem,6vw,5rem) clamp(3rem,6vh,5rem); overflow:hidden; position:relative; }
   .hero .media-fallback{ background: radial-gradient(ellipse at 20% 15%, rgba(61,220,132,0.07), transparent 45%), radial-gradient(ellipse at 85% 80%, rgba(90,170,255,0.05), transparent 50%), linear-gradient(160deg, #0A0A0C 0%, #121214 55%, #0A0A0C 100%); }
   /* fades to fully transparent at the bottom so there is no step where the section ends */
   .hero::after{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,10,12,0.30) 0%, rgba(10,10,12,0.26) 45%, rgba(10,10,12,0.14) 80%, rgba(10,10,12,0) 100%); }
+  /* faint grid texture for premium feel */
+  .hero::before{ content:""; position:absolute; inset:0; z-index:0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size:40px 40px; pointer-events:none; }
   .hero__content{ position:relative; z-index:2; max-width:1100px; }
   .eyebrow{ display:inline-flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); border:1px solid var(--border-strong); border-radius:999px; padding:0.5rem 1.1rem; margin-bottom:2.25rem; }
-  .hero__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(2.6rem, 9.5vw, 6.4rem); line-height:1.05; letter-spacing:0.04em; text-transform:uppercase; }
+  .hero__title{ font-family:var(--font-display); font-weight:700; font-size:clamp(2.6rem, 9.5vw, 6.4rem); line-height:1.05; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:3rem; }
   .hero__title span{ display:block; }
   .hero__title span:nth-child(2){ color:var(--text-muted); }
-  .hero__copy{ margin-top:2.25rem; max-width:620px; color:var(--text-muted); font-size:clamp(1rem, 1.6vw, 1.15rem); line-height:1.75; }
+  /* Studio tag */
+  .hero__studio-tag{ font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--accent); margin-bottom:1.5rem; display:inline-flex; align-items:center; gap:0.5rem; }
+  /* Numbered feature rows */
+  .hero__features{ display:flex; flex-direction:column; gap:1.75rem; margin-bottom:2.5rem; }
+  .hero__feature-row{ display:grid; grid-template-columns: auto 1fr auto; gap:1.5rem; align-items:center; border-bottom:1px solid var(--border); padding-bottom:1.75rem; position:relative; }
+  .hero__feature-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .hero__feature-num{ font-family:var(--font-mono); font-weight:700; font-size:clamp(1rem, 2vw, 1.25rem); color:var(--text); letter-spacing:0.05em; }
+  .hero__feature-label{ font-family:var(--font-body); font-size:clamp(0.85rem, 1.4vw, 1rem); color:var(--text-muted); line-height:1.5; letter-spacing:0.02em; }
+  .hero__feature-dot{ color:var(--accent); font-weight:700; font-size:clamp(0.85rem, 1.4vw, 1rem); }
+  .hero__feature-dot--pulse{ animation:pulse 2.6s ease-in-out infinite; }
+  /* Proof strip */
+  .hero__proof{ display:flex; align-items:center; gap:0.75rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-faint); margin-bottom:2.75rem; }
+  .hero__proof::before, .hero__proof::after{ content:""; flex:1; height:1px; background:var(--border); }
   .hero__actions{ margin-top:2.75rem; display:flex; flex-wrap:wrap; gap:1rem; }
+  /* Button sliding arrow */
+  .btn-arrow{ display:inline-block; width:0; height:0; border-style:solid; border-width:5px 0 5px 5px; border-color:transparent transparent transparent currentColor; margin-left:0.5rem; transform:translateX(0); transition:transform 0.25s ease; }
+  .btn--primary:hover .btn-arrow{ transform:translateX(6px); }
+  /* Coordinates */
+  .hero__coords{ position:absolute; bottom:3rem; left:clamp(1.5rem,6vw,5rem); font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-faint); z-index:2; }
   
   .btn{ display:inline-flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.95rem 1.9rem; border-radius:999px; transition:all 0.25s ease; border:1px solid var(--border-strong); cursor:pointer; }
   .btn--primary{ background:var(--text); color:var(--bg); border-color:var(--text); }
@@ -409,7 +428,23 @@
   .scroll-cue{ position:absolute; bottom:2.25rem; left:clamp(1.5rem,6vw,5rem); z-index:2; display:flex; align-items:center; gap:0.75rem; font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-faint); }
   .scroll-cue__line{ width:1px; height:40px; background:linear-gradient(to bottom, var(--text-faint), transparent); animation:scrollline 2.4s ease-in-out infinite; }
   @keyframes scrollline{ 0%{transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1); transform-origin:top;} 50.01%{transform-origin:bottom;} 100%{transform:scaleY(0); transform-origin:bottom;} }
-  @media (max-width:760px){ .scroll-cue{display:none;} }
+  @media (max-width:760px){ .scroll-cue{display:none;} .hero__coords{display:none;} .hero__feature-row{ grid-template-columns:1fr; gap:0.5rem; text-align:left; } .hero__feature-label{ text-align:left; } .hero__feature-num{ text-align:left; } .hero__feature-dot{ text-align:left; } .hero__proof{ flex-direction:column; gap:0.4rem; text-align:center; } .hero__proof::before, .hero__proof::after{ display:none; } }
+  /* Entrance animation — plays once the welcome screen is dismissed */
+  body.portal-dismissed .hero__title span{ opacity:0; transform:translateY(30px); animation: heroLineUp 0.8s var(--easing) forwards; }
+  body.portal-dismissed .hero__title span:nth-child(1){ animation-delay: 0.1s; }
+  body.portal-dismissed .hero__title span:nth-child(2){ animation-delay: 0.25s; }
+  body.portal-dismissed .hero__title span:nth-child(3){ animation-delay: 0.4s; }
+  body.portal-dismissed .hero__studio-tag{ opacity:0; transform:translateY(20px); animation: heroFadeUp 0.6s var(--easing) 0.5s forwards; }
+  body.portal-dismissed .hero__feature-row{ opacity:0; transform:translateY(20px); animation: heroRowUp 0.7s var(--easing) forwards; }
+  body.portal-dismissed .hero__feature-row:nth-child(1){ animation-delay: 0.6s; }
+  body.portal-dismissed .hero__feature-row:nth-child(2){ animation-delay: 0.8s; }
+  body.portal-dismissed .hero__feature-row:nth-child(3){ animation-delay: 1.0s; }
+  body.portal-dismissed .hero__proof{ opacity:0; transform:translateY(20px); animation: heroFadeUp 0.6s var(--easing) 1.2s forwards; }
+  body.portal-dismissed .hero__actions{ opacity:0; transform:translateY(20px); animation: heroFadeUp 0.6s var(--easing) 1.4s forwards; }
+  body.portal-dismissed .hero__coords{ opacity:0; transform:translateY(20px); animation: heroFadeUp 0.6s var(--easing) 1.6s forwards; }
+  @keyframes heroLineUp{ to{ opacity:1; transform:translateY(0); } }
+  @keyframes heroRowUp{ to{ opacity:1; transform:translateY(0); } }
+  @keyframes heroFadeUp{ to{ opacity:1; transform:translateY(0); } }
 
   /* About */
   .about{ background:transparent; padding:clamp(5rem,10vh,8rem) clamp(1.5rem,6vw,5rem); }
@@ -966,12 +1001,31 @@
   <div class="hero__content">
     <div class="eyebrow"><span class="dot"></span> Cape Town &#8212; Remote, nationwide</div>
     <h1 class="hero__title"><span>Design.</span><span>Build.</span><span>Automate.</span></h1>
-    <p class="hero__copy">If your business still takes orders and bookings through WhatsApp DMs, you already know where it breaks &#8212; repeating prices, chasing confirmations, double-booked slots. We build the system that handles all of it: your customers browse, book and pay from their phone, and the order reaches you ready to go. Built from scratch, around your business.</p>
+    <div class="hero__studio-tag">01 / Studio</div>
+    <div class="hero__features">
+      <div class="hero__feature-row">
+        <span class="hero__feature-num">01</span>
+        <span class="hero__feature-label">A site that looks like your business, not a template.</span>
+        <span class="hero__feature-dot">•</span>
+      </div>
+      <div class="hero__feature-row">
+        <span class="hero__feature-num">02</span>
+        <span class="hero__feature-label">Booking, ordering and payments wired in from day one.</span>
+        <span class="hero__feature-dot">•</span>
+      </div>
+      <div class="hero__feature-row">
+        <span class="hero__feature-num">03</span>
+        <span class="hero__feature-label">Orders and bookings arrive complete: who, what, when, paid.</span>
+        <span class="hero__feature-dot hero__feature-dot--pulse">•</span>
+      </div>
+    </div>
+    <div class="hero__proof">CIPC-registered &middot; B-BBEE certified &middot; From R6,500</div>
     <div class="hero__actions">
-      <a href="https://wa.me/27677368173" class="btn btn--primary" target="_blank" rel="noopener">Start a Project on WhatsApp</a>
-      <a href="#about" class="btn btn--ghost">About IFIX</a>
+      <a href="https://wa.me/27677368173" class="btn btn--primary" target="_blank" rel="noopener">Start a Project on WhatsApp<span class="btn-arrow"></span></a>
+      <a href="/portfolio/" class="btn btn--ghost">See the work</a>
     </div>
   </div>
+  <div class="hero__coords">Cape Town, Western Cape &middot; -33.9249, 18.4241</div>
   <div class="scroll-cue"><span class="scroll-cue__line"></span>Scroll</div>
 </section>
 <section id="webservices-intro" class="webservices-intro-section section">
@@ -1204,10 +1258,10 @@
       <div class="email-card">
         <div>
           <div class="email-card__text">Email — Quotes &amp; Project Briefs</div>
-          <div class="email-card__address">info@ifix-itservices.co.za</div>
+          <div class="email-card__address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e070008012e0708071643071a1d0b1c18070d0b1d400d0140140f">[email&#160;protected]</a></div>
           <div class="email-card__note">We reply during business hours, Monday to Friday, 09:00 &#8211; 16:00.</div>
         </div>
-        <a href="mailto:info@ifix-itservices.co.za?subject=Project%20Enquiry" class="btn btn--primary">Email Us Your Project</a>
+        <a href="/cdn-cgi/l/email-protection#127b7c747d527b747b6a3f7b66617760647b7177613c717d3c68732d616770787771662f42607d78777166372022577c63677b606b" class="btn btn--primary">Email Us Your Project</a>
       </div>
     </div>
     <div class="vendor-trust-grid">
@@ -1222,7 +1276,7 @@
         <div class="step"><div class="step__num">01</div><div class="step__body"><p>Use the <a href="#webservices-tools">build estimator</a> above &#8212; pick your pages and add-ons, describe what you need, and watch the price update live. Submit it and send it to us on WhatsApp or by email, with your reference code.</p></div></div>
         <div class="step"><div class="step__num">02</div><div class="step__body"><p>We review it, confirm the scope and send a formal invoice. A <strong>50% deposit</strong> starts the build; the balance is due on completion.</p></div></div>
         <div class="step"><div class="step__num">03</div><div class="step__body"><p>You get a <strong>private preview link</strong> to check everything and request changes. Once you're happy, it goes live &#8212; and we keep it hosted, secured and maintained.</p></div></div>
-        <p class="remote__intro" style="margin-top:1.25rem">Not sure what you need yet? <a href="https://wa.me/27677368173" target="_blank" rel="noopener">Message us on WhatsApp</a> or <a href="mailto:info@ifix-itservices.co.za?subject=Project%20Enquiry">email us</a> and we'll work it out with you first.</p>
+        <p class="remote__intro" style="margin-top:1.25rem">Not sure what you need yet? <a href="https://wa.me/27677368173" target="_blank" rel="noopener">Message us on WhatsApp</a> or <a href="/cdn-cgi/l/email-protection#93fafdf5fcd3faf5faebbefae7e0f6e1e5faf0f6e0bdf0fcbde9f2ace0e6f1f9f6f0e7aec3e1fcf9f6f0e7b6a1a3d6fde2e6fae1ea">email us</a> and we'll work it out with you first.</p>
       </div>
       <div class="remote__col">
         <div class="hours">
@@ -1243,7 +1297,7 @@
       <div class="footer-badge-wrap"><div class="css-bbbee-badge">B-BBEE <span>LVL 1</span></div><span class="badge-tooltip">Level 1 EME Contributor</span></div>
       
       <a href="#" id="open-terms" class="footer-terms-link">Terms & Conditions</a>
-      <a href="mailto:info@ifix-itservices.co.za" class="footer-email-link">info@ifix-itservices.co.za</a>
+      <a href="/cdn-cgi/l/email-protection#01686f676e41686768792c687572647377686264722f626e2f7b60" class="footer-email-link"><span class="__cf_email__" data-cfemail="3a53545c557a535c534217534e495f484c53595f4914595514405b">[email&#160;protected]</span></a>
   </div>
   <span id="main-clock">// LOCAL TIME —:—</span>
 </footer>
@@ -1260,9 +1314,9 @@
     </button>
     <button type="button" class="send-option" id="send-email">
       <span class="send-option__icon" aria-hidden="true">✉️</span>
-      <span><span class="send-option__title">Send by Email</span><span class="send-option__desc">Opens your email app with your request addressed to info@ifix-itservices.co.za.</span></span>
+      <span><span class="send-option__title">Send by Email</span><span class="send-option__desc">Opens your email app with your request addressed to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2cbccc4cde2cbc4cbda8fcbd6d1c7d0d4cbc1c7d18cc1cd8cd8c3">[email&#160;protected]</a>.</span></span>
     </button>
-    <p class="send-modal__hint">No email app opens? Tap <strong>Copy my request</strong> and paste it into an email to info@ifix-itservices.co.za.</p>
+    <p class="send-modal__hint">No email app opens? Tap <strong>Copy my request</strong> and paste it into an email to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="076e696168476e616e7f2a6e73746275716e646274296468297d66">[email&#160;protected]</a>.</p>
     <div class="send-modal__actions">
       <button type="button" class="send-modal__link" id="send-copy">Copy my request</button>
       <button type="button" class="send-modal__link" id="send-cancel">Cancel and edit</button>
@@ -1334,18 +1388,18 @@
             <div class="t-legal-item"><h3>Security &amp; Retention</h3><p>We apply reasonable technical and organisational measures to protect your information against loss, damage and unauthorised access. We keep it only for as long as we need it for the purposes above or as the law requires (for example, tax and accounting records), and then delete or de-identify it.</p></div>
             <div class="t-legal-item"><h3>Information From Your Own Customers</h3><p>Where a site or system we build collects personal information from your customers (such as bookings or orders), you are the responsible party for that information and we act as your operator: we process it only on your instructions, keep it confidential and apply reasonable security. You remain responsible for having the right to collect it and for telling your customers how you use it. If you give us personal information about other people, you confirm you are entitled to share it with us.</p></div>
             <div class="t-legal-item"><h3>Creator Portals</h3><p>A Creator Portal prepares an enquiry in the sender&rsquo;s own email app, addressed to the creator. The portal itself does not store the contents of those enquiries on our servers.</p></div>
-            <div class="t-legal-item"><h3>Your Rights</h3><p>You may ask us to confirm what personal information we hold about you, to correct or delete it, or to stop using it, and you may object to its processing. Email our Information Officer at <a href="mailto:info@ifix-itservices.co.za" style="color: var(--t-accent-cyan);">info@ifix-itservices.co.za</a> and we will respond within a reasonable time. If you believe your rights have been infringed, you may lodge a complaint with the Information Regulator (South Africa) at <a href="mailto:POPIAComplaints@inforegulator.org.za" style="color: var(--t-accent-cyan);">POPIAComplaints@inforegulator.org.za</a>.</p></div>
+            <div class="t-legal-item"><h3>Your Rights</h3><p>You may ask us to confirm what personal information we hold about you, to correct or delete it, or to stop using it, and you may object to its processing. Email our Information Officer at <a href="/cdn-cgi/l/email-protection#0b62656d644b626d627326627f786e797d62686e7825686425716a" style="color: var(--t-accent-cyan);"><span class="__cf_email__" data-cfemail="f1989f979eb198979889dc98858294838798929482df929edf8b90">[email&#160;protected]</span></a> and we will respond within a reasonable time. If you believe your rights have been infringed, you may lodge a complaint with the Information Regulator (South Africa) at <a href="/cdn-cgi/l/email-protection#52021d021b13113d3f223e333b3c2621123b3c343d203735273e33263d207c3d20357c2833" style="color: var(--t-accent-cyan);"><span class="__cf_email__" data-cfemail="5a0a150a131b1935372a363b33342e291a33343c35283f3d2f363b2e35287435283d74203b">[email&#160;protected]</span></a>.</p></div>
           </div>
           <div class="t-legal-section">
             <h2><span>07.</span> Questions About These Terms</h2>
-            <div class="t-legal-item"><h3>Contact Us</h3><p>If you have any questions about these terms, email <a href="mailto:info@ifix-itservices.co.za" style="color: var(--t-accent-cyan);">info@ifix-itservices.co.za</a> or message us on WhatsApp on +27 67 736 8173 before you submit a build request.</p></div>
+            <div class="t-legal-item"><h3>Contact Us</h3><p>If you have any questions about these terms, email <a href="/cdn-cgi/l/email-protection#7c15121a133c151a15045115080f190e0a151f190f521f1352061d" style="color: var(--t-accent-cyan);"><span class="__cf_email__" data-cfemail="a9c0c7cfc6e9c0cfc0d184c0dddaccdbdfc0caccda87cac687d3c8">[email&#160;protected]</span></a> or message us on WhatsApp on +27 67 736 8173 before you submit a build request.</p></div>
           </div>
         </div>
       </div>
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // =========================================================
     // SMART VIDEO OBSERVER (THE LAG CURE)
     // =========================================================
