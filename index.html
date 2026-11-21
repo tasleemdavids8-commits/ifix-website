@@ -1685,6 +1685,23 @@
 
     const BUSINESS_EMAIL = 'info@ifix-itservices.co.za';
     const BUSINESS_WA = '27677368173';
+
+    /* ── IFIX Books — silent lead capture ────────────────
+       Fires invisibly when the client submits the estimator.
+       WhatsApp / Email modal is unaffected. */
+    const BOOKS_API = 'https://ifix-books-api.tasleemdavids8.workers.dev';
+    function sendLeadToBooks(payload) {
+        try {
+            fetch(BOOKS_API + '/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                mode: 'cors',
+                keepalive: true
+            }).catch(function () { /* silent — WhatsApp/email still work */ });
+        } catch (_) { /* silent */ }
+    }
+
     const sendModal = document.getElementById('send-modal');
     const sendRef = document.getElementById('send-modal-ref');
     const sendStatus = document.getElementById('send-status');
@@ -1775,6 +1792,27 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
                 emailText: rawMessage.replace(/\*/g, '')
             };
             sendRef.textContent = 'Reference: ' + refCode;
+
+            /* Silent background POST → IFIX Books (does not block the modal) */
+            sendLeadToBooks({
+                reference: refCode,
+                name: name,
+                phone: whatsapp !== "Not Provided" ? whatsapp : null,
+                company: company !== "Not Provided" ? company : null,
+                industry: industry !== "Not Selected" ? industry : null,
+                project_type: pageString,
+                description: desc,
+                est_amount: totalCost,
+                estimate: {
+                    pages: pages,
+                    layout: scrollPref ? scrollDirSelect.value : null,
+                    addons: selectedAddons,
+                    deposit: depositCost,
+                    base: 6500
+                },
+                source: 'ifix-itservices.co.za'
+            });
+
             openSendModal();
         });
     }
@@ -1976,5 +2014,5 @@ Please use ${refCode} as your payment reference once the formal invoice is recei
   "publisher": { "@id": "https://ifix-itservices.co.za/#business" }
 }
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5db748f6ecbc13d',t:'MTc5NTIxOTY1OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5db748f6ecbc13d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
